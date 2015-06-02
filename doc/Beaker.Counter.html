@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Beaker.Counter</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      hljs.initHighlightingOnLoad();
+      hljs.configure({languages: []}); //disable autodetect
+    </script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">beaker v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Beaker.html">Beaker</a> &rarr; <a href="Beaker.Counter.html">Counter</a></div>
+      <h1>
+        Beaker.Counter
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+      </ul>
+
+      
+
+      
+        <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L1" class="view_source">Source</a>
+      
+
+      
+        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#decr/1">decr(key)</a></td>
+  
+    <td class="summary_synopsis"><p>Decrements the specified counter by 1</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#decr_by/2">decr_by(key, value)</a></td>
+  
+    <td class="summary_synopsis"><p>Decrements the specified counter by the specified number</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get/1">get(key)</a></td>
+  
+    <td class="summary_synopsis"><p>Retrieves the current value of the specified counter</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#incr/1">incr(key)</a></td>
+  
+    <td class="summary_synopsis"><p>Increments the specified counter by 1</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#incr_by/2">incr_by(key, value)</a></td>
+  
+    <td class="summary_synopsis"><p>Increments the specified counter by the specified number</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#set/2">set(key, value)</a></td>
+  
+    <td class="summary_synopsis"><p>Sets the value of the specified counter to the specified value</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#start_link/0">start_link()</a></td>
+  
+    <td class="summary_synopsis"><p>Start the Counter server</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+        <section id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <section class="detail">
+  <div class="detail_header" id="decr/1">
+    <span class="signature"><strong>decr(key)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#decr/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Decrements the specified counter by 1.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
+nil
+iex&gt; Beaker.Counter.decr(&quot;decr_counter&quot;)
+:ok
+iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
+-1</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L93" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="decr_by/2">
+    <span class="signature"><strong>decr_by(key, value)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#decr_by/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Decrements the specified counter by the specified number.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
+nil
+iex&gt; Beaker.Counter.decr_by(&quot;decr_by_counter&quot;, 10)
+:ok
+iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
+-10</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L111" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="get/1">
+    <span class="signature"><strong>get(key)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#get/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Retrieves the current value of the specified counter.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.set(&quot;get_counter&quot;, 10)
+:ok
+iex&gt; Beaker.Counter.get(&quot;get_counter&quot;)
+10</code></pre>
+<p>Returns <code class="inline">count</code> where count is an integer if the counter exists, else <code class="inline">nil</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L23" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="incr/1">
+    <span class="signature"><strong>incr(key)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#incr/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Increments the specified counter by 1.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
+nil
+iex&gt; Beaker.Counter.incr(&quot;incr_counter&quot;)
+:ok
+iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
+1</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L57" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="incr_by/2">
+    <span class="signature"><strong>incr_by(key, value)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#incr_by/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Increments the specified counter by the specified number.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
+nil
+iex&gt; Beaker.Counter.incr_by(&quot;incr_by_counter&quot;, 10)
+:ok
+iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
+10</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L75" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="set/2">
+    <span class="signature"><strong>set(key, value)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#set/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Sets the value of the specified counter to the specified value.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.set(&quot;set_counter&quot;, 10)
+:ok
+iex&gt; Beaker.Counter.get(&quot;set_counter&quot;)
+10</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L39" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="start_link/0">
+    <span class="signature"><strong>start_link()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#start_link/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Start the Counter server</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L7" class="view_source">Source</a>
+  
+</section>
+
+        </section>
+      
+
+      
+
+      
+    </section>
+  </body>
+</html>

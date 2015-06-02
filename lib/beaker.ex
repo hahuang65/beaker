@@ -1,0 +1,2 @@
+defmodule Beaker do
+end
