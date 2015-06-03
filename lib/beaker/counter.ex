@@ -2,7 +2,7 @@ defmodule Beaker.Counter do
   ## Client API
 
   @doc """
-  Start the Counter server
+  Start the Counter server.
   """
   def start_link do
     GenServer.start_link(__MODULE__, :ok, name: :beaker_counters)

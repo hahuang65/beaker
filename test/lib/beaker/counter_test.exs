@@ -8,6 +8,11 @@ defmodule Beaker.CounterTest do
     assert Counter.get("non-existent") == nil
   end
 
+  test "Counter.get(key) returns the stored value in the counter" do
+    Counter.set("get", 50)
+    assert Counter.get("get") == 50
+  end
+
   test "Counter.set(key, value) sets the counter to the value" do
     key = "set"
     assert Counter.get(key) == nil
