@@ -1,9 +1,7 @@
 defmodule Beaker.Gauge do
   ## Client API
 
-  @doc """
-  Start the Gauge server.
-  """
+  @doc false
   def start_link do
     GenServer.start_link(__MODULE__, :ok, name: :beaker_gauges)
   end

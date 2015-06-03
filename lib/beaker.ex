@@ -1,6 +1,14 @@
 defmodule Beaker do
   use Application
 
+  @doc """
+  Starts the Beaker app.
+
+  This will start all submodules under supervision:
+    * Beaker.Counter
+    * Beaker.Gauge
+
+  """
   def start do
     import Supervisor.Spec
 
