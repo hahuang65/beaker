@@ -44,6 +44,22 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p><a href="Beaker.Counter.html"><code class="inline">Beaker.Counter</code></a> is a signed bi-directional integer counter.
+It can keep track of integers and increment and decrement them.</p>
+<p>It is commonly used for metrics that keep track of some cumulative value.</p>
+<p>Examples are:</p>
+<ul>
+<li>Total number of downloads
+</li>
+<li>Number of queued jobs
+</li>
+<li>Quotas
+</li>
+</ul>
+
+        </section>
+      
 
       
         <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L1" class="view_source">Source</a>
@@ -60,9 +76,9 @@
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#decr_by/2">decr_by(key, value)</a></td>
+  <td class="summary_signature"><a href="#decr_by/2">decr_by(key, amount)</a></td>
   
-    <td class="summary_synopsis"><p>Decrements the specified counter by the specified number</p>
+    <td class="summary_synopsis"><p>Decrements the specified counter by the specified amount</p>
 </td>
   
 </tr>
@@ -81,9 +97,9 @@
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#incr_by/2">incr_by(key, value)</a></td>
+  <td class="summary_signature"><a href="#incr_by/2">incr_by(key, amount)</a></td>
   
-    <td class="summary_synopsis"><p>Increments the specified counter by the specified number</p>
+    <td class="summary_synopsis"><p>Increments the specified counter by the specified amount</p>
 </td>
   
 </tr>
@@ -115,6 +131,11 @@
   
   <section class="docstring">
     <p>Decrements the specified counter by 1.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the counter to decrement.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
 nil
@@ -126,12 +147,12 @@ iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L91" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L121" class="view_source">Source</a>
   
 </section>
 <section class="detail">
   <div class="detail_header" id="decr_by/2">
-    <span class="signature"><strong>decr_by(key, value)</strong></span>
+    <span class="signature"><strong>decr_by(key, amount)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#decr_by/2" class="detail_link" title="Link to this function">#</a>
@@ -140,7 +161,14 @@ iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
   </div>
   
   <section class="docstring">
-    <p>Decrements the specified counter by the specified number.</p>
+    <p>Decrements the specified counter by the specified amount.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the counter to decrement.
+</li>
+<li><code class="inline">amount</code>: The amount to decrement by.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
 nil
@@ -152,7 +180,7 @@ iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L109" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L143" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -167,6 +195,11 @@ iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
   
   <section class="docstring">
     <p>Retrieves the current value of the specified counter.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the counter to retrieve.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.set(&quot;get_counter&quot;, 10)
 :ok
@@ -176,7 +209,7 @@ iex&gt; Beaker.Counter.get(&quot;get_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L21" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L37" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -191,6 +224,11 @@ iex&gt; Beaker.Counter.get(&quot;get_counter&quot;)
   
   <section class="docstring">
     <p>Increments the specified counter by 1.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the counter to increment.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
 nil
@@ -202,12 +240,12 @@ iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L55" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L78" class="view_source">Source</a>
   
 </section>
 <section class="detail">
   <div class="detail_header" id="incr_by/2">
-    <span class="signature"><strong>incr_by(key, value)</strong></span>
+    <span class="signature"><strong>incr_by(key, amount)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#incr_by/2" class="detail_link" title="Link to this function">#</a>
@@ -216,7 +254,14 @@ iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
   </div>
   
   <section class="docstring">
-    <p>Increments the specified counter by the specified number.</p>
+    <p>Increments the specified counter by the specified amount.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the counter to increment.
+</li>
+<li><code class="inline">amount</code>: The amount to increment by.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
 nil
@@ -228,7 +273,7 @@ iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L73" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L100" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -243,6 +288,13 @@ iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
   
   <section class="docstring">
     <p>Sets the value of the specified counter to the specified value.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the counter to set the value for.
+</li>
+<li><code class="inline">value</code>: The value to set to the counter.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.set(&quot;set_counter&quot;, 10)
 :ok
@@ -252,7 +304,7 @@ iex&gt; Beaker.Counter.get(&quot;set_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L37" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L57" class="view_source">Source</a>
   
 </section>
 

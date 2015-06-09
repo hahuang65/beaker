@@ -1,4 +1,17 @@
 defmodule Beaker.Counter do
+  @moduledoc """
+  `Beaker.Counter` is a signed bi-directional integer counter.
+  It can keep track of integers and increment and decrement them.
+
+  It is commonly used for metrics that keep track of some cumulative value.
+
+  Examples are:
+    * Total number of downloads
+    * Number of queued jobs
+    * Quotas
+
+  """
+
   ## Client API
 
   @doc false
@@ -8,6 +21,9 @@ defmodule Beaker.Counter do
 
   @doc """
   Retrieves the current value of the specified counter.
+
+  ## Parameters
+    * `key`: The name of the counter to retrieve.
 
   ## Examples
 
@@ -25,6 +41,10 @@ defmodule Beaker.Counter do
   @doc """
   Sets the value of the specified counter to the specified value.
 
+  ## Parameters
+    * `key`: The name of the counter to set the value for.
+    * `value`: The value to set to the counter.
+
   ## Examples
 
       iex> Beaker.Counter.set("set_counter", 10)
@@ -40,6 +60,9 @@ defmodule Beaker.Counter do
 
   @doc """
   Increments the specified counter by 1.
+
+  ## Parameters
+    * `key`: The name of the counter to increment.
 
   ## Examples
 
@@ -57,7 +80,11 @@ defmodule Beaker.Counter do
   end
 
   @doc """
-  Increments the specified counter by the specified number.
+  Increments the specified counter by the specified amount.
+
+  ## Parameters
+    * `key`: The name of the counter to increment.
+    * `amount`: The amount to increment by.
 
   ## Examples
 
@@ -70,12 +97,15 @@ defmodule Beaker.Counter do
 
   Returns `:ok`.
   """
-  def incr_by(key, value) do
-    GenServer.cast(:beaker_counters, {:incr, key, value})
+  def incr_by(key, amount) do
+    GenServer.cast(:beaker_counters, {:incr, key, amount})
   end
 
   @doc """
   Decrements the specified counter by 1.
+
+  ## Parameters
+    * `key`: The name of the counter to decrement.
 
   ## Examples
 
@@ -93,7 +123,11 @@ defmodule Beaker.Counter do
   end
 
   @doc """
-  Decrements the specified counter by the specified number.
+  Decrements the specified counter by the specified amount.
+
+  ## Parameters
+    * `key`: The name of the counter to decrement.
+    * `amount`: The amount to decrement by.
 
   ## Examples
 
@@ -106,8 +140,8 @@ defmodule Beaker.Counter do
 
   Returns `:ok`.
   """
-  def decr_by(key, value) do
-    GenServer.cast(:beaker_counters, {:incr, key, -value})
+  def decr_by(key, amount) do
+    GenServer.cast(:beaker_counters, {:incr, key, -amount})
   end
 
   ## Server Callbacks
@@ -128,7 +162,7 @@ defmodule Beaker.Counter do
   end
 
   @doc false
-  def handle_cast({:incr, key, value}, counters) do
-    {:noreply, HashDict.update(counters, key, value, fn(count) -> count + value end)}
+  def handle_cast({:incr, key, amount}, counters) do
+    {:noreply, HashDict.update(counters, key, amount, fn(count) -> count + amount end)}
   end
 end

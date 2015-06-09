@@ -44,6 +44,21 @@
       </ul>
 
       
+        <section id="moduledoc" class="docstring">
+          <p><a href="Beaker.Gauge.html"><code class="inline">Beaker.Gauge</code></a> is a simple gauge. It’s a metric where a value can be set and retrieved.</p>
+<p>It is commonly used for metrics that return a single value.</p>
+<p>Examples are:</p>
+<ul>
+<li>Average response time
+</li>
+<li>Uptime (Availability)
+</li>
+<li>Latency / Ping
+</li>
+</ul>
+
+        </section>
+      
 
       
         <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L1" class="view_source">Source</a>
@@ -87,6 +102,11 @@
   
   <section class="docstring">
     <p>Retrieves the current value of the specified gauge.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the gauge to retrieve.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Gauge.set(&quot;get_gauge&quot;, 50)
 :ok
@@ -96,7 +116,7 @@ iex&gt; Beaker.Gauge.get(&quot;get_gauge&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L21" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L36" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -111,6 +131,13 @@ iex&gt; Beaker.Gauge.get(&quot;get_gauge&quot;)
   
   <section class="docstring">
     <p>Sets the gauge to the specified value.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the gauge to set the value for.
+</li>
+<li><code class="inline">value</code>: The value to set to the gauge.
+</li>
+</ul>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Gauge.set(&quot;set_gauge&quot;, 3.14159)
 :ok
@@ -120,7 +147,7 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L37" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L56" class="view_source">Source</a>
   
 </section>
 

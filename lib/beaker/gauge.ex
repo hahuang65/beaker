@@ -1,4 +1,16 @@
 defmodule Beaker.Gauge do
+  @moduledoc """
+  `Beaker.Gauge` is a simple gauge. It's a metric where a value can be set and retrieved.
+
+  It is commonly used for metrics that return a single value.
+
+  Examples are:
+    * Average response time
+    * Uptime (Availability)
+    * Latency / Ping
+
+  """
+
   ## Client API
 
   @doc false
@@ -8,6 +20,9 @@ defmodule Beaker.Gauge do
 
   @doc """
   Retrieves the current value of the specified gauge.
+
+  ## Parameters
+    * `key`: The name of the gauge to retrieve.
 
   ## Examples
 
@@ -24,6 +39,10 @@ defmodule Beaker.Gauge do
 
   @doc """
   Sets the gauge to the specified value.
+
+  ## Parameters
+    * `key`: The name of the gauge to set the value for.
+    * `value`: The value to set to the gauge.
 
   ## Examples
 

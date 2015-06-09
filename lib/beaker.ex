@@ -1,4 +1,8 @@
 defmodule Beaker do
+  @moduledoc """
+  `Beaker` is the parent application that will start all the different `Beaker` metric applications.
+  """
+
   use Application
 
   @doc """
@@ -7,6 +11,10 @@ defmodule Beaker do
   This will start all submodules under supervision:
     * Beaker.Counter
     * Beaker.Gauge
+
+  ## Examples
+
+      Beaker.start()
 
   """
   def start do
