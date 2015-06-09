@@ -22,8 +22,9 @@ defmodule Beaker.Mixfile do
 
   defp deps do
     [
-      {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.7", only: :dev}
+      {:earmark, "~> 0.1", only: :docs},
+      {:ex_doc, "~> 0.7", only: :docs},
+      {:inch_ex, only: :docs}
     ]
   end
 

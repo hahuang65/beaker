@@ -6,6 +6,9 @@ otp_release:
 sudo: false # to use faster container based build environment
 script:
   - mix test
+after_script:
+  - MIX_ENV=docs mix deps.get
+  - MIX_ENV=docs mix inch.report
 notifications:
   recipients:
     - hao@hwrd.me
