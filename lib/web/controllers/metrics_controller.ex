@@ -1,5 +1,7 @@
 if Code.ensure_loaded?(Phoenix.Controller) do
   defmodule Beaker.MetricsController do
+    @moduledoc false
+
     use Beaker.Web, :controller
 
     plug :action

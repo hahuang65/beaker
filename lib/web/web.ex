@@ -1,4 +1,6 @@
 defmodule Beaker.Web do
+  @moduledoc false
+
   def view do
     quote do
       use Phoenix.View, root: "lib/web/templates"

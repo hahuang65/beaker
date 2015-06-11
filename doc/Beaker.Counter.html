@@ -69,6 +69,20 @@ It can keep track of integers and increment and decrement them.</p>
         <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
         <table class="summary">
           <tr>
+  <td class="summary_signature"><a href="#all/0">all()</a></td>
+  
+    <td class="summary_synopsis"><p>Retrieves all counters in the form of a map</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#clear/0">clear()</a></td>
+  
+    <td class="summary_synopsis"><p>Clears all counters stored in Beaker</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="#decr/1">decr(key)</a></td>
   
     <td class="summary_synopsis"><p>Decrements the specified counter by 1</p>
@@ -120,6 +134,66 @@ It can keep track of integers and increment and decrement them.</p>
         <section id="functions_details" class="details_list">
           <h2>Functions</h2>
           <section class="detail">
+  <div class="detail_header" id="all/0">
+    <span class="signature"><strong>all()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#all/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Retrieves all counters in the form of a map.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.clear
+:ok
+iex&gt; Beaker.Counter.set(&quot;all_counter1&quot;, 10)
+:ok
+iex&gt; Beaker.Counter.incr(&quot;all_counter2&quot;)
+:ok
+iex&gt; Beaker.Counter.all
+%{&quot;all_counter1&quot; =&gt; 10, &quot;all_counter2&quot; =&gt; 1}</code></pre>
+<p>Returns <code class="inline">counters</code> where counters is a map of all the counters currently existing.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L38" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="clear/0">
+    <span class="signature"><strong>clear()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#clear/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Clears all counters stored in Beaker.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Counter.clear
+:ok
+iex&gt; Beaker.Counter.set(&quot;all_counter1&quot;, 10)
+:ok
+iex&gt; Beaker.Counter.incr(&quot;all_counter2&quot;)
+:ok
+iex&gt; Beaker.Counter.all
+%{&quot;all_counter1&quot; =&gt; 10, &quot;all_counter2&quot; =&gt; 1}
+iex&gt; Beaker.Counter.clear
+:ok
+iex&gt; Beaker.Counter.all
+%{}</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L63" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
   <div class="detail_header" id="decr/1">
     <span class="signature"><strong>decr(key)</strong></span>
     <div class="detail_header_links">
@@ -147,7 +221,7 @@ iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L121" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L166" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -180,7 +254,7 @@ iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L143" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L188" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -209,7 +283,7 @@ iex&gt; Beaker.Counter.get(&quot;get_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L37" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L82" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -240,7 +314,7 @@ iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L78" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L123" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -273,7 +347,7 @@ iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L100" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L145" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -304,7 +378,7 @@ iex&gt; Beaker.Counter.get(&quot;set_counter&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L57" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L102" class="view_source">Source</a>
   
 </section>
 
