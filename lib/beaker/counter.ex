@@ -20,6 +20,51 @@ defmodule Beaker.Counter do
   end
 
   @doc """
+  Retrieves all counters in the form of a map.
+
+  ## Examples
+
+      iex> Beaker.Counter.clear
+      :ok
+      iex> Beaker.Counter.set("all_counter1", 10)
+      :ok
+      iex> Beaker.Counter.incr("all_counter2")
+      :ok
+      iex> Beaker.Counter.all
+      %{"all_counter1" => 10, "all_counter2" => 1}
+
+  Returns `counters` where counters is a map of all the counters currently existing.
+  """
+  def all do
+    GenServer.call(:beaker_counters, :all)
+  end
+
+
+  @doc """
+  Clears all counters stored in Beaker.
+
+  ## Examples
+
+      iex> Beaker.Counter.clear
+      :ok
+      iex> Beaker.Counter.set("all_counter1", 10)
+      :ok
+      iex> Beaker.Counter.incr("all_counter2")
+      :ok
+      iex> Beaker.Counter.all
+      %{"all_counter1" => 10, "all_counter2" => 1}
+      iex> Beaker.Counter.clear
+      :ok
+      iex> Beaker.Counter.all
+      %{}
+
+  Returns `:ok`.
+  """
+  def clear do
+    GenServer.cast(:beaker_counters, :clear)
+  end
+
+  @doc """
   Retrieves the current value of the specified counter.
 
   ## Parameters
@@ -152,8 +197,18 @@ defmodule Beaker.Counter do
   end
 
   @doc false
+  def handle_call(:all, _from, counters) do
+    {:reply, Enum.into(counters, %{}), counters}
+  end
+
+  @doc false
   def handle_call({:get, key}, _from, counters) do
     {:reply, HashDict.get(counters, key), counters}
+  end
+
+  @doc false
+  def handle_cast(:clear, _counters) do
+    {:noreply, HashDict.new}
   end
 
   @doc false

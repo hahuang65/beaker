@@ -4,6 +4,27 @@ defmodule Beaker.CounterTest do
 
   alias Beaker.Counter
 
+  test "Counter.all returns an empty map if there are no counters" do
+    Counter.clear
+    assert Counter.all == %{}
+  end
+
+  test "Counter.all returns a map with all counters and values" do
+    Counter.clear
+    Counter.set("all1", 5)
+    Counter.set("all2", 2)
+    assert Counter.all == %{"all1" => 5, "all2" => 2}
+  end
+
+  test "Counter.clear returns :ok and erases all counters" do
+    Counter.clear
+    Counter.set("clear1", 5)
+    Counter.set("clear2", 2)
+    assert Counter.all == %{"clear1" => 5, "clear2" => 2}
+    Counter.clear
+    assert Counter.all == %{}
+  end
+
   test "Counter.get(key) returns nil if name is not yet registered as a counter" do
     assert Counter.get("non-existent") == nil
   end
