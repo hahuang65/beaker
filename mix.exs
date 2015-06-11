@@ -6,6 +6,8 @@ defmodule Beaker.Mixfile do
       app: :beaker,
       version: "0.0.1",
       elixir: "~> 1.0",
+      elixirc_paths: elixirc_paths(Mix.env),
+      compilers: compilers(Mix.env),
       name: "beaker",
       description: description,
       package: package,
@@ -17,11 +19,32 @@ defmodule Beaker.Mixfile do
   end
 
   def application do
-    [applications: [:logger]]
+    [applications: apps(Mix.env)]
+  end
+
+  # Specifies which paths to compile per environment
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_),     do: ["lib"]
+
+  defp apps(_), do: apps
+  defp apps do
+    [:logger]
+  end
+
+  # Need phoenix compiler to compile our views.
+  defp compilers(:test) do
+    [:phoenix | compilers]
+  end
+  defp compilers(_), do: compilers
+  defp compilers do
+    Mix.compilers
   end
 
   defp deps do
     [
+      {:phoenix, "~> 0.13", optional: true},
+      {:phoenix_ecto, "~> 0.4", only: :test},
+      {:phoenix_html, "~> 1.0", only: :test},
       {:earmark, "~> 0.1", only: :docs},
       {:ex_doc, "~> 0.7", only: :docs},
       {:inch_ex, only: :docs}
