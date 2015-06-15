@@ -17,7 +17,7 @@ defmodule Beaker do
       Beaker.start()
 
   """
-  def start do
+  def start(_type, _args) do
     import Supervisor.Spec
 
     children = [

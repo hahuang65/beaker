@@ -1,3 +1,3 @@
 ExUnit.start()
-Beaker.start()
+Beaker.start(:normal, [])
 TestApp.start_link()
