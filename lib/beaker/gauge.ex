@@ -19,6 +19,51 @@ defmodule Beaker.Gauge do
   end
 
   @doc """
+  Retrieves all gauges in the form of a map.
+
+  ## Examples
+
+      iex> Beaker.Gauge.clear
+      :ok
+      iex> Beaker.Gauge.set("all_gauge1", 10)
+      :ok
+      iex> Beaker.Gauge.set("all_gauge2", 1)
+      :ok
+      iex> Beaker.Gauge.all
+      %{"all_gauge1" => 10, "all_gauge2" => 1}
+
+  Returns `gauges` where gauges is a map of all the gauges currently existing.
+  """
+  def all do
+    GenServer.call(:beaker_gauges, :all)
+  end
+
+
+  @doc """
+  Clears all gauges stored in Beaker.
+
+  ## Examples
+
+      iex> Beaker.Gauge.clear
+      :ok
+      iex> Beaker.Gauge.set("all_gauge1", 10)
+      :ok
+      iex> Beaker.Gauge.set("all_gauge2", 1)
+      :ok
+      iex> Beaker.Gauge.all
+      %{"all_gauge1" => 10, "all_gauge2" => 1}
+      iex> Beaker.Gauge.clear
+      :ok
+      iex> Beaker.Gauge.all
+      %{}
+
+  Returns `:ok`.
+  """
+  def clear do
+    GenServer.cast(:beaker_gauges, :clear)
+  end
+
+  @doc """
   Retrieves the current value of the specified gauge.
 
   ## Parameters
@@ -65,8 +110,18 @@ defmodule Beaker.Gauge do
   end
 
   @doc false
+  def handle_call(:all, _from, gauges) do
+    {:reply, Enum.into(gauges, %{}), gauges}
+  end
+
+  @doc false
   def handle_call({:get, key}, _from, gauges) do
     {:reply, HashDict.get(gauges, key), gauges}
+  end
+
+  @doc false
+  def handle_cast(:clear, _gauges) do
+    {:noreply, HashDict.new}
   end
 
   @doc false

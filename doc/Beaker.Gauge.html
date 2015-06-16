@@ -68,6 +68,20 @@
         <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
         <table class="summary">
           <tr>
+  <td class="summary_signature"><a href="#all/0">all()</a></td>
+  
+    <td class="summary_synopsis"><p>Retrieves all gauges in the form of a map</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#clear/0">clear()</a></td>
+  
+    <td class="summary_synopsis"><p>Clears all gauges stored in Beaker</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="#get/1">get(key)</a></td>
   
     <td class="summary_synopsis"><p>Retrieves the current value of the specified gauge</p>
@@ -91,6 +105,66 @@
         <section id="functions_details" class="details_list">
           <h2>Functions</h2>
           <section class="detail">
+  <div class="detail_header" id="all/0">
+    <span class="signature"><strong>all()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#all/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Retrieves all gauges in the form of a map.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Gauge.clear
+:ok
+iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10)
+:ok
+iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1)
+:ok
+iex&gt; Beaker.Gauge.all
+%{&quot;all_gauge1&quot; =&gt; 10, &quot;all_gauge2&quot; =&gt; 1}</code></pre>
+<p>Returns <code class="inline">gauges</code> where gauges is a map of all the gauges currently existing.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L37" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="clear/0">
+    <span class="signature"><strong>clear()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#clear/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Clears all gauges stored in Beaker.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Gauge.clear
+:ok
+iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10)
+:ok
+iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1)
+:ok
+iex&gt; Beaker.Gauge.all
+%{&quot;all_gauge1&quot; =&gt; 10, &quot;all_gauge2&quot; =&gt; 1}
+iex&gt; Beaker.Gauge.clear
+:ok
+iex&gt; Beaker.Gauge.all
+%{}</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L62" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
   <div class="detail_header" id="get/1">
     <span class="signature"><strong>get(key)</strong></span>
     <div class="detail_header_links">
@@ -116,7 +190,7 @@ iex&gt; Beaker.Gauge.get(&quot;get_gauge&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L36" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L81" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -147,7 +221,7 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L56" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L101" class="view_source">Source</a>
   
 </section>
 

@@ -4,6 +4,27 @@ defmodule Beaker.GaugeTest do
 
   alias Beaker.Gauge
 
+  test "Gauge.all returns an empty map if there are no gauges" do
+    Gauge.clear
+    assert Gauge.all == %{}
+  end
+
+  test "Gauge.all returns a map with all gauges and values" do
+    Gauge.clear
+    Gauge.set("all1", 5)
+    Gauge.set("all2", 2)
+    assert Gauge.all == %{"all1" => 5, "all2" => 2}
+  end
+
+  test "Gauge.clear returns :ok and erases all gauges" do
+    Gauge.clear
+    Gauge.set("clear1", 5)
+    Gauge.set("clear2", 2)
+    assert Gauge.all == %{"clear1" => 5, "clear2" => 2}
+    Gauge.clear
+    assert Gauge.all == %{}
+  end
+
   test "Gauge.get(key) returns nil if name is not yet registered as a gauge" do
     assert Gauge.get("non-existent") == nil
   end
