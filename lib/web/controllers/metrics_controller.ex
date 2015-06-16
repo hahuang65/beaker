@@ -7,7 +7,9 @@ if Code.ensure_loaded?(Phoenix.Controller) do
     plug :action
 
     def index(conn, _params) do
-      render(conn, "index.html")
+      counters = Beaker.Counter.all
+      gauges = Beaker.Gauge.all
+      render(conn, "index.html", counters: counters, gauges: gauges)
     end
   end
 end

@@ -1,1 +1,9 @@
-<h1>Hello World!</h1>
+<h1>Counters</h1>
+<%= for {key, value} <- @counters do %>
+  <p><%= key %>: <%= value %></p>
+<% end %>
+
+<h1>Gauges</h1>
+<%= for {key, value} <- @gauges do %>
+  <p><%= key %>: <%= value %></p>
+<% end %>
