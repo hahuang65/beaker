@@ -22,7 +22,8 @@ defmodule Beaker do
 
     children = [
       worker(Beaker.Counter, []),
-      worker(Beaker.Gauge, [])
+      worker(Beaker.Gauge, []),
+      worker(Beaker.TimeSeries, [])
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one)
