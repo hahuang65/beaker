@@ -17,12 +17,11 @@ defmodule Beaker.CounterTest do
   end
 
   test "Counter.clear returns :ok and erases all counters" do
+    :ok = Counter.set("clear1", 5)
+    :ok = Counter.set("clear2", 2)
+    refute Counter.all |> Enum.empty?
     Counter.clear
-    Counter.set("clear1", 5)
-    Counter.set("clear2", 2)
-    assert Counter.all == %{"clear1" => 5, "clear2" => 2}
-    Counter.clear
-    assert Counter.all == %{}
+    assert Counter.all |> Enum.empty?
   end
 
   test "Counter.get(key) returns nil if name is not yet registered as a counter" do
