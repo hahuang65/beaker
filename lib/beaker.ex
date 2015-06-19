@@ -11,6 +11,11 @@ defmodule Beaker do
   This will start all submodules under supervision:
     * Beaker.Counter
     * Beaker.Gauge
+    * Beaker.TimeSeries
+
+  ## Parameters
+    * `type`: Ignored.
+    * `args`: Ignored.
 
   ## Examples
 
