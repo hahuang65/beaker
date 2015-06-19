@@ -32,7 +32,9 @@ defmodule Beaker.TimeSeries do
       iex> Beaker.TimeSeries.all |> Map.keys
       ["all_series1", "all_series2"]
 
-  Returns `time_series` where time_series is a map of all the time_series currently existing.
+  Returns `time_series` where time_series is a map of all the time series currently existing.
+  Each time series is returned as a list of pairs. Each pair is a timestamp in epoch and the value recorded.
+  Each list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.
   """
   def all do
     GenServer.call(:beaker_time_series, :all)
@@ -96,6 +98,8 @@ defmodule Beaker.TimeSeries do
       5
 
   Returns `time_series` where time_series is a list of the samples taken for that key.
+  The list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.
+  Each sample is a pair that consists of a timestamp in epoch and the value recorded.
   """
   def sample(key, value) do
     GenServer.cast(:beaker_time_series, {:sample, key, value})

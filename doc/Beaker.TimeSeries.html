@@ -25,7 +25,7 @@
     </script>
 
     <section id="content">
-      <div class="breadcrumbs">beaker v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Beaker.html">Beaker</a> &rarr; <a href="Beaker.TimeSeries.html">TimeSeries</a></div>
+      <div class="breadcrumbs">beaker v0.0.2 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Beaker.html">Beaker</a> &rarr; <a href="Beaker.TimeSeries.html">TimeSeries</a></div>
       <h1>
         Beaker.TimeSeries
         
@@ -125,11 +125,13 @@ iex&gt; Beaker.TimeSeries.sample(&quot;all_series2&quot;, 20)
 :ok
 iex&gt; Beaker.TimeSeries.all |&gt; Map.keys
 [&quot;all_series1&quot;, &quot;all_series2&quot;]</code></pre>
-<p>Returns <code class="inline">time_series</code> where time_series is a map of all the time_series currently existing.</p>
+<p>Returns <code class="inline">time_series</code> where time_series is a map of all the time series currently existing.
+Each time series is returned as a list of pairs. Each pair is a timestamp in epoch and the value recorded.
+Each list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.</p>
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L37" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L39" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -159,7 +161,7 @@ true</code></pre>
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L59" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L61" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -190,7 +192,7 @@ iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;) |&gt; Enum.count
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L80" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L82" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -217,11 +219,13 @@ iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;) |&gt; Enum.count
 :ok
 iex&gt; Beaker.TimeSeries.get(&quot;set_series&quot;) |&gt; hd |&gt; elem(1)
 5</code></pre>
-<p>Returns <code class="inline">time_series</code> where time_series is a list of the samples taken for that key.</p>
+<p>Returns <code class="inline">time_series</code> where time_series is a list of the samples taken for that key.
+The list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.
+Each sample is a pair that consists of a timestamp in epoch and the value recorded.</p>
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L100" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L104" class="view_source">Source</a>
   
 </section>
 

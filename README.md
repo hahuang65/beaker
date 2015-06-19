@@ -53,6 +53,20 @@ iex> Beaker.Gauge.get("foo")
 50
 ```
 
+You can get all of your gauges in the form of a map if you need:
+
+```elixir
+iex> Beaker.Gauge.all
+%{"foo" => 10, "bar" => 45}
+```
+
+You can remove all your gauges and start from scratch:
+
+```elixir
+iex> Beaker.Gauge.clear
+:ok
+```
+
 ### Counter
 
 The counter is a signed bi-directional integer counter. It can keep track of integers and increment and decrement them.
@@ -104,6 +118,71 @@ iex> Beaker.Counter.decr_by("foo", 10)
 
 iex> Beaker.Counter.get("foo")
 5
+```
+
+You can get all of your counters in the form of a map if you need:
+
+```elixir
+iex> Beaker.Counter.all
+%{"foo" => 10, "bar" => 45}
+```
+
+You can remove all your counters and start from scratch:
+
+```elixir
+iex> Beaker.Counter.clear
+:ok
+```
+
+### Time Series
+
+The time series is basically a series of values with a time (epoch) attached to each value at the time the value was recorded.
+
+It is commonly used to keep track of the change in value of some metric across a period of time.
+Examples are:
+  * Response time across a period of time
+  * Error rates across a period of time
+  * Download count across a period of time
+
+To sample (record a value) a time series:
+
+```elixir
+iex> Beaker.TimeSeries.sample("foo", 50)
+:ok
+iex> Beaker.TimeSeries.sample("foo", 66)
+:ok
+iex> Beaker.TimeSeries.sample("foo", 30)
+:ok
+iex> Beaker.TimeSeries.sample("bar", 10)
+:ok
+iex> Beaker.TimeSeries.sample("bar", 50)
+:ok
+```
+
+Anytime a time series is retrieved, it will be in the format of a list of pairs.
+Each pair consists of a timestamp in epoch and the value sampled, i.e. `{timestamp, value}`.
+The list will be guaranteed to be in reverse chronological order, that is, the latest sample will be the first in the list.
+
+To get the time series that have been recorded for a key:
+
+```elixir
+iex> Beaker.TimeSeries.get("foo")
+[{1434738115306786, 30}, {1434738112851607, 66}, {1434738107132294, 50}]
+```
+
+To retrieve all time series:
+
+```elixir
+iex> Beaker.TimeSeries.all
+%{"bar" => [{1434738203344586, 50}, {1434738201507329, 10}],
+  "foo" => [{1434738115306786, 32}, {1434738112851607, 87}, {1434738107132294, 50}]}
+```
+
+And to clear all time series:
+
+```elixir
+iex> Beaker.TimeSeries.clear
+:ok
 ```
 
 ## Important Links
