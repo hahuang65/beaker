@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Beaker.TimeSeries</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      hljs.initHighlightingOnLoad();
+      hljs.configure({languages: []}); //disable autodetect
+    </script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">beaker v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Beaker.html">Beaker</a> &rarr; <a href="Beaker.TimeSeries.html">TimeSeries</a></div>
+      <h1>
+        Beaker.TimeSeries
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+      </ul>
+
+      
+        <section id="moduledoc" class="docstring">
+          <p><a href="Beaker.TimeSeries.html"><code class="inline">Beaker.TimeSeries</code></a> is a simple time series. It’s a metric that keeps track of values over time when sampled.</p>
+<p>It is commonly used to keep track of changing values over time to look at patterns and averages</p>
+<p>Examples are:</p>
+<ul>
+<li>Response time across time
+</li>
+<li>Download numbers over time
+</li>
+<li>Error rates across time
+</li>
+</ul>
+
+        </section>
+      
+
+      
+        <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L1" class="view_source">Source</a>
+      
+
+      
+        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#all/0">all()</a></td>
+  
+    <td class="summary_synopsis"><p>Retrieves all time series in the form of a map</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#clear/0">clear()</a></td>
+  
+    <td class="summary_synopsis"><p>Remove all time seriess currently stored in Beaker</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get/1">get(key)</a></td>
+  
+    <td class="summary_synopsis"><p>Get the time series for the given key</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#sample/2">sample(key, value)</a></td>
+  
+    <td class="summary_synopsis"><p>Record a sample for the given key with the given value</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+        <section id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <section class="detail">
+  <div class="detail_header" id="all/0">
+    <span class="signature"><strong>all()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#all/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Retrieves all time series in the form of a map.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.clear
+:ok
+iex&gt; Beaker.TimeSeries.sample(&quot;all_series1&quot;, 10)
+:ok
+iex&gt; Beaker.TimeSeries.sample(&quot;all_series2&quot;, 20)
+:ok
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys
+[&quot;all_series1&quot;, &quot;all_series2&quot;]</code></pre>
+<p>Returns <code class="inline">time_series</code> where time_series is a map of all the time_series currently existing.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L37" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="clear/0">
+    <span class="signature"><strong>clear()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#clear/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Remove all time seriess currently stored in Beaker.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;clear_series1&quot;, 10)
+:ok
+iex&gt; Beaker.TimeSeries.sample(&quot;clear_series2&quot;, 20)
+:ok
+iex&gt; Beaker.TimeSeries.all |&gt; Enum.empty?
+false
+iex&gt; Beaker.TimeSeries.clear
+:ok
+iex&gt; Beaker.TimeSeries.all |&gt; Enum.empty?
+true</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L59" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="get/1">
+    <span class="signature"><strong>get(key)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#get/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Get the time series for the given key.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the time_series to retrieve.
+</li>
+</ul>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;)
+nil
+iex&gt; Beaker.TimeSeries.sample(&quot;get_series&quot;, 10)
+:ok
+iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;) |&gt; Enum.count
+1</code></pre>
+<p>Returns <code class="inline">time_series</code> where time_series is a list of the samples taken for the given key.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L80" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="sample/2">
+    <span class="signature"><strong>sample(key, value)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#sample/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Record a sample for the given key with the given value.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the time_series to sample.
+</li>
+<li><code class="inline">value</code>: The value to save for the sample.
+</li>
+</ul>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;set_series&quot;, 5)
+:ok
+iex&gt; Beaker.TimeSeries.get(&quot;set_series&quot;) |&gt; hd |&gt; elem(1)
+5</code></pre>
+<p>Returns <code class="inline">time_series</code> where time_series is a list of the samples taken for that key.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L100" class="view_source">Source</a>
+  
+</section>
+
+        </section>
+      
+
+      
+
+      
+    </section>
+  </body>
+</html>
