@@ -4,7 +4,7 @@ defmodule Beaker.Mixfile do
   def project do
     [
       app: :beaker,
-      version: "0.0.1",
+      version: "0.0.2",
       elixir: "~> 1.0",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: compilers(Mix.env),
