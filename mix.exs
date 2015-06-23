@@ -19,7 +19,10 @@ defmodule Beaker.Mixfile do
   end
 
   def application do
-    [applications: apps(Mix.env)]
+    [
+      applications: apps(Mix.env),
+      mod: {Beaker, []}
+    ]
   end
 
   # Specifies which paths to compile per environment
