@@ -40,6 +40,8 @@
           <li><a href="#functions_details">Functions</a></li>
         
         
+          <li><a href="#macros_details">Macros</a></li>
+        
         
       </ul>
 
@@ -231,12 +233,19 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
     <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L101" class="view_source">Source</a>
   
 </section>
-<section class="detail">
+
+        </section>
+      
+
+      
+        <section id="macros_details" class="details_list">
+          <h2>Macros</h2>
+          <section class="detail">
   <div class="detail_header" id="time/2">
     <span class="signature"><strong>time(key, func)</strong></span>
     <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#time/2" class="detail_link" title="Link to this function">#</a>
+      <span class="detail_type">(macro)</span>
+      <a href="#time/2" class="detail_link" title="Link to this macro">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -254,18 +263,18 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
 <pre><code class="iex elixir">iex&gt; Beaker.Gauge.time(&quot;time_gauge&quot;, fn -&gt; :timer.sleep(50); 2 + 2 end)
 4
 iex&gt; Beaker.Gauge.get(&quot;time_gauge&quot;) &gt; 50
-true</code></pre>
+true
+iex&gt; Beaker.Gauge.time &quot;time_gauge&quot;, do: 3 + 3
+6</code></pre>
 <p>Returns <code class="inline">value</code> where value is the return value of the function that was performed.</p>
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L121" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L123" class="view_source">Source</a>
   
 </section>
 
         </section>
-      
-
       
 
       

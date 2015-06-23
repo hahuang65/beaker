@@ -118,14 +118,23 @@ defmodule Beaker.TimeSeries do
       4
       iex> Beaker.TimeSeries.get("time_time_series") |> hd |> elem(1) > 50
       true
+      iex> Beaker.TimeSeries.time "time_time_series", do: :timer.sleep(50); 3 + 3
+      6
 
   Returns `value` where value is the return value of the function that was performed.
   """
-  def time(key, func) when is_function(func) do
-    {time, value} = :timer.tc(func)
-    Beaker.TimeSeries.sample(key, time)
+  defmacro time(key, do: block) do
+    quote do
+      Beaker.TimeSeries.time(unquote(key), fn -> unquote(block) end)
+    end
+  end
+  defmacro time(key, func) do
+    quote do
+      {time, value} = :timer.tc(unquote(func))
+      Beaker.TimeSeries.sample(unquote(key), time)
 
-    value
+      value
+    end
   end
 
   @doc false

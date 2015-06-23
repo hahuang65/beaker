@@ -52,8 +52,19 @@ defmodule Beaker.TimeSeriesTest do
 
   test "TimeSeries.time(key, fn -> :timer.sleep(500); :slept end) should set the time series of the key to > 500 and return the value :slept" do
     key = "time_sleep"
-    value = TimeSeries.time(key, fn -> :timer.sleep(500); :slept end)
-    assert TimeSeries.get(key) |> hd |> elem(1) > 500
+    value = TimeSeries.time(key, fn -> :timer.sleep(50); :slept end)
+    assert TimeSeries.get(key) |> hd |> elem(1) > 50000 # :timer.tc returns in microseconds.
+    assert value == :slept
+  end
+
+  test "TimeSeries.time(key, [do: block]) alternative syntax works" do
+    key = "time_sleep"
+    value = TimeSeries.time(key) do
+      :timer.sleep(50)
+      :slept
+    end
+
+    assert TimeSeries.get(key) |> hd |> elem(1) > 50000 # :timer.tc returns in microseconds
     assert value == :slept
   end
 

@@ -50,8 +50,19 @@ defmodule Beaker.GaugeTest do
 
   test "Gauge.time(key, fn -> :timer.sleep(500); :slept end) should set the gauge of the key to > 500 and return the value :slept" do
     key = "time_sleep"
-    value = Gauge.time(key, fn -> :timer.sleep(500); :slept end)
-    assert Gauge.get(key) > 500
+    value = Gauge.time(key, fn -> :timer.sleep(50); :slept end)
+    assert Gauge.get(key) > 50000 # :timer.tc returns in microseconds
+    assert value == :slept
+  end
+
+  test "Gauge.time(key, [do: block]) alternative syntax works" do
+    key = "time_sleep"
+    value = Gauge.time(key) do
+      :timer.sleep(50)
+      :slept
+    end
+
+    assert Gauge.get(key) > 50000 # :timer.tc returns in microseconds
     assert value == :slept
   end
 end

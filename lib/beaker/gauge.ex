@@ -115,14 +115,23 @@ defmodule Beaker.Gauge do
       4
       iex> Beaker.Gauge.get("time_gauge") > 50
       true
+      iex> Beaker.Gauge.time "time_gauge", do: 3 + 3
+      6
 
   Returns `value` where value is the return value of the function that was performed.
   """
-  def time(key, func) when is_function(func) do
-    {time, value} = :timer.tc(func)
-    Beaker.Gauge.set(key, time)
+  defmacro time(key, do: block) do
+    quote do
+      Beaker.Gauge.time(unquote(key), fn -> unquote(block) end)
+    end
+  end
+  defmacro time(key, func) do
+    quote do
+      {time, value} = :timer.tc(unquote(func))
+      Beaker.Gauge.set(unquote(key), time)
 
-    value
+      value
+    end
   end
 
   ## Server Callbacks
