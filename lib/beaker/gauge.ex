@@ -102,6 +102,29 @@ defmodule Beaker.Gauge do
     GenServer.cast(:beaker_gauges, {:set, key, value})
   end
 
+  @doc """
+  Times the provided function and sets the duration to the gauge with the specified key.
+
+  ## Parameters
+    * `key`: The name of the gauge to set the duration to.
+    * `func`: The function perform and time.
+
+  ## Examples
+
+      iex> Beaker.Gauge.time("time_gauge", fn -> :timer.sleep(50); 2 + 2 end)
+      4
+      iex> Beaker.Gauge.get("time_gauge") > 50
+      true
+
+  Returns `value` where value is the return value of the function that was performed.
+  """
+  def time(key, func) when is_function(func) do
+    {time, value} = :timer.tc(func)
+    Beaker.Gauge.set(key, time)
+
+    value
+  end
+
   ## Server Callbacks
 
   @doc false

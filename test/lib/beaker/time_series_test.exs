@@ -49,4 +49,25 @@ defmodule Beaker.TimeSeriesTest do
     TimeSeries.sample("get", 10)
     [{_time1, 10}] = TimeSeries.get("get")
   end
+
+  test "TimeSeries.time(key, fn -> :timer.sleep(500); :slept end) should set the time series of the key to > 500 and return the value :slept" do
+    key = "time_sleep"
+    value = TimeSeries.time(key, fn -> :timer.sleep(500); :slept end)
+    assert TimeSeries.get(key) |> hd |> elem(1) > 500
+    assert value == :slept
+  end
+
+  test "TimeSeries.time/2 will prepend to the TimeSeries and not overwrite it" do
+    TimeSeries.clear
+
+    key = "time_append"
+    TimeSeries.sample(key, 50)
+
+    assert TimeSeries.get(key) |> Enum.count == 1
+
+    TimeSeries.time(key, fn -> 1 + 1 end)
+
+    assert TimeSeries.get(key) |> Enum.count == 2
+    assert TimeSeries.get(key) |> Enum.reverse |> hd |> elem(1) == 50
+  end
 end

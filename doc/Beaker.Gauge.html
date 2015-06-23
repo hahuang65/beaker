@@ -95,6 +95,13 @@
 </td>
   
 </tr>
+<tr>
+  <td class="summary_signature"><a href="#time/2">time(key, func)</a></td>
+  
+    <td class="summary_synopsis"><p>Times the provided function and sets the duration to the gauge with the specified key</p>
+</td>
+  
+</tr>
 
         </table>
       
@@ -222,6 +229,37 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
   </section>
   
     <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L101" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="time/2">
+    <span class="signature"><strong>time(key, func)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#time/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Times the provided function and sets the duration to the gauge with the specified key.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the gauge to set the duration to.
+</li>
+<li><code class="inline">func</code>: The function perform and time.
+</li>
+</ul>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.Gauge.time(&quot;time_gauge&quot;, fn -&gt; :timer.sleep(50); 2 + 2 end)
+4
+iex&gt; Beaker.Gauge.get(&quot;time_gauge&quot;) &gt; 50
+true</code></pre>
+<p>Returns <code class="inline">value</code> where value is the return value of the function that was performed.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L121" class="view_source">Source</a>
   
 </section>
 

@@ -95,6 +95,13 @@
 </td>
   
 </tr>
+<tr>
+  <td class="summary_signature"><a href="#time/2">time(key, func)</a></td>
+  
+    <td class="summary_synopsis"><p>Times the provided function and samples the duration to the time series with the specified key</p>
+</td>
+  
+</tr>
 
         </table>
       
@@ -226,6 +233,37 @@ Each sample is a pair that consists of a timestamp in epoch and the value record
   </section>
   
     <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L104" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="time/2">
+    <span class="signature"><strong>time(key, func)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#time/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Times the provided function and samples the duration to the time series with the specified key.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the time series to sample the duration to.
+</li>
+<li><code class="inline">func</code>: The function perform and time.
+</li>
+</ul>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.time(&quot;time_time_series&quot;, fn -&gt; :timer.sleep(50); 2 + 2 end)
+4
+iex&gt; Beaker.TimeSeries.get(&quot;time_time_series&quot;) |&gt; hd |&gt; elem(1) &gt; 50
+true</code></pre>
+<p>Returns <code class="inline">value</code> where value is the return value of the function that was performed.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L124" class="view_source">Source</a>
   
 </section>
 

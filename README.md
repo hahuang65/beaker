@@ -53,6 +53,13 @@ iex> Beaker.Gauge.get("foo")
 50
 ```
 
+Sometimes you'll want to time something, and set that duration to a gauge. We provide a convenience for that.
+
+```elixir
+iex> Beaker.Gauge.time("foo", fn -> 2 + 2 end)
+4
+```
+
 You can get all of your gauges in the form of a map if you need:
 
 ```elixir
@@ -157,6 +164,13 @@ iex> Beaker.TimeSeries.sample("bar", 10)
 :ok
 iex> Beaker.TimeSeries.sample("bar", 50)
 :ok
+```
+
+Sometimes you'll want to time something, and sample that duration to a time series. We provide a convenience for that.
+
+```elixir
+iex> Beaker.TimeSeries.time("baz", fn -> 2 + 2 end)
+4
 ```
 
 Anytime a time series is retrieved, it will be in the format of a list of pairs.
