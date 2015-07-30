@@ -17,7 +17,7 @@ To include Beaker in your application, add it to your `mix.exs` file:
 ```elixir
 defp deps do
   [
-    {:beaker, ">= 0.0.3"}
+    {:beaker, ">= 0.0.4"}
   ]
 ```
 
@@ -28,6 +28,33 @@ def application do
   [applications: [:beaker]]
 end
 ```
+
+## Integration with Phoenix
+Beaker provides a way to visualize your metrics through [Phoenix](http://www.phoenixframework.org).
+
+1) Add `beaker` and `phoenix` to the dependencies in your Mixfile:
+```elixir
+defp deps do
+  [
+    {:phoenix, ">= 0.14"},
+    {:phoenix_html, ">= 1.2"}
+  ]
+end
+```
+
+2) Add `beaker` and `phoenix_html` to the started applications in your Mixfile:
+```elixir
+def application do
+  applications: [:phoenix, :phoenix_html, :beaker]
+end
+```
+
+3) Forward requests to `Beaker.Web` in your router:
+```elixir
+forward "/beaker", Beaker.Web
+```
+
+This will add a page at `/beaker` with all your metrics visualized on the page.
 
 ## Metrics
 
@@ -79,6 +106,13 @@ You can remove all your gauges and start from scratch:
 
 ```elixir
 iex> Beaker.Gauge.clear
+:ok
+```
+
+Or just clear out a single gauge:
+
+```elixir
+iex> Beaker.Gauge.clear("foo")
 :ok
 ```
 
@@ -149,6 +183,13 @@ iex> Beaker.Counter.clear
 :ok
 ```
 
+Or just clear out a single counter:
+
+```elixir
+iex> Beaker.Counter.clear("foo")
+:ok
+```
+
 ### Time Series
 
 The time series is basically a series of values with a time (epoch) attached to each value at the time the value was recorded.
@@ -211,6 +252,13 @@ And to clear all time series:
 
 ```elixir
 iex> Beaker.TimeSeries.clear
+:ok
+```
+
+Or clear a single time series:
+
+```elixir
+iex> Beaker.TimeSeries.clear("foo")
 :ok
 ```
 
