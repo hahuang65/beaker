@@ -4,11 +4,9 @@ if Code.ensure_loaded?(Phoenix.Controller) do
 
     use Beaker.Web, :controller
 
-    plug :action
-
     def index(conn, _params) do
-      counters = Beaker.Counter.all
-      gauges = Beaker.Gauge.all
+      counters = Beaker.Counter.all |> Enum.sort
+      gauges = Beaker.Gauge.all |> Enum.sort
       render(conn, "index.html", counters: counters, gauges: gauges)
     end
   end

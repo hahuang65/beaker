@@ -38,16 +38,22 @@ defmodule Beaker.Mixfile do
   defp compilers(:test) do
     [:phoenix | compilers]
   end
-  defp compilers(_), do: compilers
+  defp compilers(_) do
+    if Code.ensure_loaded?(Phoenix.HTML) do
+      [:phoenix | compilers]
+    else
+      compilers
+    end
+  end
   defp compilers do
     Mix.compilers
   end
 
   defp deps do
     [
-      {:phoenix, "~> 0.13", optional: true},
+      {:phoenix, "~> 0.14", optional: true},
       {:phoenix_ecto, "~> 0.5", only: :test},
-      {:phoenix_html, "~> 1.0", only: :test},
+      {:phoenix_html, "~> 1.1", only: :test},
       {:earmark, "~> 0.1", only: :docs},
       {:ex_doc, "~> 0.7", only: :docs},
       {:inch_ex, only: :docs}

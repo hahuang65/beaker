@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Beaker.Router</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      hljs.initHighlightingOnLoad();
+      hljs.configure({languages: []}); //disable autodetect
+    </script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">beaker v0.0.3 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Beaker.html">Beaker</a> &rarr; <a href="Beaker.Router.html">Router</a></div>
+      <h1>
+        Beaker.Router
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+      </ul>
+
+      
+        <section id="moduledoc" class="docstring">
+          <p><a href="Beaker.Router.html"><code class="inline">Beaker.Router</code></a> is a router for Beaker integration into Phoenix.
+Importantly, it is NOT the entry point to Beaker from a Phoenix app.
+Instead, that should be <code class="inline">Beaker.Web</code>.</p>
+<p>To automatically be able to access a view with your Beaker metrics, you’ll need to</p>
+<p>1) Add <code class="inline">beaker</code> and <code class="inline">phoenix</code> to the dependencies in your Mixfile:</p>
+<pre><code class="elixir">defp deps do
+  [
+    {:phoenix, &quot;&gt;= 0.14&quot;},
+    {:phoenix_html, &quot;&gt;= 1.2&quot;}
+  ]
+end</code></pre>
+<p>2) Add <code class="inline">beaker</code> and <code class="inline">phoenix_html</code> to the started applications in your Mixfile:</p>
+<pre><code class="elixir">def application do
+  applications: [:phoenix, :phoenix_html, :beaker]
+end</code></pre>
+<p>3) Forward requests to <code class="inline">Beaker.Web</code> in your router:</p>
+<pre><code class="elixir">forward &quot;/beaker&quot;, Beaker.Web</code></pre>
+
+        </section>
+      
+
+      
+        <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L2" class="view_source">Source</a>
+      
+
+      
+        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#call/2">call(conn, opts)</a></td>
+  
+    <td class="summary_synopsis"><p>Callback invoked by Plug on every request</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#channel_for_topic/2">channel_for_topic(topic, transport)</a></td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#init/1">init(opts)</a></td>
+  
+    <td class="summary_synopsis"><p>Callback required by Plug that initializes the router
+for serving web requests</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#static_path/2">static_path(conn, path)</a></td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+        <section id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <section class="detail">
+  <div class="detail_header" id="call/2">
+    <span class="signature"><strong>call(conn, opts)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#call/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Callback invoked by Plug on every request.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L33" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="channel_for_topic/2">
+    <span class="signature"><strong>channel_for_topic(topic, transport)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#channel_for_topic/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L2" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="init/1">
+    <span class="signature"><strong>init(opts)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#init/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Callback required by Plug that initializes the router
+for serving web requests.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L33" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="static_path/2">
+    <span class="signature"><strong>static_path(conn, path)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#static_path/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L35" class="view_source">Source</a>
+  
+</section>
+
+        </section>
+      
+
+      
+
+      
+    </section>
+  </body>
+</html>

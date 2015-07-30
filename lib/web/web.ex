@@ -17,4 +17,13 @@ defmodule Beaker.Web do
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
+
+  # Serves static files, otherwises passes connection to Beaker.Router.
+  use Plug.Builder
+
+  plug Plug.Static,
+    at: "/", from: :beaker,
+    only: ~w(css js)
+
+  plug Beaker.Router
 end

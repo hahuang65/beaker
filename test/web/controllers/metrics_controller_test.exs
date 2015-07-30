@@ -8,8 +8,10 @@ defmodule Beaker.Web.MetricsControllerTest do
     response = conn(:get, "/metrics") |> send_request
 
     assert String.contains?(response.resp_body, "Counters")
-    assert String.contains?(response.resp_body, "counter1: 33")
-    assert String.contains?(response.resp_body, "counter2: 1")
+    assert String.contains?(response.resp_body, "counter1")
+    assert String.contains?(response.resp_body, "33")
+    assert String.contains?(response.resp_body, "counter2")
+    assert String.contains?(response.resp_body, "1")
   end
 
   test "/metrics displays all gauges and their values" do
@@ -19,7 +21,9 @@ defmodule Beaker.Web.MetricsControllerTest do
     response = conn(:get, "/metrics") |> send_request
 
     assert String.contains?(response.resp_body, "Gauges")
-    assert String.contains?(response.resp_body, "gauges1: 66")
-    assert String.contains?(response.resp_body, "gauges2: 99")
+    assert String.contains?(response.resp_body, "gauges1")
+    assert String.contains?(response.resp_body, "66")
+    assert String.contains?(response.resp_body, "gauges2")
+    assert String.contains?(response.resp_body, "99")
   end
 end
