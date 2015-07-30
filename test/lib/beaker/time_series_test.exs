@@ -30,6 +30,18 @@ defmodule Beaker.TimeSeriesTest do
     assert TimeSeries.all |> Enum.empty?
   end
 
+  test "TimeSeries.clear(key) returns :ok and clears the specified time series" do
+    TimeSeries.sample("clear1", 20)
+    TimeSeries.sample("clear1", 55)
+    TimeSeries.sample("clear2", 10)
+    TimeSeries.sample("clear2", 45)
+    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear1")
+    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear2")
+    TimeSeries.clear("clear1")
+    refute Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear1")
+    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear2")
+  end
+
   test "TimeSeries.sample will return :ok and record the value for the time series at that point in time as well as keep it in chronologically descending order" do
     assert TimeSeries.get("sample") == nil
 

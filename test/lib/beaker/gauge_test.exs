@@ -24,6 +24,16 @@ defmodule Beaker.GaugeTest do
     assert Gauge.all |> Enum.empty?
   end
 
+  test "Gauge.clear(key) returns :ok and clears the specified gauge" do
+    :ok = Gauge.set("clear1", 5)
+    :ok = Gauge.set("clear2", 2)
+    assert Gauge.all |> Map.keys |> Enum.member?("clear1")
+    assert Gauge.all |> Map.keys |> Enum.member?("clear2")
+    Gauge.clear("clear1")
+    refute Gauge.all |> Map.keys |> Enum.member?("clear1")
+    assert Gauge.all |> Map.keys |> Enum.member?("clear2")
+  end
+
   test "Gauge.get(key) returns nil if name is not yet registered as a gauge" do
     assert Gauge.get("non-existent") == nil
   end

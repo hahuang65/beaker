@@ -24,6 +24,16 @@ defmodule Beaker.CounterTest do
     assert Counter.all |> Enum.empty?
   end
 
+  test "Counter.clear(key) returns :ok and clears the specified counter" do
+    :ok = Counter.set("clear1", 5)
+    :ok = Counter.set("clear2", 2)
+    assert Counter.all |> Map.keys |> Enum.member?("clear1")
+    assert Counter.all |> Map.keys |> Enum.member?("clear2")
+    Counter.clear("clear1")
+    refute Counter.all |> Map.keys |> Enum.member?("clear1")
+    assert Counter.all |> Map.keys |> Enum.member?("clear2")
+  end
+
   test "Counter.get(key) returns nil if name is not yet registered as a counter" do
     assert Counter.get("non-existent") == nil
   end

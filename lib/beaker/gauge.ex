@@ -64,6 +64,30 @@ defmodule Beaker.Gauge do
   end
 
   @doc """
+  Clears the specified gauge from Beaker.
+
+  ## Examples
+
+      iex> Beaker.Gauge.clear
+      :ok
+      iex> Beaker.Gauge.set("all_gauge1", 10)
+      :ok
+      iex> Beaker.Gauge.set("all_gauge2", 1)
+      :ok
+      iex> Beaker.Gauge.all
+      %{"all_gauge1" => 10, "all_gauge2" => 1}
+      iex> Beaker.Gauge.clear("all_gauge1")
+      :ok
+      iex> Beaker.Gauge.all
+      %{"all_gauge2" => 1}
+
+  Returns `:ok`.
+  """
+  def clear(key) do
+    GenServer.cast(:beaker_gauges, {:clear, key})
+  end
+
+  @doc """
   Retrieves the current value of the specified gauge.
 
   ## Parameters
@@ -154,6 +178,11 @@ defmodule Beaker.Gauge do
   @doc false
   def handle_cast(:clear, _gauges) do
     {:noreply, HashDict.new}
+  end
+
+  @doc false
+  def handle_cast({:clear, key}, gauges) do
+    {:noreply, HashDict.delete(gauges, key)}
   end
 
   @doc false

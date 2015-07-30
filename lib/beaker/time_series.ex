@@ -41,7 +41,7 @@ defmodule Beaker.TimeSeries do
   end
 
   @doc """
-  Remove all time seriess currently stored in Beaker.
+  Remove all time series currently stored in Beaker.
 
   ## Examples
 
@@ -60,6 +60,32 @@ defmodule Beaker.TimeSeries do
   """
   def clear do
     GenServer.cast(:beaker_time_series, :clear)
+  end
+
+  @doc """
+  Clears the specified time series from Beaker.
+
+  ## Examples
+
+      iex> Beaker.TimeSeries.sample("clear_series1", 10)
+      :ok
+      iex> Beaker.TimeSeries.sample("clear_series2", 20)
+      :ok
+      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series1")
+      true
+      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series2")
+      true
+      iex> Beaker.TimeSeries.clear("clear_series1")
+      :ok
+      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series1")
+      false
+      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series2")
+      true
+
+  Returns `:ok`.
+  """
+  def clear(key) do
+    GenServer.cast(:beaker_time_series, {:clear, key})
   end
 
   @doc """
@@ -163,6 +189,11 @@ defmodule Beaker.TimeSeries do
   @doc false
   def handle_cast(:clear, _time_series) do
     {:noreply, HashDict.new}
+  end
+
+  @doc false
+  def handle_cast({:clear, key}, time_series) do
+    {:noreply, HashDict.delete(time_series, key)}
   end
 
   @doc false

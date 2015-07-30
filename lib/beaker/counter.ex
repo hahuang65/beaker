@@ -65,6 +65,30 @@ defmodule Beaker.Counter do
   end
 
   @doc """
+  Clears the specified counter from Beaker.
+
+  ## Examples
+
+      iex> Beaker.Counter.clear
+      :ok
+      iex> Beaker.Counter.set("all_counter1", 10)
+      :ok
+      iex> Beaker.Counter.incr("all_counter2")
+      :ok
+      iex> Beaker.Counter.all
+      %{"all_counter1" => 10, "all_counter2" => 1}
+      iex> Beaker.Counter.clear("all_counter1")
+      :ok
+      iex> Beaker.Counter.all
+      %{"all_counter2" => 1}
+
+  Returns `:ok`.
+  """
+  def clear(key) do
+    GenServer.cast(:beaker_counters, {:clear, key})
+  end
+
+  @doc """
   Retrieves the current value of the specified counter.
 
   ## Parameters
@@ -209,6 +233,10 @@ defmodule Beaker.Counter do
   @doc false
   def handle_cast(:clear, _counters) do
     {:noreply, HashDict.new}
+  end
+
+  def handle_cast({:clear, key}, counters) do
+    {:noreply, HashDict.delete(counters, key)}
   end
 
   @doc false

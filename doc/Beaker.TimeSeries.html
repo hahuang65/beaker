@@ -79,7 +79,14 @@
 <tr>
   <td class="summary_signature"><a href="#clear/0">clear()</a></td>
   
-    <td class="summary_synopsis"><p>Remove all time seriess currently stored in Beaker</p>
+    <td class="summary_synopsis"><p>Remove all time series currently stored in Beaker</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#clear/1">clear(key)</a></td>
+  
+    <td class="summary_synopsis"><p>Clears the specified time series from Beaker</p>
 </td>
   
 </tr>
@@ -154,7 +161,7 @@ Each list is guaranteed to be in reverse chronological ordering, that is, the la
   </div>
   
   <section class="docstring">
-    <p>Remove all time seriess currently stored in Beaker.</p>
+    <p>Remove all time series currently stored in Beaker.</p>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;clear_series1&quot;, 10)
 :ok
@@ -171,6 +178,40 @@ true</code></pre>
   </section>
   
     <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L61" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="clear/1">
+    <span class="signature"><strong>clear(key)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#clear/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Clears the specified time series from Beaker.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;clear_series1&quot;, 10)
+:ok
+iex&gt; Beaker.TimeSeries.sample(&quot;clear_series2&quot;, 20)
+:ok
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series1&quot;)
+true
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series2&quot;)
+true
+iex&gt; Beaker.TimeSeries.clear(&quot;clear_series1&quot;)
+:ok
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series1&quot;)
+false
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series2&quot;)
+true</code></pre>
+<p>Returns <code class="inline">:ok</code>.</p>
+
+  </section>
+  
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L87" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -201,7 +242,7 @@ iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;) |&gt; Enum.count
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L82" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L108" class="view_source">Source</a>
   
 </section>
 <section class="detail">
@@ -234,7 +275,7 @@ Each sample is a pair that consists of a timestamp in epoch and the value record
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L104" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L130" class="view_source">Source</a>
   
 </section>
 
@@ -274,7 +315,7 @@ iex&gt; Beaker.TimeSeries.time &quot;time_time_series&quot;, do: :timer.sleep(50
 
   </section>
   
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L126" class="view_source">Source</a>
+    <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L152" class="view_source">Source</a>
   
 </section>
 
