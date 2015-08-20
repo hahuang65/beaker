@@ -10,5 +10,6 @@ after_script:
   - MIX_ENV=docs mix deps.get
   - MIX_ENV=docs mix inch.report
 notifications:
+  slack: bitsmithy:weGgsEddxExjJ2aSgMW6ukAv
   recipients:
     - hao@hwrd.me
