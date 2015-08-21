@@ -1,4 +1,6 @@
 defmodule Beaker.Counter do
+  @name :beaker_counters
+
   @moduledoc """
   `Beaker.Counter` is a signed bi-directional integer counter.
   It can keep track of integers and increment and decrement them.
@@ -16,7 +18,7 @@ defmodule Beaker.Counter do
 
   @doc false
   def start_link do
-    GenServer.start_link(__MODULE__, :ok, name: :beaker_counters)
+    GenServer.start_link(__MODULE__, :ok, name: @name)
   end
 
   @doc """
@@ -36,7 +38,7 @@ defmodule Beaker.Counter do
   Returns `counters` where counters is a map of all the counters currently existing.
   """
   def all do
-    GenServer.call(:beaker_counters, :all)
+    GenServer.call(@name, :all)
   end
 
 
@@ -61,7 +63,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def clear do
-    GenServer.cast(:beaker_counters, :clear)
+    GenServer.cast(@name, :clear)
   end
 
   @doc """
@@ -85,7 +87,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def clear(key) do
-    GenServer.cast(:beaker_counters, {:clear, key})
+    GenServer.cast(@name, {:clear, key})
   end
 
   @doc """
@@ -104,7 +106,7 @@ defmodule Beaker.Counter do
   Returns `count` where count is an integer if the counter exists, else `nil`.
   """
   def get(key) do
-    GenServer.call(:beaker_counters, {:get, key})
+    GenServer.call(@name, {:get, key})
   end
 
   @doc """
@@ -124,7 +126,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def set(key, value) do
-    GenServer.cast(:beaker_counters, {:set, key, value})
+    GenServer.cast(@name, {:set, key, value})
   end
 
   @doc """
@@ -145,7 +147,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def incr(key) do
-    GenServer.cast(:beaker_counters, {:incr, key, 1})
+    GenServer.cast(@name, {:incr, key, 1})
   end
 
   @doc """
@@ -167,7 +169,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def incr_by(key, amount) do
-    GenServer.cast(:beaker_counters, {:incr, key, amount})
+    GenServer.cast(@name, {:incr, key, amount})
   end
 
   @doc """
@@ -188,7 +190,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def decr(key) do
-    GenServer.cast(:beaker_counters, {:incr, key, -1})
+    GenServer.cast(@name, {:incr, key, -1})
   end
 
   @doc """
@@ -210,7 +212,7 @@ defmodule Beaker.Counter do
   Returns `:ok`.
   """
   def decr_by(key, amount) do
-    GenServer.cast(:beaker_counters, {:incr, key, -amount})
+    GenServer.cast(@name, {:incr, key, -amount})
   end
 
   ## Server Callbacks

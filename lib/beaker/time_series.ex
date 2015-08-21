@@ -1,4 +1,6 @@
 defmodule Beaker.TimeSeries do
+  @name :beaker_time_series
+
   @moduledoc """
   `Beaker.TimeSeries` is a simple time series. It's a metric that keeps track of values over time when sampled.
 
@@ -15,7 +17,7 @@ defmodule Beaker.TimeSeries do
 
   @doc false
   def start_link do
-    GenServer.start_link(__MODULE__, :ok, name: :beaker_time_series)
+    GenServer.start_link(__MODULE__, :ok, name: @name)
   end
 
   @doc """
@@ -37,7 +39,7 @@ defmodule Beaker.TimeSeries do
   Each list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.
   """
   def all do
-    GenServer.call(:beaker_time_series, :all)
+    GenServer.call(@name, :all)
   end
 
   @doc """
@@ -59,7 +61,7 @@ defmodule Beaker.TimeSeries do
   Returns `:ok`.
   """
   def clear do
-    GenServer.cast(:beaker_time_series, :clear)
+    GenServer.cast(@name, :clear)
   end
 
   @doc """
@@ -85,7 +87,7 @@ defmodule Beaker.TimeSeries do
   Returns `:ok`.
   """
   def clear(key) do
-    GenServer.cast(:beaker_time_series, {:clear, key})
+    GenServer.cast(@name, {:clear, key})
   end
 
   @doc """
@@ -106,7 +108,7 @@ defmodule Beaker.TimeSeries do
   Returns `time_series` where time_series is a list of the samples taken for the given key.
   """
   def get(key) do
-    GenServer.call(:beaker_time_series, {:get, key})
+    GenServer.call(@name, {:get, key})
   end
 
   @doc """
@@ -128,7 +130,7 @@ defmodule Beaker.TimeSeries do
   Each sample is a pair that consists of a timestamp in epoch and the value recorded.
   """
   def sample(key, value) do
-    GenServer.cast(:beaker_time_series, {:sample, key, value})
+    GenServer.cast(@name, {:sample, key, value})
   end
 
   @doc """

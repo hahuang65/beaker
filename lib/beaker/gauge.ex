@@ -1,4 +1,6 @@
 defmodule Beaker.Gauge do
+  @name :beaker_gauges
+
   @moduledoc """
   `Beaker.Gauge` is a simple gauge. It's a metric where a value can be set and retrieved.
 
@@ -15,7 +17,7 @@ defmodule Beaker.Gauge do
 
   @doc false
   def start_link do
-    GenServer.start_link(__MODULE__, :ok, name: :beaker_gauges)
+    GenServer.start_link(__MODULE__, :ok, name: @name)
   end
 
   @doc """
@@ -35,7 +37,7 @@ defmodule Beaker.Gauge do
   Returns `gauges` where gauges is a map of all the gauges currently existing.
   """
   def all do
-    GenServer.call(:beaker_gauges, :all)
+    GenServer.call(@name, :all)
   end
 
 
@@ -60,7 +62,7 @@ defmodule Beaker.Gauge do
   Returns `:ok`.
   """
   def clear do
-    GenServer.cast(:beaker_gauges, :clear)
+    GenServer.cast(@name, :clear)
   end
 
   @doc """
@@ -84,7 +86,7 @@ defmodule Beaker.Gauge do
   Returns `:ok`.
   """
   def clear(key) do
-    GenServer.cast(:beaker_gauges, {:clear, key})
+    GenServer.cast(@name, {:clear, key})
   end
 
   @doc """
@@ -103,7 +105,7 @@ defmodule Beaker.Gauge do
   Returns `count` where count is an integer if the gauge exists, else `nil`.
   """
   def get(key) do
-    GenServer.call(:beaker_gauges, {:get, key})
+    GenServer.call(@name, {:get, key})
   end
 
   @doc """
@@ -123,7 +125,7 @@ defmodule Beaker.Gauge do
   Returns `:ok`
   """
   def set(key, value) do
-    GenServer.cast(:beaker_gauges, {:set, key, value})
+    GenServer.cast(@name, {:set, key, value})
   end
 
   @doc """
