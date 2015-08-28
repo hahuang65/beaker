@@ -4,19 +4,19 @@ defmodule Beaker.TimeSeriesTest do
 
   alias Beaker.TimeSeries
 
-  test "TimeSeries.all returns an empty map if there are no time series" do
+  test "TimeSeries.all returns an empty HashDict if there are no time series" do
     TimeSeries.clear
-    assert TimeSeries.all == %{}
+    assert TimeSeries.all == HashDict.new
   end
 
-  test "TimeSeries.all returns a map with all time series and values" do
+  test "TimeSeries.all returns a HashDict with all time series and values" do
     TimeSeries.clear
     TimeSeries.sample("all1", 20)
     TimeSeries.sample("all1", 55)
     TimeSeries.sample("all2", 10)
     TimeSeries.sample("all2", 45)
 
-    %{"all1" => [{_time1, 55}, {_time2, 20}], "all2" => [{_time3, 45}, {_time4, 10}]} = TimeSeries.all
+    %{"all1" => [{_time1, 55}, {_time2, 20}], "all2" => [{_time3, 45}, {_time4, 10}]} = TimeSeries.all |> Enum.into(%{})
   end
 
   test "TimeSeries.clear returns :ok and erases all time series" do
@@ -26,7 +26,7 @@ defmodule Beaker.TimeSeriesTest do
     TimeSeries.sample("clear2", 45)
 
     refute TimeSeries.all |> Enum.empty?
-    TimeSeries.clear
+    :ok = TimeSeries.clear
     assert TimeSeries.all |> Enum.empty?
   end
 
@@ -35,11 +35,11 @@ defmodule Beaker.TimeSeriesTest do
     TimeSeries.sample("clear1", 55)
     TimeSeries.sample("clear2", 10)
     TimeSeries.sample("clear2", 45)
-    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear1")
-    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear2")
-    TimeSeries.clear("clear1")
-    refute Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear1")
-    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear2")
+    assert Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear1")
+    assert Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear2")
+    :ok = TimeSeries.clear("clear1")
+    refute Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear1")
+    assert Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear2")
   end
 
   test "TimeSeries.sample will return :ok and record the value for the time series at that point in time as well as keep it in chronologically descending order" do
@@ -53,7 +53,7 @@ defmodule Beaker.TimeSeriesTest do
     assert time2 > time1
   end
 
-  test "TimeSeries.get(key) returns nil if name is not yet registered as a time series" do
+  test "TimeSeries.get(key) returns nil if key is not yet registered as a time series" do
     assert TimeSeries.get("non-existent") == nil
   end
 

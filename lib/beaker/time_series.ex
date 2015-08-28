@@ -21,7 +21,7 @@ defmodule Beaker.TimeSeries do
   end
 
   @doc """
-  Retrieves all time series in the form of a map.
+  Retrieves all time series in the form of a HashDict.
 
   ## Examples
 
@@ -31,10 +31,10 @@ defmodule Beaker.TimeSeries do
       :ok
       iex> Beaker.TimeSeries.sample("all_series2", 20)
       :ok
-      iex> Beaker.TimeSeries.all |> Map.keys
+      iex> Beaker.TimeSeries.all |> HashDict.keys
       ["all_series1", "all_series2"]
 
-  Returns `time_series` where time_series is a map of all the time series currently existing.
+  Returns `time_series` where time_series is a HashDict of all the time series currently existing.
   Each time series is returned as a list of pairs. Each pair is a timestamp in epoch and the value recorded.
   Each list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.
   """
@@ -76,15 +76,15 @@ defmodule Beaker.TimeSeries do
       :ok
       iex> Beaker.TimeSeries.sample("clear_series2", 20)
       :ok
-      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series1")
+      iex> Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear_series1")
       true
-      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series2")
+      iex> Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear_series2")
       true
       iex> Beaker.TimeSeries.clear("clear_series1")
       :ok
-      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series1")
+      iex> Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear_series1")
       false
-      iex> Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear_series2")
+      iex> Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear_series2")
       true
 
   Returns `:ok`.
@@ -168,12 +168,6 @@ defmodule Beaker.TimeSeries do
     end
   end
 
-  @doc false
-  defp now_in_epoch do
-    {mega, sec, micro} = :os.timestamp()
-    (mega * 1000000 + sec) * 1000000 + micro
-  end
-
   ## Server Callbacks
 
   @doc false
@@ -183,7 +177,7 @@ defmodule Beaker.TimeSeries do
 
   @doc false
   def handle_call(:all, _from, time_series) do
-    {:reply, Enum.into(time_series, %{}), time_series}
+    {:reply, time_series, time_series}
   end
 
   @doc false
@@ -203,7 +197,7 @@ defmodule Beaker.TimeSeries do
 
   @doc false
   def handle_cast({:sample, key, value}, time_series) do
-    entry = {now_in_epoch(), value}
+    entry = {Time.now, value}
     {:noreply, HashDict.update(time_series, key, [entry], fn(list) -> [entry | list] end)}
   end
 
