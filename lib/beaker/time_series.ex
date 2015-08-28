@@ -67,6 +67,9 @@ defmodule Beaker.TimeSeries do
   @doc """
   Clears the specified time series from Beaker.
 
+  ## Parameters
+    * `key`: The name of the time series to clear.
+
   ## Examples
 
       iex> Beaker.TimeSeries.sample("clear_series1", 10)

@@ -68,6 +68,9 @@ defmodule Beaker.Gauge do
   @doc """
   Clears the specified gauge from Beaker.
 
+  ## Parameters
+    * `key`: The name of the gauge to clear.
+
   ## Examples
 
       iex> Beaker.Gauge.clear

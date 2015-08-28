@@ -69,6 +69,9 @@ defmodule Beaker.Counter do
   @doc """
   Clears the specified counter from Beaker.
 
+  ## Parameters
+    * `key`: The name of the counter to clear.
+
   ## Examples
 
       iex> Beaker.Counter.clear
