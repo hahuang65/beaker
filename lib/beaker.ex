@@ -1,27 +1,9 @@
 defmodule Beaker do
-  @moduledoc """
-  `Beaker` is the parent application that will start all the different `Beaker` metric applications.
-  """
+  @moduledoc false
 
   use Application
 
-  @doc """
-  Starts the Beaker app.
-
-  This will start all submodules under supervision:
-    * Beaker.Counter
-    * Beaker.Gauge
-    * Beaker.TimeSeries
-
-  ## Parameters
-    * `type`: Ignored.
-    * `args`: Ignored.
-
-  ## Examples
-
-      Beaker.start()
-
-  """
+  @doc false
   def start(_type, _args) do
     import Supervisor.Spec
 
