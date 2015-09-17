@@ -51,11 +51,11 @@ defmodule Beaker.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 0.14", optional: true},
-      {:phoenix_ecto, "~> 0.5", only: :test},
-      {:phoenix_html, "~> 1.1", only: :test},
+      {:phoenix, "~> 1.0", optional: true},
+      {:phoenix_ecto, "~> 1.2", only: :test},
+      {:phoenix_html, "~> 2.2", only: :test},
       {:earmark, "~> 0.1", only: :docs},
-      {:ex_doc, "~> 0.7", only: :docs},
+      {:ex_doc, "~> 0.9", only: :docs},
       {:inch_ex, only: :docs}
     ]
   end
