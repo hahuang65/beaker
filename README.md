@@ -55,6 +55,8 @@ forward "/beaker", Beaker.Web
 ```
 
 This will add a page at `/beaker` with all your metrics visualized on the page.
+Gauges and Counters will display a box with their name and value.
+Time Series will display a chart with the last 30 minutes worth of aggregated data.
 
 ## Metrics
 
@@ -261,6 +263,16 @@ Or clear a single time series:
 iex> Beaker.TimeSeries.clear("foo")
 :ok
 ```
+
+_Aggregation_
+
+Time series will be aggregated once every 60 seconds, for the last full minute (if aggregation is run at 01:22:32, it will run for the minute of 01:21 to 01:22). Currently it will just average out the values for that minute and store it in `Beaker.TimeSeries.Aggregated`. Note that this is not a destructive operation; all time series data will remain intact with aggregation. The aggregated data is simply stored separately from raw time series data.
+
+You can see the aggregated time series by using `Beaker.TimeSeries.Aggregated.get/1` and `Beaker.TimeSeries.Aggregated.all/0`. They work the same way their `Beaker.TimeSeries` counterparts work.
+
+In addition, you can check the last time that aggregation was successfully run using `Beaker.TimeSeries.Aggregator.last_aggregated_at`.
+
+In the future, the aggregation interval will be configurable for more granularity, and aggregation will provide `min`, `max`, and `count` in addition to `average`.
 
 ## Important Links
 

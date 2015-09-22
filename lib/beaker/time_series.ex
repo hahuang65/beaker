@@ -197,7 +197,7 @@ defmodule Beaker.TimeSeries do
 
   @doc false
   def handle_cast({:sample, key, value}, time_series) do
-    entry = {Time.now, value}
+    entry = {Beaker.Time.now, value}
     {:noreply, HashDict.update(time_series, key, [entry], fn(list) -> [entry | list] end)}
   end
 
