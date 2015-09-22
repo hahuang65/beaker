@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/normalize.css") %>">
     <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/foundation.min.css") %>">
     <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/beaker.css") %>">
+    <script src="<%= Beaker.Router.static_path(@conn, "/js/highcharts.js") %>"></script>
 
     <title>Beaker</title>
   </head>

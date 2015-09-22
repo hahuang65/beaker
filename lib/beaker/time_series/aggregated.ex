@@ -7,8 +7,11 @@ defmodule Beaker.TimeSeries.Aggregated do
   The only two functions that developers should use are `get/1` and `all/0` in order to get aggregated time series data out.
   """
 
+  @doc false
+  defstruct averages: "", minimums: "", maximums: "", counts: ""
+
   ## Client API
-  
+
   @doc false
   def start_link do
     GenServer.start_link(__MODULE__, :ok, name: @name)

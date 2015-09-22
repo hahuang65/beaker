@@ -12,4 +12,10 @@ defmodule Beaker.Time do
 
     now - remainder
   end
+
+  def to_gmt(epoch_timestamp) do
+    epoch_timestamp
+    |> div(1000000)
+    |> :calendar.gregorian_seconds_to_datetime
+  end
 end

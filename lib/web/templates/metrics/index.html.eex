@@ -22,3 +22,55 @@
     </div>
   </li>
 <% end %>
+</ul>
+
+<h3 class="metric-type">Time Series</h3>
+<ul class="large-block-grid-2">
+  <%= for {key, data} <- @time_series do %>
+    <li class="widget">
+      <div id="<%= key %>" class="time-series"</div>
+      <% series = Beaker.Web.Helper.structure_time_series(data) %>
+      <script language='javascript'>
+        var chart = new Highcharts.Chart({
+          chart: {
+              renderTo: "<%= key %>",
+              backgroundColor: "#F0EBDA",
+              zoomType: 'x'
+          },
+          title: {
+            text: "<%= key %>"
+          },
+          xAxis: {
+            type: 'datetime',
+            title: {
+              text: "Time (UTC)"
+            }
+          },
+          yAxis: {
+            title: {
+              text: null
+            }
+          },
+          series: [
+            {
+              name: "Average",
+              data: <%= series.averages %>
+            },
+            {
+              name: "Minimum",
+              data: <%= series.minimums %>
+            },
+            {
+              name: "Maximum",
+              data: <%= series.maximums %>
+            },
+            {
+              name: "Count",
+              data: <%= series.counts %>
+            }
+          ]
+        });
+      </script>
+    </li>
+  <% end %>
+</ul>

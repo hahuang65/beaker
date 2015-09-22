@@ -48,6 +48,12 @@ body {
   text-align: center;
 }
 
+.time-series {
+  height: 250px;
+  width: 1000px;
+  margin: 0 auto;
+}
+
 .yellow {
   color: #B58900;
   border-color: #B58900;
@@ -86,4 +92,3 @@ body {
   color: #859900;
   border-color: #859900;
 }
-

@@ -26,4 +26,23 @@ defmodule Beaker.Web.MetricsControllerTest do
     assert String.contains?(response.resp_body, "gauges2")
     assert String.contains?(response.resp_body, "99")
   end
+
+  test "/metrics creates a div for each time series" do
+    Beaker.TimeSeries.sample("time_series1", 10)
+    Beaker.TimeSeries.sample("time_series2", 20)
+    Beaker.TimeSeries.sample("time_series3", 30)
+
+    Beaker.TimeSeries.Aggregator.aggregate("time_series1", before_time: Beaker.Time.now + 5000, after_time: 0)
+    Beaker.TimeSeries.Aggregator.aggregate("time_series2", before_time: Beaker.Time.now + 5000, after_time: 0)
+    Beaker.TimeSeries.Aggregator.aggregate("time_series3", before_time: Beaker.Time.now + 5000, after_time: 0)
+
+    response = conn(:get, "/metrics") |> send_request
+
+    assert String.contains?(response.resp_body, "time_series1")
+    assert String.contains?(response.resp_body, "10")
+    assert String.contains?(response.resp_body, "time_series2")
+    assert String.contains?(response.resp_body, "20")
+    assert String.contains?(response.resp_body, "time_series3")
+    assert String.contains?(response.resp_body, "30")
+  end
 end
