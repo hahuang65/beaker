@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <title>Beaker.Router – beaker v0.0.4</title>
+        <title>Beaker.TimeSeries.Aggregated – beaker v0.0.4</title>
       
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.9.0">
@@ -73,10 +73,10 @@
 
 
       <h1>
-        Beaker.Router
+        Beaker.TimeSeries.Aggregated
         
         
-          <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L2" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series/aggregated.ex#L1" title="View Source" class="view-source" rel="help">
             <i class="fa fa-code"></i>
           </a>
         
@@ -84,23 +84,8 @@
 
       
         <section id="moduledoc" class="docstring">
-          <p><a href="Beaker.Router.html#content"><code class="inline">Beaker.Router</code></a> is a router for Beaker integration into Phoenix.
-Importantly, it is NOT the entry point to Beaker from a Phoenix app.
-Instead, that should be <code class="inline">Beaker.Web</code>.</p>
-<p>To automatically be able to access a view with your Beaker metrics, you’ll need to</p>
-<p>1) Add <code class="inline">beaker</code> and <code class="inline">phoenix</code> to the dependencies in your Mixfile:</p>
-<pre><code class="elixir">defp deps do
-  [
-    {:phoenix, &quot;&gt;= 0.14&quot;},
-    {:phoenix_html, &quot;&gt;= 1.2&quot;}
-  ]
-end</code></pre>
-<p>2) Add <code class="inline">beaker</code> and <code class="inline">phoenix_html</code> to the started applications in your Mixfile:</p>
-<pre><code class="elixir">def application do
-  applications: [:phoenix, :phoenix_html, :beaker]
-end</code></pre>
-<p>3) Forward requests to <code class="inline">Beaker.Web</code> in your router:</p>
-<pre><code class="elixir">forward &quot;/beaker&quot;, Beaker.Web</code></pre>
+          <p><a href="Beaker.TimeSeries.Aggregated.html#content"><code class="inline">Beaker.TimeSeries.Aggregated</code></a> is the datastore for aggregated time series data. It’s purposed mostly for internal use only.</p>
+<p>The only two functions that developers should use are <a href="#get/1"><code class="inline">get/1</code></a> and <a href="#all/0"><code class="inline">all/0</code></a> in order to get aggregated time series data out.</p>
 
         </section>
       
@@ -110,22 +95,17 @@ end</code></pre>
           <h1 id="summary" class="section-heading">Summary</h1>
           <div class="summary">
             <div class="summary-row">
-  <div class="summary-signature"><a href="#call/2">call(conn, opts)</a></div>
+  <div class="summary-signature"><a href="#all/0">all()</a></div>
   
-    <div class="summary-synopsis"><p>Callback invoked by Plug on every request</p>
+    <div class="summary-synopsis"><p>Retrieves all aggregated time series in the form of a HashDict</p>
 </div>
   
 </div>
 <div class="summary-row">
-  <div class="summary-signature"><a href="#init/1">init(opts)</a></div>
+  <div class="summary-signature"><a href="#get/1">get(key)</a></div>
   
-    <div class="summary-synopsis"><p>Callback required by Plug that initializes the router
-for serving web requests</p>
+    <div class="summary-synopsis"><p>Get the aggregated time series data for the given key</p>
 </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature"><a href="#static_path/2">static_path(conn, path)</a></div>
   
 </div>
 
@@ -139,57 +119,64 @@ for serving web requests</p>
         <section id="functions_details" class="details-list">
           <h1 class="section-heading">Functions</h1>
           <div class="detail">
-  <div class="detail-header" id="call/2">
-    <a href="#call/2" class="detail-link" title="Link to this function">
+  <div class="detail-header" id="all/0">
+    <a href="#all/0" class="detail-link" title="Link to this function">
       <i class="fa fa-link"></i>
     </a>
-    <span class="signature">call(conn, opts)</span>
+    <span class="signature">all()</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series/aggregated.ex#L59" class="view-source" rel="help" title="View Source">
        <i class="fa fa-code"></i>
      </a>
     
   </div>
   
   <section class="docstring">
-    <p>Callback invoked by Plug on every request.</p>
+    <p>Retrieves all aggregated time series in the form of a HashDict.</p>
+<h2>Examples</h2>
+<p>  iex&gt; Beaker.TimeSeries.Aggregated.clear
+  :ok
+  iex&gt; Beaker.TimeSeries.Aggregated.insert(“all_series1”, {1, 2})
+  :ok
+  iex&gt; Beaker.TimeSeries.Aggregated.insert(“all_series2”, {3, 4})
+  :ok
+  iex&gt; Beaker.TimeSeries.Aggregated.all |&gt; Enum.into(%{})
+  %{“all_series1” =&gt; [{1, 2}], “all_series2” =&gt; [{3, 4}]}</p>
+<p>Returns <code class="inline">time_series</code> where time_series is a HashDict of all the aggregated time series currently existing.
+Each time series is returned as a list of pairs. Each pair is a timestamp in epoch (aggregated to the nearest aggregation interval) and the value recorded.
+Each list is guaranteed to be in reverse chronological ordering, that is, the latest aggregated interval will be the first in the list.</p>
 
   </section>
 </div>
 <div class="detail">
-  <div class="detail-header" id="init/1">
-    <a href="#init/1" class="detail-link" title="Link to this function">
+  <div class="detail-header" id="get/1">
+    <a href="#get/1" class="detail-link" title="Link to this function">
       <i class="fa fa-link"></i>
     </a>
-    <span class="signature">init(opts)</span>
+    <span class="signature">get(key)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L33" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series/aggregated.ex#L37" class="view-source" rel="help" title="View Source">
        <i class="fa fa-code"></i>
      </a>
     
   </div>
   
   <section class="docstring">
-    <p>Callback required by Plug that initializes the router
-for serving web requests.</p>
+    <p>Get the aggregated time series data for the given key.</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the aggregated time_series to retrieve.
+</li>
+</ul>
+<h2>Examples</h2>
+<p>  iex&gt; Beaker.TimeSeries.Aggregated.get(“get_series”)
+  nil
+  iex&gt; Beaker.TimeSeries.Aggregated.insert(“get_series”, {1, 2})
+  :ok
+  iex&gt; Beaker.TimeSeries.Aggregated.get(“get_series”)
+  [{1, 2}]</p>
+<p>Returns <code class="inline">time_series</code> where time_series is a list of the data entries aggregated for the given key.</p>
 
-  </section>
-</div>
-<div class="detail">
-  <div class="detail-header" id="static_path/2">
-    <a href="#static_path/2" class="detail-link" title="Link to this function">
-      <i class="fa fa-link"></i>
-    </a>
-    <span class="signature">static_path(conn, path)</span>
-      
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L35" class="view-source" rel="help" title="View Source">
-       <i class="fa fa-code"></i>
-     </a>
-    
-  </div>
-  
-  <section class="docstring">
-    
   </section>
 </div>
 

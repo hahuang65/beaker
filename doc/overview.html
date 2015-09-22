@@ -1,30 +1,79 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
   <head>
-    <title>Overview</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <title>Overview – beaker v0.0.4</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.9.0">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,300,700,900|Merriweather:300italic,300,700,700italic|Inconsolata:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="dist/app.css" />
+    <script src="dist/sidebar_items.js"></script>
   </head>
-
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
 
-    <section id="content">
-      <div class="breadcrumbs">beaker v0.0.4 &rarr; <a href="overview.html">Overview</a></div>
+    <div class="main">
+<button class="sidebar-toggle">
+  <i class="fa fa-bars"></i>
+</button>
+<section class="sidebar">
+  <button class="sidebar-toggle">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  
+    <a href="https://github.com/hahuang65/beaker" class="sidebar-projectLink">
+      <div class="sidebar-projectDetails">
+        <h1 class="sidebar-projectName">
+          beaker
+        </h1>
+        <h2 class="sidebar-projectVersion">
+          v0.0.4
+        </h2>
+      </div>
+      
+    </a>
+  
+
+  <div class="sidebar-search">
+    <i class="fa fa-search"></i>
+    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" results="0" />
+  </div>
+
+  <ul class="sidebar-mainNav">
+    
+
+    <li><a href="overview.html">Overview</a></li>
+  </ul>
+
+  <ul class="sidebar-listNav">
+    
+      <li><a id="modules_list" href="#full_list">Modules</a></li>
+    
+
+    
+      <li role="presentation" class="disabled">Exceptions</li>
+    
+
+    
+      <li role="presentation" class="disabled">Protocols</li>
+    
+  </ul>
+
+  <ul id="full_list" class="sidebar-fullList"></ul>
+  <div class="sidebar-noResults"></div>
+</section>
+
+<section id="content" class="content">
+  <div class="content-inner">
+
 
       <h1>beaker v0.0.4</h1>
 
-      <ul class="summary_links">
+      <ul class="summary-links">
         
           <li><a href="#modules_summary">Modules</a></li>
         
@@ -33,60 +82,82 @@
       </ul>
 
       
-        <h2 id="modules_summary">Modules summary <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="Beaker.html">Beaker</a></td>
+        <h1 id="modules_summary" class="section-heading">Modules summary</h1>
+        <div class="summary">
+          <div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.Counter.html">Beaker.Counter</a></div>
   
-    <td class="summary_synopsis"><p><a href="Beaker.html"><code class="inline">Beaker</code></a> is the parent application that will start all the different <a href="Beaker.html"><code class="inline">Beaker</code></a> metric applications</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="Beaker.Counter.html">Beaker.Counter</a></td>
-  
-    <td class="summary_synopsis"><p><a href="Beaker.Counter.html"><code class="inline">Beaker.Counter</code></a> is a signed bi-directional integer counter.
+    <div class="summary-synopsis"><p><a href="Beaker.Counter.html#content"><code class="inline">Beaker.Counter</code></a> is a signed bi-directional integer counter.
 It can keep track of integers and increment and decrement them</p>
-</td>
+</div>
   
-</tr>
-<tr>
-  <td class="summary_signature"><a href="Beaker.Gauge.html">Beaker.Gauge</a></td>
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.Gauge.html">Beaker.Gauge</a></div>
   
-    <td class="summary_synopsis"><p><a href="Beaker.Gauge.html"><code class="inline">Beaker.Gauge</code></a> is a simple gauge. It’s a metric where a value can be set and retrieved</p>
-</td>
+    <div class="summary-synopsis"><p><a href="Beaker.Gauge.html#content"><code class="inline">Beaker.Gauge</code></a> is a simple gauge. It’s a metric where a value can be set and retrieved</p>
+</div>
   
-</tr>
-<tr>
-  <td class="summary_signature"><a href="Beaker.Router.html">Beaker.Router</a></td>
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.Router.html">Beaker.Router</a></div>
   
-    <td class="summary_synopsis"><p><a href="Beaker.Router.html"><code class="inline">Beaker.Router</code></a> is a router for Beaker integration into Phoenix.
+    <div class="summary-synopsis"><p><a href="Beaker.Router.html#content"><code class="inline">Beaker.Router</code></a> is a router for Beaker integration into Phoenix.
 Importantly, it is NOT the entry point to Beaker from a Phoenix app.
 Instead, that should be <code class="inline">Beaker.Web</code></p>
-</td>
+</div>
   
-</tr>
-<tr>
-  <td class="summary_signature"><a href="Beaker.Router.Helpers.html">Beaker.Router.Helpers</a></td>
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.Router.Helpers.html">Beaker.Router.Helpers</a></div>
   
-    <td class="summary_synopsis"><p>Module with named helpers generated from Beaker.Router</p>
-</td>
+    <div class="summary-synopsis"><p>Module with named helpers generated from Beaker.Router</p>
+</div>
   
-</tr>
-<tr>
-  <td class="summary_signature"><a href="Beaker.TimeSeries.html">Beaker.TimeSeries</a></td>
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.TimeSeries.html">Beaker.TimeSeries</a></div>
   
-    <td class="summary_synopsis"><p><a href="Beaker.TimeSeries.html"><code class="inline">Beaker.TimeSeries</code></a> is a simple time series. It’s a metric that keeps track of values over time when sampled</p>
-</td>
+    <div class="summary-synopsis"><p><a href="Beaker.TimeSeries.html#content"><code class="inline">Beaker.TimeSeries</code></a> is a simple time series. It’s a metric that keeps track of values over time when sampled</p>
+</div>
   
-</tr>
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.TimeSeries.Aggregated.html">Beaker.TimeSeries.Aggregated</a></div>
+  
+    <div class="summary-synopsis"><p><a href="Beaker.TimeSeries.Aggregated.html#content"><code class="inline">Beaker.TimeSeries.Aggregated</code></a> is the datastore for aggregated time series data. It’s purposed mostly for internal use only</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="Beaker.TimeSeries.Aggregator.html">Beaker.TimeSeries.Aggregator</a></div>
+  
+    <div class="summary-synopsis"><p><a href="Beaker.TimeSeries.Aggregator.html#content"><code class="inline">Beaker.TimeSeries.Aggregator</code></a> is the aggregation framework for time series. It’s purposed mostly for internal use only.
+Currently, it’s not configurable, and set to run every 60 seconds. This will change in the future to allow for more granularity</p>
+</div>
+  
+</div>
 
-        </table>
+        </div>
       
 
       
 
       
-    </section>
+        <footer class="footer">
+      <p>
+        Designed by
+        <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>
+        and the
+        <a href="https://github.com/elixir-lang/ex_doc/graphs/contributors" target="_blank">ExDoc team</a>.
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.9.0).
+      </p>
+    </footer>
+  </div>
+</section>
+</div>
+    <script src="dist/app.js"></script>
   </body>
 </html>
+

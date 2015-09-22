@@ -1,47 +1,86 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
   <head>
-    <title>Beaker.Router.Helpers</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
-    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
-    <script type="text/javascript" charset="utf-8">
-      relpath = '';
-      if (relpath != '') relpath += '/';
-    </script>
-
-    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
-    <script type="text/javascript" charset="utf-8">
-      hljs.initHighlightingOnLoad();
-      hljs.configure({languages: []}); //disable autodetect
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <title>Beaker.Router.Helpers – beaker v0.0.4</title>
+      
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.9.0">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,300,700,900|Merriweather:300italic,300,700,700italic|Inconsolata:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="dist/app.css" />
+    <script src="dist/sidebar_items.js"></script>
   </head>
-
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
 
-    <section id="content">
-      <div class="breadcrumbs">beaker v0.0.4 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Beaker.html">Beaker</a> &rarr; <a href="Beaker.Router.html">Router</a> &rarr; <a href="Beaker.Router.Helpers.html">Helpers</a></div>
+    
+    <div class="main">
+<button class="sidebar-toggle">
+  <i class="fa fa-bars"></i>
+</button>
+<section class="sidebar">
+  <button class="sidebar-toggle">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  
+    <a href="https://github.com/hahuang65/beaker" class="sidebar-projectLink">
+      <div class="sidebar-projectDetails">
+        <h1 class="sidebar-projectName">
+          beaker
+        </h1>
+        <h2 class="sidebar-projectVersion">
+          v0.0.4
+        </h2>
+      </div>
+      
+    </a>
+  
+
+  <div class="sidebar-search">
+    <i class="fa fa-search"></i>
+    <input type="text" class="sidebar-searchInput" placeholder="search" autocomplete="off" results="0" />
+  </div>
+
+  <ul class="sidebar-mainNav">
+    
+
+    <li><a href="overview.html">Overview</a></li>
+  </ul>
+
+  <ul class="sidebar-listNav">
+    
+      <li><a id="modules_list" href="#full_list">Modules</a></li>
+    
+
+    
+      <li role="presentation" class="disabled">Exceptions</li>
+    
+
+    
+      <li role="presentation" class="disabled">Protocols</li>
+    
+  </ul>
+
+  <ul id="full_list" class="sidebar-fullList"></ul>
+  <div class="sidebar-noResults"></div>
+</section>
+
+<section id="content" class="content">
+  <div class="content-inner">
+
+
       <h1>
         Beaker.Router.Helpers
         
+        
+          <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L2" title="View Source" class="view-source" rel="help">
+            <i class="fa fa-code"></i>
+          </a>
+        
       </h1>
-
-      <ul class="summary_links">
-        
-          <li><a href="#summary">Summary</a></li>
-        
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
-        
-        
-        
-      </ul>
 
       
         <section id="moduledoc" class="docstring">
@@ -51,207 +90,203 @@
       
 
       
-        <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L2" class="view_source">Source</a>
+        <section id="summary_details" class="details-list">
+          <h1 id="summary" class="section-heading">Summary</h1>
+          <div class="summary">
+            <div class="summary-row">
+  <div class="summary-signature"><a href="#metrics_path/2">metrics_path(conn_or_endpoint, atom2)</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#metrics_path/3">metrics_path(conn_or_endpoint, atom2, params)</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#metrics_url/2">metrics_url(conn_or_endpoint, atom2)</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#metrics_url/3">metrics_url(conn_or_endpoint, atom2, params)</a></div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#path/2">path(data, path)</a></div>
+  
+    <div class="summary-synopsis"><p>Generates the path information including any necessary prefix</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#static_path/2">static_path(conn, path)</a></div>
+  
+    <div class="summary-synopsis"><p>Generates path to a static asset given its file path</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#static_url/2">static_url(conn, path)</a></div>
+  
+    <div class="summary-synopsis"><p>Generates url to a static asset given its file path</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature"><a href="#url/1">url(data)</a></div>
+  
+    <div class="summary-synopsis"><p>Generates the connection/endpoint base URL without any path information</p>
+</div>
+  
+</div>
+
+          </div>
+        </section>
       
 
       
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#metrics_path/2">metrics_path(conn_or_endpoint, atom2)</a></td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#metrics_path/3">metrics_path(conn_or_endpoint, atom2, params)</a></td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#metrics_url/2">metrics_url(conn_or_endpoint, atom2)</a></td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#metrics_url/3">metrics_url(conn_or_endpoint, atom2, params)</a></td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#path/2">path(conn, path)</a></td>
-  
-    <td class="summary_synopsis"><p>Generates the path information including any necessary prefix</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#static_path/2">static_path(conn, path)</a></td>
-  
-    <td class="summary_synopsis"><p>Generates path to a static asset given its file path</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#static_url/2">static_url(conn, path)</a></td>
-  
-    <td class="summary_synopsis"><p>Generates url to a static asset given its file path</p>
-</td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#url/1">url(conn)</a></td>
-  
-    <td class="summary_synopsis"><p>Generates the connection/endpoint base URL without any path information</p>
-</td>
-  
-</tr>
-
-        </table>
-      
 
       
-
+        <section id="functions_details" class="details-list">
+          <h1 class="section-heading">Functions</h1>
+          <div class="detail">
+  <div class="detail-header" id="metrics_path/2">
+    <a href="#metrics_path/2" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">metrics_path(conn_or_endpoint, atom2)</span>
       
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="metrics_path/2">
-    <span class="signature"><strong>metrics_path(conn_or_endpoint, atom2)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#metrics_path/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="metrics_path/3">
-    <span class="signature"><strong>metrics_path(conn_or_endpoint, atom2, params)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#metrics_path/3" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="metrics_path/3">
+    <a href="#metrics_path/3" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">metrics_path(conn_or_endpoint, atom2, params)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="metrics_url/2">
-    <span class="signature"><strong>metrics_url(conn_or_endpoint, atom2)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#metrics_url/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="metrics_url/2">
+    <a href="#metrics_url/2" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">metrics_url(conn_or_endpoint, atom2)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="metrics_url/3">
-    <span class="signature"><strong>metrics_url(conn_or_endpoint, atom2, params)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#metrics_url/3" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="metrics_url/3">
+    <a href="#metrics_url/3" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">metrics_url(conn_or_endpoint, atom2, params)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L-1" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="path/2">
-    <span class="signature"><strong>path(conn, path)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#path/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="path/2">
+    <a href="#path/2" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">path(data, path)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     <p>Generates the path information including any necessary prefix.</p>
 
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="static_path/2">
-    <span class="signature"><strong>static_path(conn, path)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#static_path/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="static_path/2">
+    <a href="#static_path/2" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">static_path(conn, path)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     <p>Generates path to a static asset given its file path.</p>
-<p>It expects either a conn or an endpoint.</p>
 
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="static_url/2">
-    <span class="signature"><strong>static_url(conn, path)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#static_url/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="static_url/2">
+    <a href="#static_url/2" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">static_url(conn, path)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     <p>Generates url to a static asset given its file path.</p>
-<p>It expects either a conn or an endpoint.</p>
 
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view_source">Source</a>
-  
-</section>
-<section class="detail">
-  <div class="detail_header" id="url/1">
-    <span class="signature"><strong>url(conn)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#url/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
+</div>
+<div class="detail">
+  <div class="detail-header" id="url/1">
+    <a href="#url/1" class="detail-link" title="Link to this function">
+      <i class="fa fa-link"></i>
+    </a>
+    <span class="signature">url(data)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view-source" rel="help" title="View Source">
+       <i class="fa fa-code"></i>
+     </a>
+    
   </div>
   
   <section class="docstring">
     <p>Generates the connection/endpoint base URL without any path information.</p>
 
   </section>
-  
-    <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/router.ex#L0" class="view_source">Source</a>
-  
-</section>
+</div>
 
         </section>
       
@@ -259,6 +294,20 @@
       
 
       
-    </section>
+        <footer class="footer">
+      <p>
+        Designed by
+        <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>
+        and the
+        <a href="https://github.com/elixir-lang/ex_doc/graphs/contributors" target="_blank">ExDoc team</a>.
+        Built using
+        <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.9.0).
+      </p>
+    </footer>
+  </div>
+</section>
+</div>
+    <script src="dist/app.js"></script>
   </body>
 </html>
+
