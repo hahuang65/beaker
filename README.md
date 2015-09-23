@@ -98,7 +98,7 @@ iex> Beaker.Gauge.time("foo", fn -> 2 + 2 end)
 Beaker.Gauge.time("foo") do
   2 + 2
 end
-6
+4
 ```
 
 You can get all of your gauges in the form of a map if you need:
