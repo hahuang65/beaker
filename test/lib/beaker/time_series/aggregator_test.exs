@@ -52,4 +52,44 @@ defmodule Beaker.TimeSeries.AggregatorTest do
     Aggregator.aggregate("nonexistent_time_series", opts)
     assert Aggregated.get("nonexistent_time_series") == nil
   end
+
+  test "Aggregation is under 5ms for 600 points of data within a minute" do
+    stream = Stream.repeatedly(fn ->
+      :random.seed(:os.timestamp)
+      :random.uniform * :random.uniform * 100
+    end)
+
+    Stream.take(stream, 600)
+    |> Stream.each(fn(num) ->
+      Beaker.TimeSeries.sample("performance1", num)
+    end)
+    |> Enum.to_list
+
+    {time, _value} = :timer.tc(fn -> Aggregator.aggregate("performance1", before_time: Beaker.Time.now, after_time: 0) end)
+    assert time < 5000
+  end
+
+  test "Aggregation is under 20ms for 600 points of data within a minute for 10 time series" do
+    stream = Stream.repeatedly(fn ->
+      :random.seed(:os.timestamp)
+      :random.uniform * :random.uniform * 100
+    end)
+
+    Stream.take(stream, 600)
+    |> Stream.each(fn(num) ->
+      ~w(1 2 3 4 5 6 7 8 9 10) |> Enum.each(fn(count) ->
+        Beaker.TimeSeries.sample("performance2" <> count, num)
+      end)
+    end)
+    |> Enum.to_list
+
+    {time, _value} = :timer.tc(fn ->
+      Beaker.TimeSeries.all |> HashDict.keys
+      |> Enum.each(fn(key) ->
+        Aggregator.aggregate(key, before_time: Beaker.Time.now, after_time: 0)
+      end)
+    end)
+    assert time < 20000
+    assert Aggregated.all |> Enum.filter(fn({name, _data}) -> String.contains?(name, "performance2") end) |> Enum.count == 10
+  end
 end
