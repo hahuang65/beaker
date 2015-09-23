@@ -1,0 +1,7 @@
+<li class="widget">
+  <% color = Beaker.Web.Helper.random_color %>
+  <div class="gauge <%= color %>">
+    <p class="value"><%= @value %></p>
+    <p class="name"><%= @key %></p>
+  </div>
+</li>
