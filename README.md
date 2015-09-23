@@ -10,6 +10,8 @@ Note: Beaker metrics are currently ephemeral and are scoped to the app (or more 
 
 For more information, see the [online documentation](http://hexdocs.pm/beaker).
 
+**Upcoming plans for v1.1**: Integrate Phoenix and Ecto stats to easily visualize last 2 hours of performance!
+
 ## Usage
 
 To include Beaker in your application, add it to your `mix.exs` file:
@@ -60,7 +62,7 @@ forward "/beaker", Beaker.Web
 
 This will add a page at `/beaker` with all your metrics visualized on the page.
 Gauges and Counters will display a box with their name and value.
-Time Series will display a chart with the last 30 minutes worth of aggregated data.
+Time Series will display a chart with the last 120 minutes worth of aggregated data.
 
 ## Metrics
 
