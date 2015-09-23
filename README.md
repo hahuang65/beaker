@@ -32,6 +32,10 @@ end
 ## Integration with Phoenix
 Beaker provides a way to visualize your metrics through [Phoenix](http://www.phoenixframework.org).
 
+It'll end up looking something like:
+
+![Beaker](http://hwrd.me/resources/images/beaker.png "Beaker")
+
 1) Add `beaker` and `phoenix` to the dependencies in your Mixfile:
 ```elixir
 defp deps do
@@ -264,15 +268,35 @@ iex> Beaker.TimeSeries.clear("foo")
 :ok
 ```
 
-_Aggregation_
+### Time Series Aggregation
 
-Time series will be aggregated once every 60 seconds, for the last full minute (if aggregation is run at 01:22:32, it will run for the minute of 01:21 to 01:22). Currently it will just average out the values for that minute and store it in `Beaker.TimeSeries.Aggregated`. Note that this is not a destructive operation; all time series data will remain intact with aggregation. The aggregated data is simply stored separately from raw time series data.
+Time series will be aggregated once every 60 seconds, for the last full minute (e.g. if aggregation is run at 01:22:32, it will run for the minute of 01:21 to 01:22).
 
-You can see the aggregated time series by using `Beaker.TimeSeries.Aggregated.get/1` and `Beaker.TimeSeries.Aggregated.all/0`. They work the same way their `Beaker.TimeSeries` counterparts work.
+For each minute, aggregation will calculate the minimum, maximum, and average values as well as the number of values for that minute and store it in `Beaker.TimeSeries.Aggregated`.
 
-In addition, you can check the last time that aggregation was successfully run using `Beaker.TimeSeries.Aggregator.last_aggregated_at`.
+*Note*: Aggregation is not destructive. Raw data will remain in `Beaker.TimeSeries`, and the calculated values from aggregation will be stored in `Beaker.TimeSeries.Aggregated`.
 
-In the future, the aggregation interval will be configurable for more granularity, and aggregation will provide `min`, `max`, and `count` in addition to `average`.
+To inspect and use aggregated data, the `Beaker.TimeSeries.Aggregated.get/1` and `Beaker.TimeSeries.Aggregated.all/0` functions are available and function exactly as their `Beaker.TimeSeries` counterparts. However, please be aware that although aggregated data is also returned as a list of `{time, value}` pairs, `value` is actually a tuple that looks like `{average, minimum, maximum, count}` for it's paired minute.
+
+```elixir
+iex> Beaker.TimeSeries.Aggregated.get("foo")
+[{1434738060000000, {48.666666666666664, 30, 66, 3}}] # 48.666 is the average, 30 is the minimum, 66 is the maximum, and 3 is the count of entries for the minute of 1434738060000000 in epoch time
+```
+
+To check the last time aggregation was successfully run:
+
+```elixir
+iex> Beaker.TimeSeries.Aggregator.last_aggregated_at
+1442989860000000 # Epoch time
+```
+
+*Performance*: Currently, the aggregation algorithm is not very optimized. I did some basic performance testing on a 2014 MacBook Pro with 16GB of RAM and a 3 Ghz i7 processor.
+
+600 data points within a minute (~10 samples per second) will take each aggregation roughly between 3 to 6 milliseconds.
+
+600 data points within a minute for 10 time series (6000 data points total) will take each aggregation roughly between 5 and 15 milliseconds.
+
+I hope to improve this algorithm to be faster in the next few releases.
 
 ## Important Links
 
