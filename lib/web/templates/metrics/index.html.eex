@@ -18,3 +18,9 @@
     <%= render "_time_series.html", key: key, data: data %>
   <% end %>
 </ul>
+
+<script>
+  setInterval(function() {
+    window.location.reload();
+  }, <%= Beaker.Web.Helper.autorefresh_interval %>);
+</script>

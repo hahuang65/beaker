@@ -3,12 +3,56 @@ defmodule Beaker.Web.Helper do
 
   @colors ~w(yellow orange red magenta violet blue cyan green)
 
+  def autorefresh_interval, do: autorefresh_interval(Mix.env)
+  def autorefresh_interval(:dev), do: 5000
+  def autorefresh_interval(:prod), do: 30000
+  def autorefresh_interval(:test), do: nil
+
   def random_color do
     :random.seed(:os.timestamp)
 
     @colors
     |> Enum.shuffle
     |> hd
+  end
+
+  def ignore_time_series_count?(key) do
+    ["Phoenix:ResponseTime", "Ecto:QueryTime", "Ecto:QueueTime"]
+    |> Enum.member?(key)
+  end
+
+  def include_y_axis_title?(key) do
+    ["Phoenix:ResponseTime", "Ecto:QueryTime", "Ecto:QueueTime"]
+    |> Enum.member?(key)
+  end
+
+  def y_axis_title(key) do
+    if include_y_axis_title?(key) do
+      """
+      title: {
+        text: "Time (ms)"
+      }
+      """
+    else
+      """
+      title: {
+        text: null
+      }
+      """
+    end
+  end
+
+  def time_series_count(key, series) do
+    if ignore_time_series_count?(key) do
+      ""
+    else
+      """
+      {
+        name: "Count",
+        data: #{series.counts}
+      },
+      """
+    end
   end
 
   def structure_time_series(data) do

@@ -18,9 +18,7 @@
         }
       },
       yAxis: {
-        title: {
-          text: null
-        }
+        <%= Beaker.Web.Helper.y_axis_title(@key) |> raw %>
       },
       plotOptions: {
         series: {
@@ -34,6 +32,7 @@
           name: "Average",
           data: <%= series.averages %>
         },
+        <%= Beaker.Web.Helper.time_series_count(@key, series) |> raw %>
         {
           name: "Minimum",
           data: <%= series.minimums %>
@@ -41,10 +40,6 @@
         {
           name: "Maximum",
           data: <%= series.maximums %>
-        },
-        {
-          name: "Count",
-          data: <%= series.counts %>
         }
       ]
     });

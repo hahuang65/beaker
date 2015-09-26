@@ -37,7 +37,7 @@ body {
 .counter .value, .gauge .value {
   padding: 0;
   margin: 0;
-  font-size: 120px;
+  font-size: 100px;
   text-align: center;
 }
 
