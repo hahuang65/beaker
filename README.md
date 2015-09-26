@@ -64,6 +64,25 @@ This will add a page at `/beaker` with all your metrics visualized on the page.
 Gauges and Counters will display a box with their name and value.
 Time Series will display a chart with the last 120 minutes worth of aggregated data.
 
+## Integration with Ecto
+
+Beaker provides a simple way to integrate with Ecto to track the performance of your queries.
+
+To use it, in your Repo, just:
+
+```elixir
+defmodule MyApp.Repo do
+  use Ecto.Repo, otp_app: :my_app
+  use Beaker.Integrations.Ecto
+end
+```
+
+Doing so will keep track of your queries times, queue times, and query counts for all your Ecto queries automatically.
+These will show up in Beaker's web interface.
+
+Currently, these are not in-depth to split apart different types of queries, but provides a good overview to see how your overall Ecto performance is.
+Hopefully in-depth tracking of queries can be implemented in a future release.
+
 ## Metrics
 
 Beaker provides a variety of different metric types:
