@@ -64,6 +64,24 @@ This will add a page at `/beaker` with all your metrics visualized on the page.
 Gauges and Counters will display a box with their name and value.
 Time Series will display a chart with the last 120 minutes worth of aggregated data.
 
+If you'd like to track your Phoenix performance, you can add that to your Phoenix Endpoint:
+
+```elixir
+defmodule MyApp.Endpoint do
+  use Phoenix.Endpoint, otp_app: :my_app
+
+  plug Beaker.Integrations.Phoenix
+
+  plug ...
+end
+```
+
+This will keep track ALL requests (including requests for static assets) passing through Phoenix, and keep track of their response time and keep a counter of how many requests were made.
+**NOTE**: It is **EXTREMELY** important that this is plugged before anything else in order to get the most accurate response timings.
+
+Currently, these are not in-depth to split apart requests going to specific controllers, but provides a good overview to see how your overall Phoenix performance is.
+Hopefully in-depth tracking of requests can be implemented in a future release. Also, it'll be nice to be able to provide an option to ignore serving of static assets.
+
 ## Integration with Ecto
 
 Beaker provides a simple way to integrate with Ecto to track the performance of your queries.
