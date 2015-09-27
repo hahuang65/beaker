@@ -34,7 +34,7 @@ Beaker provides a way to visualize your metrics through [Phoenix](http://www.pho
 
 It'll end up looking something like:
 
-[![Beaker](http://hwrd.me/resources/images/beaker.png)](http://hwrd.me/resources/images/beaker.png)
+[![Beaker](http://hwrd.me/resources/images/beaker_sample.png)](http://hwrd.me/resources/images/beaker_sample.png)
 
 1) Add `beaker` and `phoenix` to the dependencies in your Mixfile:
 ```elixir
