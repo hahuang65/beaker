@@ -10,8 +10,6 @@ Note: Beaker metrics are currently ephemeral and are scoped to the app (or more 
 
 For more information, see the [online documentation](http://hexdocs.pm/beaker).
 
-**Upcoming plans for v1.1**: Integrate Phoenix and Ecto stats to easily visualize last 2 hours of performance!
-
 ## Usage
 
 To include Beaker in your application, add it to your `mix.exs` file:
@@ -19,7 +17,7 @@ To include Beaker in your application, add it to your `mix.exs` file:
 ```elixir
 defp deps do
   [
-    {:beaker, ">= 1.0.0"}
+    {:beaker, ">= 1.1.0"}
   ]
 ```
 
@@ -36,14 +34,14 @@ Beaker provides a way to visualize your metrics through [Phoenix](http://www.pho
 
 It'll end up looking something like:
 
-![Beaker](http://hwrd.me/resources/images/beaker.png "Beaker")
+[![Beaker](http://hwrd.me/resources/images/beaker.png)](http://hwrd.me/resources/images/beaker.png)
 
 1) Add `beaker` and `phoenix` to the dependencies in your Mixfile:
 ```elixir
 defp deps do
   [
-    {:phoenix, ">= 0.14"},
-    {:phoenix_html, ">= 1.2"}
+    {:phoenix, ">= 1.0"},
+    {:phoenix_html, ">= 2.2"}
   ]
 end
 ```
