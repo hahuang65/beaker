@@ -11,6 +11,8 @@ if Code.ensure_loaded?(Ecto.Repo) do
 
           super(entry)
         end
+
+        defoverridable [log: 1]
       end
     end
   end
