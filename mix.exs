@@ -4,7 +4,7 @@ defmodule Beaker.Mixfile do
   def project do
     [
       app: :beaker,
-      version: "1.1.1",
+      version: "1.1.2",
       elixir: "~> 1.0",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: compilers(Mix.env),
@@ -51,9 +51,9 @@ defmodule Beaker.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 1.0", optional: true},
-      {:phoenix_ecto, "~> 1.2", only: :test},
-      {:phoenix_html, "~> 2.2", only: :test},
+      {:phoenix, "~> 1.1", optional: true},
+      {:phoenix_ecto, "~> 2.0", only: :test},
+      {:phoenix_html, "~> 2.3", only: :test},
       {:earmark, "~> 0.1", only: :docs},
       {:ex_doc, "~> 0.9", only: :docs},
       {:inch_ex, only: :docs}
