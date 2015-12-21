@@ -17,7 +17,7 @@ To include Beaker in your application, add it to your `mix.exs` file:
 ```elixir
 defp deps do
   [
-    {:beaker, ">= 1.1.1"}
+    {:beaker, ">= 1.1.2"}
   ]
 ```
 
@@ -40,8 +40,8 @@ It'll end up looking something like:
 ```elixir
 defp deps do
   [
-    {:phoenix, ">= 1.0"},
-    {:phoenix_html, ">= 2.2"}
+    {:phoenix, ">= 1.1"},
+    {:phoenix_html, ">= 2.3"}
   ]
 end
 ```

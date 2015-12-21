@@ -55,7 +55,7 @@ defmodule Beaker.Mixfile do
       {:phoenix_ecto, "~> 2.0", only: :test},
       {:phoenix_html, "~> 2.3", only: :test},
       {:earmark, "~> 0.1", only: :docs},
-      {:ex_doc, "~> 0.9", only: :docs},
+      {:ex_doc, "~> 0.11", only: :docs},
       {:inch_ex, only: :docs}
     ]
   end
@@ -70,7 +70,7 @@ defmodule Beaker.Mixfile do
 
   defp package do
     [
-      contributors: ["Howard Huang"],
+      maintainers: ["Howard Huang"],
       links: %{
         "GitHub" => "http://github.com/hahuang65/beaker",
         "Docs" => "http://hexdocs.pm/beaker/"
