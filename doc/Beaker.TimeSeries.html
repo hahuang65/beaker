@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.2">
-    <title>Beaker.TimeSeries – beaker v1.1.3</title>
-    <link rel="stylesheet" href="dist/app-feafe9a25b.css" />
+    <meta name="generator" content="ExDoc v0.11.3">
+    <title>Beaker.TimeSeries – beaker v1.1.4</title>
+    <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
   <body data-type="modules">
@@ -27,7 +27,7 @@
         beaker
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.1.3
+        v1.1.4
       </h2>
     </div>
     
@@ -59,7 +59,7 @@
 
 
       <h1>
-        <small class="visible-xs">beaker v1.1.3</small>
+        <small class="visible-xs">beaker v1.1.4</small>
         Beaker.TimeSeries
         
         
@@ -106,7 +106,7 @@
     <a href="#all/0">all()</a>
   </div>
   
-    <div class="summary-synopsis"><p>Retrieves all time series in the form of a HashDict</p>
+    <div class="summary-synopsis"><p>Retrieves all time series in the form of a Map</p>
 </div>
   
 </div>
@@ -197,7 +197,7 @@
   </div>
   
   <section class="docstring">
-    <p>Retrieves all time series in the form of a HashDict.</p>
+    <p>Retrieves all time series in the form of a Map.</p>
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.clear
 :ok
@@ -205,9 +205,9 @@ iex&gt; Beaker.TimeSeries.sample(&quot;all_series1&quot;, 10)
 :ok
 iex&gt; Beaker.TimeSeries.sample(&quot;all_series2&quot;, 20)
 :ok
-iex&gt; Beaker.TimeSeries.all |&gt; HashDict.keys
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys
 [&quot;all_series1&quot;, &quot;all_series2&quot;]</code></pre>
-<p>Returns <code class="inline">time_series</code> where time_series is a HashDict of all the time series currently existing.
+<p>Returns <code class="inline">time_series</code> where time_series is a Map of all the time series currently existing.
 Each time series is returned as a list of pairs. Each pair is a timestamp in epoch and the value recorded.
 Each list is guaranteed to be in reverse chronological ordering, that is, the latest sample will be the first in the list.</p>
 
@@ -268,15 +268,15 @@ true</code></pre>
 :ok
 iex&gt; Beaker.TimeSeries.sample(&quot;clear_series2&quot;, 20)
 :ok
-iex&gt; Beaker.TimeSeries.all |&gt; HashDict.keys |&gt; Enum.member?(&quot;clear_series1&quot;)
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series1&quot;)
 true
-iex&gt; Beaker.TimeSeries.all |&gt; HashDict.keys |&gt; Enum.member?(&quot;clear_series2&quot;)
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series2&quot;)
 true
 iex&gt; Beaker.TimeSeries.clear(&quot;clear_series1&quot;)
 :ok
-iex&gt; Beaker.TimeSeries.all |&gt; HashDict.keys |&gt; Enum.member?(&quot;clear_series1&quot;)
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series1&quot;)
 false
-iex&gt; Beaker.TimeSeries.all |&gt; HashDict.keys |&gt; Enum.member?(&quot;clear_series2&quot;)
+iex&gt; Beaker.TimeSeries.all |&gt; Map.keys |&gt; Enum.member?(&quot;clear_series2&quot;)
 true</code></pre>
 <p>Returns <code class="inline">:ok</code>.</p>
 
@@ -400,7 +400,7 @@ iex&gt; Beaker.TimeSeries.time &quot;time_time_series&quot;, do: :timer.sleep(50
       <p>
         <span class="line">
           Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.2),
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.3),
         </span>
         <span class="line">
           designed by
@@ -412,7 +412,7 @@ iex&gt; Beaker.TimeSeries.time &quot;time_time_series&quot;, do: :timer.sleep(50
   </div>
 </section>
 </div>
-  <script src="dist/app-1d1b741c5e.js"></script>
+  <script src="dist/app-6d2e071366.js"></script>
   </body>
 </html>
 
