@@ -167,7 +167,7 @@ defmodule Beaker.Gauge do
 
   @doc false
   def init(:ok) do
-    {:ok, HashDict.new}
+    {:ok, Map.new}
   end
 
   @doc false
@@ -177,21 +177,20 @@ defmodule Beaker.Gauge do
 
   @doc false
   def handle_call({:get, key}, _from, gauges) do
-    {:reply, HashDict.get(gauges, key), gauges}
+    {:reply, Map.get(gauges, key), gauges}
   end
 
   @doc false
   def handle_cast(:clear, _gauges) do
-    {:noreply, HashDict.new}
+    {:noreply, Map.new}
   end
 
   @doc false
   def handle_cast({:clear, key}, gauges) do
-    {:noreply, HashDict.delete(gauges, key)}
+    {:noreply, Map.delete(gauges, key)}
   end
 
   @doc false
   def handle_cast({:set, key, value}, gauges) do
-    {:noreply, HashDict.put(gauges, key, value)}
-  end
+    {:noreply, Map.put(gauges, key, value)} end
 end

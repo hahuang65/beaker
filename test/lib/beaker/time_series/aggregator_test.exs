@@ -84,7 +84,7 @@ defmodule Beaker.TimeSeries.AggregatorTest do
     |> Enum.to_list
 
     {time, _value} = :timer.tc(fn ->
-      Beaker.TimeSeries.all |> HashDict.keys
+      Beaker.TimeSeries.all |> Map.keys
       |> Enum.each(fn(key) ->
         Aggregator.aggregate(key, before_time: Beaker.Time.now, after_time: 0)
       end)

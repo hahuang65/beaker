@@ -10,7 +10,7 @@ defmodule Beaker.TimeSeries.Aggregator do
   """
 
   ## Client API
-  
+
   @doc false
   def start_link do
     GenServer.start_link(__MODULE__, :ok, name: @name)
@@ -97,7 +97,7 @@ defmodule Beaker.TimeSeries.Aggregator do
 
   @doc false
   def handle_info(:schedule_aggregation, last_aggregated_at) do
-    Beaker.TimeSeries.all |> HashDict.keys
+    Beaker.TimeSeries.all |> Map.keys
     |> Enum.each(fn(key) ->
       aggregate(key, before_time: Beaker.Time.last_full_minute, after_time: last_aggregated_at)
     end)

@@ -222,7 +222,7 @@ defmodule Beaker.Counter do
 
   @doc false
   def init(:ok) do
-    {:ok, HashDict.new}
+    {:ok, Map.new}
   end
 
   @doc false
@@ -232,25 +232,25 @@ defmodule Beaker.Counter do
 
   @doc false
   def handle_call({:get, key}, _from, counters) do
-    {:reply, HashDict.get(counters, key), counters}
+    {:reply, Map.get(counters, key), counters}
   end
 
   @doc false
   def handle_cast(:clear, _counters) do
-    {:noreply, HashDict.new}
+    {:noreply, Map.new}
   end
 
   def handle_cast({:clear, key}, counters) do
-    {:noreply, HashDict.delete(counters, key)}
+    {:noreply, Map.delete(counters, key)}
   end
 
   @doc false
   def handle_cast({:set, key, value}, counters) do
-    {:noreply, HashDict.put(counters, key, value)}
+    {:noreply, Map.put(counters, key, value)}
   end
 
   @doc false
   def handle_cast({:incr, key, amount}, counters) do
-    {:noreply, HashDict.update(counters, key, amount, fn(count) -> count + amount end)}
+    {:noreply, Map.update(counters, key, amount, fn(count) -> count + amount end)}
   end
 end

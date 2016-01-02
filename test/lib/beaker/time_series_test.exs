@@ -4,12 +4,12 @@ defmodule Beaker.TimeSeriesTest do
 
   alias Beaker.TimeSeries
 
-  test "TimeSeries.all returns an empty HashDict if there are no time series" do
+  test "TimeSeries.all returns an empty Map if there are no time series" do
     TimeSeries.clear
-    assert TimeSeries.all == HashDict.new
+    assert TimeSeries.all == Map.new
   end
 
-  test "TimeSeries.all returns a HashDict with all time series and values" do
+  test "TimeSeries.all returns a Map with all time series and values" do
     TimeSeries.clear
     TimeSeries.sample("all1", 20)
     TimeSeries.sample("all1", 55)
@@ -35,11 +35,11 @@ defmodule Beaker.TimeSeriesTest do
     TimeSeries.sample("clear1", 55)
     TimeSeries.sample("clear2", 10)
     TimeSeries.sample("clear2", 45)
-    assert Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear1")
-    assert Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear2")
+    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear1")
+    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear2")
     :ok = TimeSeries.clear("clear1")
-    refute Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear1")
-    assert Beaker.TimeSeries.all |> HashDict.keys |> Enum.member?("clear2")
+    refute Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear1")
+    assert Beaker.TimeSeries.all |> Map.keys |> Enum.member?("clear2")
   end
 
   test "TimeSeries.sample will return :ok and record the value for the time series at that point in time as well as keep it in chronologically descending order" do

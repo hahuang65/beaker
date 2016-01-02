@@ -39,7 +39,7 @@ defmodule Beaker.TimeSeries.Aggregated do
   end
 
   @doc """
-  Retrieves all aggregated time series in the form of a HashDict.
+  Retrieves all aggregated time series in the form of a Map.
 
   ## Examples
 
@@ -52,7 +52,7 @@ defmodule Beaker.TimeSeries.Aggregated do
     iex> Beaker.TimeSeries.Aggregated.all |> Enum.into(%{})
     %{"all_series1" => [{1, 2}], "all_series2" => [{3, 4}]}
 
-  Returns `time_series` where time_series is a HashDict of all the aggregated time series currently existing.
+  Returns `time_series` where time_series is a Map of all the aggregated time series currently existing.
   Each time series is returned as a list of pairs. Each pair is a timestamp in epoch (aggregated to the nearest aggregation interval) and the value recorded.
   Each list is guaranteed to be in reverse chronological ordering, that is, the latest aggregated interval will be the first in the list.
   """
@@ -79,12 +79,12 @@ defmodule Beaker.TimeSeries.Aggregated do
 
   @doc false
   def init(:ok) do
-    {:ok, HashDict.new}
+    {:ok, Map.new}
   end
 
   @doc false
   def handle_call({:get, key}, _from, time_series) do
-    {:reply, HashDict.get(time_series, key), time_series}
+    {:reply, Map.get(time_series, key), time_series}
   end
 
   @doc false
@@ -94,16 +94,16 @@ defmodule Beaker.TimeSeries.Aggregated do
 
   @doc false
   def handle_cast(:clear, _time_series) do
-    {:noreply, HashDict.new}
+    {:noreply, Map.new}
   end
 
   @doc false
   def handle_cast({:clear, key}, time_series) do
-    {:noreply, HashDict.delete(time_series, key)}
+    {:noreply, Map.delete(time_series, key)}
   end
 
   @doc false
   def handle_cast({:insert, key, entry = {_time, _value}}, time_series) do
-    {:noreply, HashDict.update(time_series, key, [entry], fn(list) -> [entry | list] end)}
+    {:noreply, Map.update(time_series, key, [entry], fn(list) -> [entry | list] end)}
   end
 end

@@ -30,19 +30,19 @@ defmodule Beaker.TimeSeries.AggregatedTest do
     Aggregated.insert("clear2", {5, 6})
     Aggregated.insert("clear2", {7, 8})
 
-    assert Aggregated.all |> HashDict.keys |> Enum.member?("clear1")
-    assert Aggregated.all |> HashDict.keys |> Enum.member?("clear2")
+    assert Aggregated.all |> Map.keys |> Enum.member?("clear1")
+    assert Aggregated.all |> Map.keys |> Enum.member?("clear2")
     :ok = Aggregated.clear("clear1")
-    refute Aggregated.all |> HashDict.keys |> Enum.member?("clear1")
-    assert Aggregated.all |> HashDict.keys |> Enum.member?("clear2")
+    refute Aggregated.all |> Map.keys |> Enum.member?("clear1")
+    assert Aggregated.all |> Map.keys |> Enum.member?("clear2")
   end
 
-  test "Aggregated.all returns an empty HashDict if there are no aggregated time series" do
+  test "Aggregated.all returns an empty Map if there are no aggregated time series" do
     Aggregated.clear
-    assert Aggregated.all == HashDict.new
+    assert Aggregated.all == Map.new
   end
 
-  test "Aggregated.all returns a HashDict with all aggregated time series and values" do
+  test "Aggregated.all returns a Map with all aggregated time series and values" do
     Aggregated.insert("all1", {1, 2})
     Aggregated.insert("all1", {3, 4})
     Aggregated.insert("all2", {5, 6})
