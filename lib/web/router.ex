@@ -53,6 +53,8 @@ if Code.ensure_loaded?(Phoenix.Router) do
       pipe_through :api
 
       get "/counters", MetricsApiController, :counters
+      get "/gauges", MetricsApiController, :gauges
+      get "/time_series", MetricsApiController, :time_series
     end
   end
 end
