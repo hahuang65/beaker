@@ -4,13 +4,17 @@ defmodule Beaker.CounterTest do
 
   alias Beaker.Counter
 
+  setup do
+    on_exit fn ->
+      Counter.clear
+    end
+  end
+
   test "Counter.all returns an empty map if there are no counters" do
-    Counter.clear
     assert Counter.all == %{}
   end
 
   test "Counter.all returns a map with all counters and values" do
-    Counter.clear
     Counter.set("all1", 5)
     Counter.set("all2", 2)
     assert Counter.all == %{"all1" => 5, "all2" => 2}
