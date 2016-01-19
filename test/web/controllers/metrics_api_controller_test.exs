@@ -3,21 +3,26 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
   use TestApp.ConnCase
   import Plug.Conn
 
+  alias Beaker.Gauge
+  alias Beaker.Counter
+  alias Beaker.TimeSeries
+  alias Beaker.TimeSeries.Aggregated
+
   setup do
 
-    Beaker.Counter.clear
-    Beaker.Gauge.clear
-    Beaker.TimeSeries.clear
-    
+    Counter.clear
+    Gauge.clear
+    TimeSeries.clear
+
     on_exit fn ->
-      Beaker.Counter.clear
-      Beaker.Gauge.clear
-      Beaker.TimeSeries.clear
+      Counter.clear
+      Gauge.clear
+      TimeSeries.clear
     end
   end
 
   test "GET /api/counters" do
-    Beaker.Counter.set("api", 1)
+    Counter.set("api", 1)
 
     response = get_response("/api/counters")
     |> doc
@@ -30,7 +35,7 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
   end
 
   test "GET /api/gauges" do
-    Beaker.Gauge.set("api_gauge", 100)
+    Gauge.set("api_gauge", 100)
 
     response = get_response("/api/gauges")
     |> doc
@@ -43,7 +48,7 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
   end
 
   test "GET /api/time_series" do
-    Beaker.TimeSeries.sample("api_time_series", 42)
+    TimeSeries.sample("api_time_series", 42)
 
     response = get_response("/api/time_series")
     |> doc
@@ -57,5 +62,4 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
     assert is_integer(time)
     assert is_integer(value)
   end
-
 end
