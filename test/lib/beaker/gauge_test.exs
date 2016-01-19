@@ -4,13 +4,17 @@ defmodule Beaker.GaugeTest do
 
   alias Beaker.Gauge
 
+  setup do
+    on_exit fn ->
+      Gauge.clear
+    end
+  end
+
   test "Gauge.all returns an empty map if there are no gauges" do
-    Gauge.clear
     assert Gauge.all == %{}
   end
 
   test "Gauge.all returns a map with all gauges and values" do
-    Gauge.clear
     Gauge.set("all1", 5)
     Gauge.set("all2", 2)
     assert Gauge.all == %{"all1" => 5, "all2" => 2}

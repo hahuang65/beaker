@@ -4,13 +4,17 @@ defmodule Beaker.TimeSeriesTest do
 
   alias Beaker.TimeSeries
 
+  setup do
+    on_exit fn ->
+      Beaker.TimeSeries.clear
+    end
+  end
+
   test "TimeSeries.all returns an empty Map if there are no time series" do
-    TimeSeries.clear
     assert TimeSeries.all == Map.new
   end
 
   test "TimeSeries.all returns a Map with all time series and values" do
-    TimeSeries.clear
     TimeSeries.sample("all1", 20)
     TimeSeries.sample("all1", 55)
     TimeSeries.sample("all2", 10)
@@ -81,8 +85,6 @@ defmodule Beaker.TimeSeriesTest do
   end
 
   test "TimeSeries.time/2 will prepend to the TimeSeries and not overwrite it" do
-    TimeSeries.clear
-
     key = "time_append"
     TimeSeries.sample(key, 50)
 
