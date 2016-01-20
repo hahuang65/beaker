@@ -2,8 +2,7 @@ defmodule Beaker.Time do
   @moduledoc false
 
   def now do
-    {mega, sec, micro} = :os.timestamp()
-    (mega * 1000000 + sec) * 1000000 + micro
+    :os.system_time(:micro_seconds)
   end
 
   def last_full_minute do
@@ -14,8 +13,7 @@ defmodule Beaker.Time do
   end
 
   def to_gmt(epoch_timestamp) do
-    epoch_timestamp
-    |> div(1000000)
+    :erlang.convert_time_unit(epoch_timestamp, :micro_seconds, :milli_seconds)
     |> :calendar.gregorian_seconds_to_datetime
   end
 end
