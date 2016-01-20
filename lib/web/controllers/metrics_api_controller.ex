@@ -31,7 +31,8 @@ if Code.ensure_loaded?(Phoenix.Controller) do
 
     defp format_time_series(series) do
       Enum.reduce(series, %{}, fn {key, value}, acc ->
-        Map.put(acc, key,  Enum.map(value, &tuples_to_map/1))
+        values = Enum.take(value, 120)
+        Map.put(acc, key,  Enum.map(values, &tuples_to_map/1))
       end)
     end
 

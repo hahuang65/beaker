@@ -1,10 +1,69 @@
 # API Documentation
 * [Beaker.MetricsApiController](#beakermetricsapicontroller)
+  * [aggregated](#beakermetricsapicontrolleraggregated)
   * [counters](#beakermetricsapicontrollercounters)
   * [gauges](#beakermetricsapicontrollergauges)
   * [time_series](#beakermetricsapicontrollertime_series)
 
 ## Beaker.MetricsApiController
+### Beaker.MetricsApiController.aggregated
+#### GET /api/aggregated
+##### Request
+* __Method:__ GET
+* __Path:__ /api/aggregated
+* __Request headers:__
+```
+accepts: application/json
+```
+* __Request body:__
+```json
+{
+  "aspect": "body_params"
+}
+```
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+```
+* __Response body:__
+```json
+{
+  "time_series3": [
+    {
+      "1453283280000000": {
+        "min": 30,
+        "max": 30,
+        "count": 1,
+        "average": 30.0
+      }
+    }
+  ],
+  "time_series2": [
+    {
+      "1453283280000000": {
+        "min": 20,
+        "max": 20,
+        "count": 1,
+        "average": 20.0
+      }
+    }
+  ],
+  "time_series1": [
+    {
+      "1453283280000000": {
+        "min": 10,
+        "max": 10,
+        "count": 1,
+        "average": 10.0
+      }
+    }
+  ]
+}
+```
+
 ### Beaker.MetricsApiController.counters
 #### GET /api/counters
 ##### Request
@@ -91,7 +150,7 @@ cache-control: max-age=0, private, must-revalidate
   "api_time_series": [
     {
       "value": 42,
-      "time": 1453213013291854
+      "time": 1453283280788430
     }
   ]
 }

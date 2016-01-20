@@ -24,9 +24,11 @@ defmodule Beaker.Formatters.Aggregate do
   end
 
   def get_values([]), do: []
+
   def get_values([head | tail]) do
     [tail | get_values(head)]
   end
+
   def get_values({time, {avg, min,  max, count}}) do
     Map.put(%{}, "#{time}", %{average: avg, min: min, max: max, count: count})
   end
