@@ -62,4 +62,24 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
     assert is_integer(time)
     assert is_integer(value)
   end
+
+  test "GET /api/aggregated" do
+    TimeSeries.Aggregated.clear
+    TimeSeries.sample("time_series1", 10)
+    TimeSeries.sample("time_series2", 20)
+    TimeSeries.sample("time_series3", 30)
+
+    TimeSeries.Aggregator.aggregate("time_series1", before_time: Beaker.Time.now + 5000, after_time: 0)
+    TimeSeries.Aggregator.aggregate("time_series2", before_time: Beaker.Time.now + 5000, after_time: 0)
+    TimeSeries.Aggregator.aggregate("time_series3", before_time: Beaker.Time.now + 5000, after_time: 0)
+
+    response = get_response("/api/aggregated")
+    |> doc
+
+    assert response.status == 200
+
+    decoded = Poison.decode!(response.resp_body)
+
+    # TODO test the decoded response    assert decoded == %{}
+  end
 end

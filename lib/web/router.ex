@@ -52,6 +52,7 @@ if Code.ensure_loaded?(Phoenix.Router) do
     scope "/api", Beaker do
       pipe_through :api
 
+      get "/aggregated", MetricsApiController, :aggregated
       get "/counters", MetricsApiController, :counters
       get "/gauges", MetricsApiController, :gauges
       get "/time_series", MetricsApiController, :time_series
