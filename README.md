@@ -338,6 +338,7 @@ I hope to improve this algorithm to be faster in the next few releases.
 ## Important Links
 
   * [Documentation](http://hexdocs.pm/beaker)
+  * [API Documentation](API_doc.md)
 
 ## Devloping
 
