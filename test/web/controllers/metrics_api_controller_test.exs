@@ -6,7 +6,6 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
   alias Beaker.Gauge
   alias Beaker.Counter
   alias Beaker.TimeSeries
-  alias Beaker.TimeSeries.Aggregated
 
   setup do
 
@@ -80,6 +79,6 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
 
     decoded = Poison.decode!(response.resp_body)
 
-    # TODO test the decoded response    assert decoded == %{}
+    assert is_list Map.get(decoded, "time_series1")
   end
 end

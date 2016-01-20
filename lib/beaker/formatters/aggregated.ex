@@ -11,12 +11,7 @@ defmodule Beaker.Formatters.Aggregate do
   #   ]
   #  }
 
-
-
-
   def to_map(data) do
-    keys = Map.keys(data)
-
     Enum.reduce(data, %{}, fn {key, value}, agg ->
       values = Enum.map(value, &get_values/1)
       Map.put(agg, key, values)
