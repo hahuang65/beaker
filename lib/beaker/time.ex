@@ -12,8 +12,13 @@ defmodule Beaker.Time do
     now - remainder
   end
 
+  def to_milliseconds(microseconds) do
+    :erlang.convert_time_unit(microseconds, :micro_seconds, :milli_seconds)
+  end
+
   def to_gmt(epoch_timestamp) do
-    :erlang.convert_time_unit(epoch_timestamp, :micro_seconds, :milli_seconds)
+    epoch_timestamp
+    |> to_milliseconds
     |> :calendar.gregorian_seconds_to_datetime
   end
 end
