@@ -338,3 +338,8 @@ I hope to improve this algorithm to be faster in the next few releases.
 ## Important Links
 
   * [Documentation](http://hexdocs.pm/beaker)
+  * [API Documentation](API_doc.md)
+
+## Devloping
+
+`DOC=1 mix test` will create a markdown file representing the request and response for the API.

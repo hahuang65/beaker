@@ -38,10 +38,24 @@ if Code.ensure_loaded?(Phoenix.Router) do
       plug :accepts, ~w(html)
     end
 
+    pipeline :api do
+      plug :accepts, ["json"]
+    end
+
+
     scope "/", Beaker do
       pipe_through :browser
 
       get "/", MetricsController, :index
+    end
+
+    scope "/api", Beaker do
+      pipe_through :api
+
+      get "/aggregated", MetricsApiController, :aggregated
+      get "/counters", MetricsApiController, :counters
+      get "/gauges", MetricsApiController, :gauges
+      get "/time_series", MetricsApiController, :time_series
     end
   end
 end
