@@ -37,7 +37,8 @@ if Code.ensure_loaded?(Phoenix.Controller) do
     end
 
     defp tuples_to_map({time, value}) do
-      %{time: time, value: value}
+      time_as_milliseconds = Beaker.Time.to_milliseconds(time)
+      %{time: time_as_milliseconds, value: value}
     end
 
   end
