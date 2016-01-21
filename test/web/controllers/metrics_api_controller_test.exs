@@ -30,7 +30,7 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
 
     decoded = Poison.decode!(response.resp_body)
 
-    assert decoded == %{"api" => 1}
+    assert decoded == [%{"measurement" => "api", "value" => 1}]
   end
 
   test "GET /api/gauges" do
