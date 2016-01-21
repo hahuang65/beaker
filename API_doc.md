@@ -33,32 +33,29 @@ cache-control: max-age=0, private, must-revalidate
 {
   "time_series3": [
     {
-      "1453283760000000": {
-        "min": 30,
-        "max": 30,
-        "count": 1,
-        "average": 30.0
-      }
+      "time": 1453354560000,
+      "min": 30,
+      "max": 30,
+      "count": 1,
+      "average": 30.0
     }
   ],
   "time_series2": [
     {
-      "1453283760000000": {
-        "min": 20,
-        "max": 20,
-        "count": 1,
-        "average": 20.0
-      }
+      "time": 1453354560000,
+      "min": 20,
+      "max": 20,
+      "count": 1,
+      "average": 20.0
     }
   ],
   "time_series1": [
     {
-      "1453283760000000": {
-        "min": 10,
-        "max": 10,
-        "count": 1,
-        "average": 10.0
-      }
+      "time": 1453354560000,
+      "min": 10,
+      "max": 10,
+      "count": 1,
+      "average": 10.0
     }
   ]
 }
@@ -150,7 +147,7 @@ cache-control: max-age=0, private, must-revalidate
   "api_time_series": [
     {
       "value": 42,
-      "time": 1453283818600353
+      "time": 1453354575827
     }
   ]
 }

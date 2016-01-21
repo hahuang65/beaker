@@ -32,11 +32,11 @@ defmodule Beaker.Formatters.AggregateTest do
 
     measurement = aggregation_series_1 |> hd
 
-    assert get_value(measurement) == %{average: 10.0, count: 1, max: 10, min: 10}
+    assert measurement.average == 10.0
+    assert measurement.count == 1
+    assert measurement.max == 10
+    assert measurement.min == 10
+    assert measurement.time != nil
   end
 
-  defp get_value(map) do
-    key = Map.keys(map) |> hd
-    Map.get(map, key)
-  end
 end
