@@ -4,6 +4,12 @@ defmodule Beaker.TimeSeries.AggregatedTest do
 
   alias Beaker.TimeSeries.Aggregated
 
+  setup do
+    on_exit fn ->
+      Aggregated.clear
+    end
+  end
+
   test "Aggregated.get(key) returns nil if key is not yet registered as an aggregated time series" do
     assert Aggregated.get("nonexistent") == nil
   end

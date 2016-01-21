@@ -4,6 +4,12 @@ defmodule Beaker.TimeSeries.AggregatorTest do
   alias Beaker.TimeSeries.Aggregator
   alias Beaker.TimeSeries.Aggregated
 
+  setup do
+    on_exit fn ->
+      Beaker.TimeSeries.clear
+    end
+  end
+
   test "Aggregator.aggregate(data, before:_time before, after:_time after) aggregates properly" do
     data = [{119000000, 4}, {63000000, 3}, {61000000, 2}, {30000000, 8}, {1000000, 6}]
     assert Aggregator.aggregate(data, before_time: Beaker.Time.now, after_time: 0) == [{0, {7.0, 6, 8, 2}}, {60000000, {3.0, 2, 4, 3}}]
