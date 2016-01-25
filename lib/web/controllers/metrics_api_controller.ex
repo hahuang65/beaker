@@ -5,13 +5,14 @@ if Code.ensure_loaded?(Phoenix.Controller) do
     def counters(conn, _params) do
       counters = Beaker.Counter.all
       |> Enum.map(fn {key, value} -> %{measurement: key, value: value} end)
-      
+
       conn
       |> json(counters)
     end
 
     def gauges(conn, _param) do
       gauges = Beaker.Gauge.all
+
       conn
       |> json(gauges)
     end
