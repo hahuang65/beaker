@@ -4,6 +4,8 @@ if Code.ensure_loaded?(Phoenix.Controller) do
 
     def counters(conn, _params) do
       counters = Beaker.Counter.all
+      |> Enum.map(fn {key, value} -> %{name: key, value: value} end)
+
       conn
       |> json(counters)
     end
@@ -37,7 +39,8 @@ if Code.ensure_loaded?(Phoenix.Controller) do
     end
 
     defp tuples_to_map({time, value}) do
-      %{time: time, value: value}
+      time_as_milliseconds = Beaker.Time.to_milliseconds(time)
+      %{time: time_as_milliseconds, value: value}
     end
 
   end

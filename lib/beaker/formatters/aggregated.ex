@@ -25,6 +25,7 @@ defmodule Beaker.Formatters.Aggregate do
   end
 
   def get_values({time, {avg, min,  max, count}}) do
-    Map.put(%{}, "#{time}", %{average: avg, min: min, max: max, count: count})
+    time_as_milliseconds = Beaker.Time.to_milliseconds(time)
+    %{time: time_as_milliseconds, average: avg, min: min, max: max, count: count}
   end
 end
