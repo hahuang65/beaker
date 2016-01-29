@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="beaker-frontend/config/environment" content="%7B%22modulePrefix%22%3A%22beaker-frontend%22%2C%22environment%22%3A%22production%22%2C%22baseURL%22%3A%22/%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22beaker-frontend%22%2C%22version%22%3A%220.0.0+0897d9b6%22%7D%2C%22exportApplicationGlobal%22%3Afalse%7D" />
 
-    <base href="">
-    <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/normalize.css") %>">
-    <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/foundation.min.css") %>">
-    <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/beaker.css") %>">
-    <script src="<%= Beaker.Router.static_path(@conn, "/js/highcharts.js") %>"></script>
+        <base href="/beaker">
+        <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/vendor.css") %>">
+        <link rel="stylesheet" href="<%= Beaker.Router.static_path(@conn, "/css/beaker-frontend.css") %>">
 
-    <title>Beaker</title>
-  </head>
+        <title>Beaker</title>
+    </head>
 
-  <body>
-    <main role="main">
-      <h1 id="header">Beaker</h1>
-      <%= render @view_module, @view_template, assigns %>
-    </main>
-  </body>
+    <body>
+        <main role="main">
+            <h1 id="header">Beaker</h1>
+            <%= render @view_module, @view_template, assigns %>
+        </main>
+
+
+
+    </body>
 </html>
