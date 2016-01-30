@@ -12,6 +12,7 @@ if Code.ensure_loaded?(Phoenix.Controller) do
 
     def gauges(conn, _param) do
       gauges = Beaker.Gauge.all
+
       conn
       |> json(gauges)
     end

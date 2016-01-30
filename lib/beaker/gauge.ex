@@ -132,6 +132,32 @@ defmodule Beaker.Gauge do
   end
 
   @doc """
+  Sets gauge with min max values
+
+  ## Parameters
+    * `key`: The name of the gauges to set the value for.
+    * `value`: The value to set for the gauge
+    * `min`: The lowest value for the gauge
+    * `max`: The highest value for the gauge
+    * `auto_update`: Update min max based on received values, defaults to `false`
+
+
+  ## Examples
+
+      iex> Beaker.Gauge.set("latency", 70, 0, 1000)
+      :ok
+      iex> Beaker.Gauge.get("latency")
+      %{name: "latency", value: 70, min: 0, max: 1000}
+
+
+   """
+
+  def set(key, value, min, max) do
+    GenServer.cast(@name, {:set, key, value, min, max})
+  end
+
+
+  @doc """
   Times the provided function and sets the duration to the gauge with the specified key.
 
   ## Parameters
@@ -192,5 +218,12 @@ defmodule Beaker.Gauge do
 
   @doc false
   def handle_cast({:set, key, value}, gauges) do
-    {:noreply, Map.put(gauges, key, value)} end
+    {:noreply, Map.put(gauges, key, value)}
+  end
+
+  @doc false
+
+  def handle_cast({:set, key, value, min, max}, gauges) do
+    {:noreply, Map.put(gauges, key, %{name: key, min: min, max: max, value: value})}
+  end
 end

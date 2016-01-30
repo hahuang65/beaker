@@ -79,4 +79,14 @@ defmodule Beaker.GaugeTest do
     assert Gauge.get(key) > 50000 # :timer.tc returns in microseconds
     assert value == :slept
   end
+
+  test "Gauges can have a min max property" do
+    key = "with_min_max"
+    value = 50
+    Gauge.set(key, value, 0, 100)
+    response = Gauge.get(key)
+
+    assert response.min == 0
+    assert response.max == 100
+  end
 end
