@@ -1,0 +1,60 @@
+@import url(https://fonts.googleapis.com/css?family=Jura);
+
+* {
+  font-family: 'Jura', san-serif;
+}
+
+body {
+  background-color: #000;
+}
+
+.beaker-logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+}
+
+.page-heading {
+  font-size: 3em;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.beaker-counter {
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+  border: 2px solid grey;
+  margin: 10px;
+}
+
+.beaker-chart {
+  margin: 10px;
+}
+
+.beaker-counter-heading {
+  padding: 5px;
+  font-size: 1.5em;
+}
+
+.beaker-counter-value {
+  padding: 5px;
+  font-size: 2.5em;
+}
+
+.beaker-counter-0 {
+  background: #559898;
+}
+
+.beaker-counter-1 {
+  background: #A45CA4;
+}
+
+.beaker-counter-2 {
+  background: #6DC27C;
+}

@@ -23,7 +23,7 @@ defmodule Beaker.Web do
 
   plug Plug.Static,
     at: "/", from: :beaker,
-    only: ~w(css js)
+    only: ~w(css js png)
 
   plug Beaker.Router
 end

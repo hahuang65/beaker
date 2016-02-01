@@ -1,26 +1,2 @@
-<h3 class="metric-type">Counters</h3>
-<ul class="large-block-grid-4">
-<%= for {key, value} <- @counters do %>
-  <%= render "_counter.html", key: key, value: value %>
-<% end %>
-</ul>
-
-<h3 class="metric-type">Gauges</h3>
-<ul class="large-block-grid-4">
-<%= for {key, value} <- @gauges do %>
-  <%= render "_gauge.html", key: key, value: value %>
-<% end %>
-</ul>
-
-<h3 class="metric-type">Time Series</h3>
-<ul class="large-block-grid-2">
-  <%= for {key, data} <- @time_series do %>
-    <%= render "_time_series.html", key: key, data: data %>
-  <% end %>
-</ul>
-
-<script>
-  setInterval(function() {
-    window.location.reload();
-  }, <%= Beaker.Web.Helper.autorefresh_interval %>);
-</script>
+<script src="<%= Beaker.Router.static_path(@conn, "/js/vendor.js") %>"></script>
+<script src="<%= Beaker.Router.static_path(@conn, "/js/beaker-frontend.js") %>"></script>
