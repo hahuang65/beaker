@@ -34,7 +34,7 @@ Beaker provides a way to visualize your metrics through [Phoenix](http://www.pho
 
 It'll end up looking something like:
 
-[![Beaker](http://hwrd.me/resources/images/beaker_sample.png)](http://hwrd.me/resources/images/beaker_sample.png)
+[![Beaker](/beaker_sample.png)](/beaker_sample.png)
 
 1) Add `beaker` and `phoenix` to the dependencies in your Mixfile:
 ```elixir
@@ -121,6 +121,16 @@ iex> Beaker.Gauge.set("foo", 50)
 
 iex> Beaker.Gauge.get("foo")
 50
+```
+
+You can also set a minimum and maximum value for the gauge which can be used by the frontend for displaying your data.
+
+```elixir
+iex> Beaker.Gauge.set("foo-min-max", 50, 1, 100)
+:ok
+
+iex> Beaker.Gauge.get("foo-min-max")
+%{max: 100, min: 1, name: "foo-min-max", value: 50}
 ```
 
 Sometimes you'll want to time something, and set that duration to a gauge. We provide a convenience for that.
