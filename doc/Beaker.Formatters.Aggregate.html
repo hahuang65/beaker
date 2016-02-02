@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.4">
-    <title>Beaker.TimeSeries.Aggregated – beaker v1.2.0</title>
+    <title>Beaker.Formatters.Aggregate – beaker v1.2.0</title>
     <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
@@ -60,21 +60,15 @@
 
       <h1>
         <small class="visible-xs">beaker v1.2.0</small>
-        Beaker.TimeSeries.Aggregated
+        Beaker.Formatters.Aggregate
         
         
-          <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series/aggregated.ex#L1" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/formatters/aggregated.ex#L1" title="View Source" class="view-source" rel="help">
             <i class="icon-code"></i>
           </a>
         
       </h1>
 
-      
-        <section id="moduledoc" class="docstring">
-          <p><a href="Beaker.TimeSeries.Aggregated.html#content"><code class="inline">Beaker.TimeSeries.Aggregated</code></a> is the datastore for aggregated time series data. It’s purposed mostly for internal use only.</p>
-<p>The only two functions that developers should use are <a href="#get/1"><code class="inline">get/1</code></a> and <a href="#all/0"><code class="inline">all/0</code></a> in order to get aggregated time series data out.</p>
-
-        </section>
       
 
       
@@ -94,20 +88,14 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#all/0">all()</a>
+    <a href="#get_values/1">get_values(arg1)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Retrieves all aggregated time series in the form of a Map</p>
-</div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get/1">get(key)</a>
+    <a href="#to_map/1">to_map(data)</a>
   </div>
-  
-    <div class="summary-synopsis"><p>Get the aggregated time series data for the given key</p>
-</div>
   
 </div>
 
@@ -131,65 +119,38 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="all/0">
+          <div class="detail" id="get_values/1">
   <div class="detail-header">
-    <a href="#all/0" class="detail-link" title="Link to this function">
+    <a href="#get_values/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">all()</span>
+    <span class="signature">get_values(arg1)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series/aggregated.ex#L59" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/formatters/aggregated.ex#L21" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
   </div>
   
   <section class="docstring">
-    <p>Retrieves all aggregated time series in the form of a Map.</p>
-<h2>Examples</h2>
-<p>  iex&gt; Beaker.TimeSeries.Aggregated.clear
-  :ok
-  iex&gt; Beaker.TimeSeries.Aggregated.insert(“all_series1”, {1, 2})
-  :ok
-  iex&gt; Beaker.TimeSeries.Aggregated.insert(“all_series2”, {3, 4})
-  :ok
-  iex&gt; Beaker.TimeSeries.Aggregated.all |&gt; Enum.into(%{})
-  %{“all_series1” =&gt; [{1, 2}], “all_series2” =&gt; [{3, 4}]}</p>
-<p>Returns <code class="inline">time_series</code> where time_series is a Map of all the aggregated time series currently existing.
-Each time series is returned as a list of pairs. Each pair is a timestamp in epoch (aggregated to the nearest aggregation interval) and the value recorded.
-Each list is guaranteed to be in reverse chronological ordering, that is, the latest aggregated interval will be the first in the list.</p>
-
+    
   </section>
 </div>
-<div class="detail" id="get/1">
+<div class="detail" id="to_map/1">
   <div class="detail-header">
-    <a href="#get/1" class="detail-link" title="Link to this function">
+    <a href="#to_map/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">get(key)</span>
+    <span class="signature">to_map(data)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series/aggregated.ex#L37" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/formatters/aggregated.ex#L14" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
   </div>
   
   <section class="docstring">
-    <p>Get the aggregated time series data for the given key.</p>
-<h2>Parameters</h2>
-<ul>
-<li><code class="inline">key</code>: The name of the aggregated time_series to retrieve.
-</li>
-</ul>
-<h2>Examples</h2>
-<p>  iex&gt; Beaker.TimeSeries.Aggregated.get(“get_series”)
-  nil
-  iex&gt; Beaker.TimeSeries.Aggregated.insert(“get_series”, {1, 2})
-  :ok
-  iex&gt; Beaker.TimeSeries.Aggregated.get(“get_series”)
-  [{1, 2}]</p>
-<p>Returns <code class="inline">time_series</code> where time_series is a list of the data entries aggregated for the given key.</p>
-
+    
   </section>
 </div>
 

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.3">
-    <title>Beaker.Gauge – beaker v1.1.4</title>
-    <link rel="stylesheet" href="dist/app-ddd9717ad9.css" />
+    <meta name="generator" content="ExDoc v0.11.4">
+    <title>Beaker.Gauge – beaker v1.2.0</title>
+    <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
   <body data-type="modules">
@@ -27,7 +27,7 @@
         beaker
       </h1>
       <h2 class="sidebar-projectVersion">
-        v1.1.4
+        v1.2.0
       </h2>
     </div>
     
@@ -59,7 +59,7 @@
 
 
       <h1>
-        <small class="visible-xs">beaker v1.1.4</small>
+        <small class="visible-xs">beaker v1.2.0</small>
         Beaker.Gauge
         
         
@@ -143,6 +143,15 @@
   </div>
   
     <div class="summary-synopsis"><p>Sets the gauge to the specified value</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#set/4">set(key, value, min, max)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Sets gauge with min max values</p>
 </div>
   
 </div>
@@ -340,6 +349,42 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
 
   </section>
 </div>
+<div class="detail" id="set/4">
+  <div class="detail-header">
+    <a href="#set/4" class="detail-link" title="Link to this function">
+      <i class="icon-link"></i>
+    </a>
+    <span class="signature">set(key, value, min, max)</span>
+      
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L155" class="view-source" rel="help" title="View Source">
+       <i class="icon-code"></i>
+     </a>
+    
+  </div>
+  
+  <section class="docstring">
+    <p>Sets gauge with min max values</p>
+<h2>Parameters</h2>
+<ul>
+<li><code class="inline">key</code>: The name of the gauges to set the value for.
+</li>
+<li><code class="inline">value</code>: The value to set for the gauge
+</li>
+<li><code class="inline">min</code>: The lowest value for the gauge
+</li>
+<li><code class="inline">max</code>: The highest value for the gauge
+</li>
+<li><code class="inline">auto_update</code>: Update min max based on received values, defaults to <code class="inline">false</code>
+</li>
+</ul>
+<h2>Examples</h2>
+<p>   iex&gt; Beaker.Gauge.set(“latency”, 70, 0, 1000)
+   :ok
+   iex&gt; Beaker.Gauge.get(“latency”)
+   %{name: “latency”, value: 70, min: 0, max: 1000}</p>
+
+  </section>
+</div>
 
         </section>
       
@@ -359,7 +404,7 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
     </a>
     <span class="signature">time(key, func)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L152" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L178" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -394,7 +439,7 @@ iex&gt; Beaker.Gauge.time &quot;time_gauge&quot;, do: 3 + 3
       <p>
         <span class="line">
           Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.3),
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.4),
         </span>
         <span class="line">
           designed by

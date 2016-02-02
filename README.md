@@ -36,6 +36,9 @@ It'll end up looking something like:
 
 [![Beaker](/beaker_sample.png)](/beaker_sample.png)
 
+The source code for this frontend can be found at [Beaker-Frontend](https://github.com/mfeckie/beaker-frontend)!
+The API Documentation which the frontend consumes can be found at [API Documentation](API_doc.md)
+
 1) Add `beaker` and `phoenix` to the dependencies in your Mixfile:
 ```elixir
 defp deps do
@@ -348,6 +351,7 @@ I hope to improve this algorithm to be faster in the next few releases.
 ## Important Links
 
   * [Documentation](http://hexdocs.pm/beaker)
+  * [Beaker Frontend Code](https://github.com/mfeckie/beaker-frontend)
   * [API Documentation](API_doc.md)
 
 ## Devloping

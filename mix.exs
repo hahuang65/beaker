@@ -4,7 +4,7 @@ defmodule Beaker.Mixfile do
   def project do
     [
       app: :beaker,
-      version: "1.1.4",
+      version: "1.2.0",
       elixir: "~> 1.2",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: compilers(Mix.env),
@@ -73,7 +73,7 @@ defmodule Beaker.Mixfile do
 
   defp package do
     [
-      maintainers: ["Howard Huang"],
+      maintainers: ["Howard Huang", "Martin Feckie"],
       links: %{
         "GitHub" => "http://github.com/hahuang65/beaker",
         "Docs" => "http://hexdocs.pm/beaker/"
