@@ -17,7 +17,8 @@ defmodule Beaker.GaugeTest do
   test "Gauge.all returns a map with all gauges and values" do
     Gauge.set("all1", 5)
     Gauge.set("all2", 2)
-    assert Gauge.all == %{"all1" => 5, "all2" => 2}
+    assert Gauge.all == %{"all1" => %{max: 100, min: 0, name: "all1", value: 5},
+                          "all2" => %{max: 100, min: 0, name: "all2", value: 2}}
   end
 
   test "Gauge.clear returns :ok and erases all gauges" do
@@ -44,22 +45,22 @@ defmodule Beaker.GaugeTest do
 
   test "Gauge.get(key) returns the stored value in the gauge" do
     Gauge.set("get", 50)
-    assert Gauge.get("get") == 50
+    assert Gauge.get("get") == %{max: 100, min: 0, name: "get", value: 50}
   end
 
   test "Gauge.set(key, value) sets the gauge to the value" do
     key = "set"
     assert Gauge.get(key) == nil
     Gauge.set(key, 10)
-    assert Gauge.get(key) == 10
+    assert Gauge.get(key) == %{max: 100, min: 0, name: "set", value: 10}
     Gauge.set(key, 2)
-    assert Gauge.get(key) == 2
+    assert Gauge.get(key) == %{max: 100, min: 0, name: "set", value: 2}
   end
 
   test "Gauge.set(key, value) accepts floats" do
     key = "set_float"
     Gauge.set(key, 3.14159)
-    assert Gauge.get(key) == 3.14159
+    assert Gauge.get(key) == %{max: 100, min: 0, name: "set_float", value: 3.14159}
   end
 
   test "Gauge.time(key, fn -> :timer.sleep(500); :slept end) should set the gauge of the key to > 500 and return the value :slept" do

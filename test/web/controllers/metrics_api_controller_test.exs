@@ -43,7 +43,8 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
 
     decoded = Poison.decode!(response.resp_body)
 
-    assert decoded == %{"api_gauge" => 100}
+    assert decoded == %{"api_gauge" => %{"max" => 100, "min" => 0, "name" => "api_gauge",
+                                         "value" => 100}}
   end
 
   test "GET /api/time_series" do

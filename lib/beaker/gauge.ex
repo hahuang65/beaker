@@ -32,7 +32,8 @@ defmodule Beaker.Gauge do
       iex> Beaker.Gauge.set("all_gauge2", 1)
       :ok
       iex> Beaker.Gauge.all
-      %{"all_gauge1" => 10, "all_gauge2" => 1}
+      %{"all_gauge1" => %{max: 100, min: 0, name: "all_gauge1", value: 10},
+      "all_gauge2" => %{max: 100, min: 0, name: "all_gauge2", value: 1}}
 
   Returns `gauges` where gauges is a map of all the gauges currently existing.
   """
@@ -53,7 +54,8 @@ defmodule Beaker.Gauge do
       iex> Beaker.Gauge.set("all_gauge2", 1)
       :ok
       iex> Beaker.Gauge.all
-      %{"all_gauge1" => 10, "all_gauge2" => 1}
+      %{"all_gauge1" => %{max: 100, min: 0, name: "all_gauge1", value: 10},
+      "all_gauge2" => %{max: 100, min: 0, name: "all_gauge2", value: 1}} 
       iex> Beaker.Gauge.clear
       :ok
       iex> Beaker.Gauge.all
@@ -80,11 +82,12 @@ defmodule Beaker.Gauge do
       iex> Beaker.Gauge.set("all_gauge2", 1)
       :ok
       iex> Beaker.Gauge.all
-      %{"all_gauge1" => 10, "all_gauge2" => 1}
+      %{"all_gauge1" => %{max: 100, min: 0, name: "all_gauge1", value: 10},
+      "all_gauge2" => %{max: 100, min: 0, name: "all_gauge2", value: 1}}
       iex> Beaker.Gauge.clear("all_gauge1")
       :ok
       iex> Beaker.Gauge.all
-      %{"all_gauge2" => 1}
+      %{"all_gauge2" => %{max: 100, min: 0, name: "all_gauge2", value: 1}}
 
   Returns `:ok`.
   """
@@ -103,7 +106,7 @@ defmodule Beaker.Gauge do
       iex> Beaker.Gauge.set("get_gauge", 50)
       :ok
       iex> Beaker.Gauge.get("get_gauge")
-      50
+      %{max: 100, min: 0, name: "get_gauge", value: 50}
 
   Returns `count` where count is an integer if the gauge exists, else `nil`.
   """
@@ -112,23 +115,15 @@ defmodule Beaker.Gauge do
   end
 
   @doc """
-  Sets the gauge to the specified value.
+  ** DEPRECATED **
 
-  ## Parameters
-    * `key`: The name of the gauge to set the value for.
-    * `value`: The value to set to the gauge.
+  It is now expected that you set a min and max value for a gauge, rather than just a value.
+  Please use set/4 instead.
 
-  ## Examples
-
-      iex> Beaker.Gauge.set("set_gauge", 3.14159)
-      :ok
-      iex> Beaker.Gauge.get("set_gauge")
-      3.14159
-
-  Returns `:ok`
   """
   def set(key, value) do
-    GenServer.cast(@name, {:set, key, value})
+    IO.write(:stderr, IO.ANSI.format([:red, :bright, "[DEPRECATION]: set/2 is being deprecated, please use set/4 instead\n" <> Exception.format_stacktrace()]))
+    set(key, value, 0, 100)
   end
 
   @doc """
@@ -139,8 +134,6 @@ defmodule Beaker.Gauge do
     * `value`: The value to set for the gauge
     * `min`: The lowest value for the gauge
     * `max`: The highest value for the gauge
-    * `auto_update`: Update min max based on received values, defaults to `false`
-
 
   ## Examples
 
