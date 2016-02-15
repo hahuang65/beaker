@@ -33,7 +33,7 @@ cache-control: max-age=0, private, must-revalidate
 {
   "time_series3": [
     {
-      "time": 1453354560000,
+      "time": 1455512340000,
       "min": 30,
       "max": 30,
       "count": 1,
@@ -42,7 +42,7 @@ cache-control: max-age=0, private, must-revalidate
   ],
   "time_series2": [
     {
-      "time": 1453354560000,
+      "time": 1455512340000,
       "min": 20,
       "max": 20,
       "count": 1,
@@ -51,7 +51,7 @@ cache-control: max-age=0, private, must-revalidate
   ],
   "time_series1": [
     {
-      "time": 1453354560000,
+      "time": 1455512340000,
       "min": 10,
       "max": 10,
       "count": 1,
@@ -85,9 +85,12 @@ cache-control: max-age=0, private, must-revalidate
 ```
 * __Response body:__
 ```json
-{
-  "api": 1
-}
+[
+  {
+    "value": 1,
+    "name": "api_counter"
+  }
+]
 ```
 
 ### Beaker.MetricsApiController.gauges
@@ -115,7 +118,12 @@ cache-control: max-age=0, private, must-revalidate
 * __Response body:__
 ```json
 {
-  "api_gauge": 100
+  "api_gauge": {
+    "value": 100,
+    "name": "api_gauge",
+    "min": 0,
+    "max": 100
+  }
 }
 ```
 
@@ -147,7 +155,7 @@ cache-control: max-age=0, private, must-revalidate
   "api_time_series": [
     {
       "value": 42,
-      "time": 1453354575827
+      "time": 1455512392276
     }
   ]
 }
