@@ -147,7 +147,7 @@ defmodule Beaker.TimeSeries do
 
       iex> Beaker.TimeSeries.time("time_time_series", fn -> :timer.sleep(50); 2 + 2 end)
       4
-      iex> Beaker.TimeSeries.get("time_time_series") |> hd |> elem(1) > 50
+      iex> Beaker.TimeSeries.get("time_time_series") |> hd > 50
       true
       iex> Beaker.TimeSeries.time "time_time_series", do: :timer.sleep(50); 3 + 3
       6
@@ -177,12 +177,26 @@ defmodule Beaker.TimeSeries do
 
   @doc false
   def handle_call(:all, _from, time_series) do
-    {:reply, time_series, time_series}
+    results = time_series
+    |> Enum.into(%{}, fn({name, queue}) ->
+      {name, Map.get(queue, :items) |> :queue.to_list}
+    end)
+
+    {:reply, results, time_series}
   end
 
   @doc false
   def handle_call({:get, key}, _from, time_series) do
-    {:reply, Map.get(time_series, key), time_series}
+    queue = time_series
+    |> Map.get(key)
+
+    results = if queue do
+      queue
+      |> Map.get(:items)
+      |> :queue.to_list
+    end
+
+    {:reply, results, time_series}
   end
 
   @doc false
@@ -198,7 +212,9 @@ defmodule Beaker.TimeSeries do
   @doc false
   def handle_cast({:sample, key, value}, time_series) do
     entry = {Beaker.Time.now, value}
-    {:noreply, Map.update(time_series, key, [entry], fn(list) -> [entry | list] end)}
+    duration = Beaker.Time.microseconds_from(minutes: 5)
+
+    {:noreply, Map.update(time_series, key, Queue.timed(duration, entry), fn(queue) -> Queue.add(queue, entry) end)}
   end
 
 end

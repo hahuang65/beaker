@@ -6,6 +6,10 @@ end
 defmodule Queue do
   def sized(size), do: %Queue.Sized{size: size}
   def timed(duration), do: %Queue.Timed{duration: duration}
+  def timed(duration, initial_value) do
+    %Queue.Timed{duration: duration}
+    |> Queue.add(initial_value)
+  end
 
   def add(queue, item), do: Queueable.add(queue, item)
   def items(queue), do: Queueable.items(queue)

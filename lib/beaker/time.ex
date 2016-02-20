@@ -21,4 +21,11 @@ defmodule Beaker.Time do
     |> to_milliseconds
     |> :calendar.gregorian_seconds_to_datetime
   end
+
+  def microseconds_from(minutes: minutes) when is_integer(minutes) do
+    60000000 * minutes
+  end
+  def microseconds_from(hours: hours) when is_integer(hours) do
+    microseconds_from(minutes: hours * 60)
+  end
 end
