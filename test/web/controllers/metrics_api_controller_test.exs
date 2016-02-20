@@ -34,7 +34,7 @@ defmodule Beaker.Controllers.MetricsApiControllerTest do
   end
 
   test "GET /api/gauges" do
-    Gauge.set("api_gauge", 100)
+    Gauge.set("api_gauge", 100, 0, 100)
 
     response = get_response("/api/gauges")
     |> doc
