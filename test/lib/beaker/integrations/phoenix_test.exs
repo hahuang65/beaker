@@ -25,7 +25,7 @@ defmodule Beaker.Integrations.PhoenixTest do
   test "Skips for /beaker routes" do
     before_count = Beaker.Counter.get("Phoenix:Requests")
 
-    conn = conn(:get, "/beaker/api/counters")
+    conn(:get, "/beaker/api/counters")
     |> TestPipe.call([])
     |> Plug.Conn.send_resp(200, "OK")
 

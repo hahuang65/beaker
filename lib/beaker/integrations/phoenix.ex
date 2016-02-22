@@ -21,7 +21,7 @@ defmodule Beaker.Integrations.Phoenix do
 
   def call(conn, ignore_path) do
 
-    if hd(conn.path_info) == ignore_path do
+    if ignore(conn, ignore_path) do
       conn
     else
       start_time = Beaker.Time.now
@@ -36,5 +36,10 @@ defmodule Beaker.Integrations.Phoenix do
         conn
       end)
     end
+  end
+
+  defp ignore(%Plug.Conn{path_info: []}, _), do: false
+  defp ignore(%Plug.Conn{path_info: path_info}, ignore_path) do
+    hd(path_info) == ignore_path
   end
 end
