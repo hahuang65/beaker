@@ -39,7 +39,7 @@ defmodule Beaker.Integrations.Phoenix do
   end
 
   defp ignore(%Plug.Conn{path_info: []}, _), do: false
-  defp ignore(%Plug.Conn{path_info: path_info}, ignore_path) when is_list(path_info) do
+  defp ignore(%Plug.Conn{path_info: path_info}, ignore_path) do
     hd(path_info) == ignore_path
   end
 end
