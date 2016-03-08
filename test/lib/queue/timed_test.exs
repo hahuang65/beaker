@@ -1,9 +1,14 @@
 defmodule Queue.TimedTest do
   use ExUnit.Case
 
-  test "Queue.Timed(duration) should create a time bound queue of the given duration" do
+  test "Queue.timed(duration) should create a time bound queue of the given duration" do
     queue = Queue.timed(2)
     assert queue.duration == 2
+  end
+
+  test "Queue.timed(duration, initial_value) should create a time bound queue with an initial value passed in" do
+    queue = Queue.timed(2, {1, 4})
+    assert Enum.member?(queue, 4)
   end
 
   test "Queue.add(timed_queue, item) should add the item into the timed_queue" do

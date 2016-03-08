@@ -27,9 +27,9 @@ defmodule Beaker.Gauge do
 
       iex> Beaker.Gauge.clear
       :ok
-      iex> Beaker.Gauge.set("all_gauge1", 10)
+      iex> Beaker.Gauge.set("all_gauge1", 10, 0, 100)
       :ok
-      iex> Beaker.Gauge.set("all_gauge2", 1)
+      iex> Beaker.Gauge.set("all_gauge2", 1, 0, 100)
       :ok
       iex> Beaker.Gauge.all
       %{"all_gauge1" => %{max: 100, min: 0, name: "all_gauge1", value: 10},
@@ -49,13 +49,13 @@ defmodule Beaker.Gauge do
 
       iex> Beaker.Gauge.clear
       :ok
-      iex> Beaker.Gauge.set("all_gauge1", 10)
+      iex> Beaker.Gauge.set("all_gauge1", 10, 0, 100)
       :ok
-      iex> Beaker.Gauge.set("all_gauge2", 1)
+      iex> Beaker.Gauge.set("all_gauge2", 1, 0, 100)
       :ok
       iex> Beaker.Gauge.all
       %{"all_gauge1" => %{max: 100, min: 0, name: "all_gauge1", value: 10},
-      "all_gauge2" => %{max: 100, min: 0, name: "all_gauge2", value: 1}} 
+      "all_gauge2" => %{max: 100, min: 0, name: "all_gauge2", value: 1}}
       iex> Beaker.Gauge.clear
       :ok
       iex> Beaker.Gauge.all
@@ -77,9 +77,9 @@ defmodule Beaker.Gauge do
 
       iex> Beaker.Gauge.clear
       :ok
-      iex> Beaker.Gauge.set("all_gauge1", 10)
+      iex> Beaker.Gauge.set("all_gauge1", 10, 0, 100)
       :ok
-      iex> Beaker.Gauge.set("all_gauge2", 1)
+      iex> Beaker.Gauge.set("all_gauge2", 1, 0, 100)
       :ok
       iex> Beaker.Gauge.all
       %{"all_gauge1" => %{max: 100, min: 0, name: "all_gauge1", value: 10},
@@ -103,7 +103,7 @@ defmodule Beaker.Gauge do
 
   ## Examples
 
-      iex> Beaker.Gauge.set("get_gauge", 50)
+      iex> Beaker.Gauge.set("get_gauge", 50, 0, 100)
       :ok
       iex> Beaker.Gauge.get("get_gauge")
       %{max: 100, min: 0, name: "get_gauge", value: 50}
@@ -176,7 +176,7 @@ defmodule Beaker.Gauge do
   defmacro time(key, func) do
     quote do
       {time, value} = :timer.tc(unquote(func))
-      Beaker.Gauge.set(unquote(key), time)
+      Beaker.Gauge.set(unquote(key), time, 0, 100)
 
       value
     end

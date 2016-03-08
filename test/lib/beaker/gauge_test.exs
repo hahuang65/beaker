@@ -15,23 +15,23 @@ defmodule Beaker.GaugeTest do
   end
 
   test "Gauge.all returns a map with all gauges and values" do
-    Gauge.set("all1", 5)
-    Gauge.set("all2", 2)
+    Gauge.set("all1", 5, 0, 100)
+    Gauge.set("all2", 2, 0, 100)
     assert Gauge.all == %{"all1" => %{max: 100, min: 0, name: "all1", value: 5},
                           "all2" => %{max: 100, min: 0, name: "all2", value: 2}}
   end
 
   test "Gauge.clear returns :ok and erases all gauges" do
-    :ok = Gauge.set("clear1", 5)
-    :ok = Gauge.set("clear2", 2)
+    :ok = Gauge.set("clear1", 5, 0, 100)
+    :ok = Gauge.set("clear2", 2, 0, 100)
     refute Gauge.all |> Enum.empty?
     Gauge.clear
     assert Gauge.all |> Enum.empty?
   end
 
   test "Gauge.clear(key) returns :ok and clears the specified gauge" do
-    :ok = Gauge.set("clear1", 5)
-    :ok = Gauge.set("clear2", 2)
+    :ok = Gauge.set("clear1", 5, 0, 100)
+    :ok = Gauge.set("clear2", 2, 0, 100)
     assert Gauge.all |> Map.keys |> Enum.member?("clear1")
     assert Gauge.all |> Map.keys |> Enum.member?("clear2")
     Gauge.clear("clear1")
@@ -44,22 +44,22 @@ defmodule Beaker.GaugeTest do
   end
 
   test "Gauge.get(key) returns the stored value in the gauge" do
-    Gauge.set("get", 50)
+    Gauge.set("get", 50, 0, 100)
     assert Gauge.get("get") == %{max: 100, min: 0, name: "get", value: 50}
   end
 
   test "Gauge.set(key, value) sets the gauge to the value" do
     key = "set"
     assert Gauge.get(key) == nil
-    Gauge.set(key, 10)
+    Gauge.set(key, 10, 0, 100)
     assert Gauge.get(key) == %{max: 100, min: 0, name: "set", value: 10}
-    Gauge.set(key, 2)
+    Gauge.set(key, 2, 0, 100)
     assert Gauge.get(key) == %{max: 100, min: 0, name: "set", value: 2}
   end
 
   test "Gauge.set(key, value) accepts floats" do
     key = "set_float"
-    Gauge.set(key, 3.14159)
+    Gauge.set(key, 3.14159, 0, 100)
     assert Gauge.get(key) == %{max: 100, min: 0, name: "set_float", value: 3.14159}
   end
 

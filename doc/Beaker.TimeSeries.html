@@ -48,6 +48,8 @@
     
 
     
+      <li><a id="protocols-list" href="#full-list">Protocols</a></li>
+    
   </ul>
 
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -383,7 +385,7 @@ Each sample is a pair that consists of a timestamp in epoch and the value record
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.time(&quot;time_time_series&quot;, fn -&gt; :timer.sleep(50); 2 + 2 end)
 4
-iex&gt; Beaker.TimeSeries.get(&quot;time_time_series&quot;) |&gt; hd |&gt; elem(1) &gt; 50
+iex&gt; Beaker.TimeSeries.get(&quot;time_time_series&quot;) |&gt; hd &gt; 50
 true
 iex&gt; Beaker.TimeSeries.time &quot;time_time_series&quot;, do: :timer.sleep(50); 3 + 3
 6</code></pre>

@@ -48,6 +48,8 @@
     
 
     
+      <li><a id="protocols-list" href="#full-list">Protocols</a></li>
+    
   </ul>
 
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -142,7 +144,7 @@
     <a href="#set/2">set(key, value)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Sets the gauge to the specified value</p>
+    <div class="summary-synopsis"><p><strong> DEPRECATED </strong></p>
 </div>
   
 </div>
@@ -199,7 +201,7 @@
     </a>
     <span class="signature">all()</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L39" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L40" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -210,12 +212,13 @@
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Gauge.clear
 :ok
-iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10)
+iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10, 0, 100)
 :ok
-iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1)
+iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1, 0, 100)
 :ok
 iex&gt; Beaker.Gauge.all
-%{&quot;all_gauge1&quot; =&gt; 10, &quot;all_gauge2&quot; =&gt; 1}</code></pre>
+%{&quot;all_gauge1&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge1&quot;, value: 10},
+&quot;all_gauge2&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge2&quot;, value: 1}}</code></pre>
 <p>Returns <code class="inline">gauges</code> where gauges is a map of all the gauges currently existing.</p>
 
   </section>
@@ -227,7 +230,7 @@ iex&gt; Beaker.Gauge.all
     </a>
     <span class="signature">clear()</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L64" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L66" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -238,12 +241,13 @@ iex&gt; Beaker.Gauge.all
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Gauge.clear
 :ok
-iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10)
+iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10, 0, 100)
 :ok
-iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1)
+iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1, 0, 100)
 :ok
 iex&gt; Beaker.Gauge.all
-%{&quot;all_gauge1&quot; =&gt; 10, &quot;all_gauge2&quot; =&gt; 1}
+%{&quot;all_gauge1&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge1&quot;, value: 10},
+&quot;all_gauge2&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge2&quot;, value: 1}}
 iex&gt; Beaker.Gauge.clear
 :ok
 iex&gt; Beaker.Gauge.all
@@ -259,7 +263,7 @@ iex&gt; Beaker.Gauge.all
     </a>
     <span class="signature">clear(key)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L91" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L94" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -275,16 +279,17 @@ iex&gt; Beaker.Gauge.all
 <h2>Examples</h2>
 <pre><code class="iex elixir">iex&gt; Beaker.Gauge.clear
 :ok
-iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10)
+iex&gt; Beaker.Gauge.set(&quot;all_gauge1&quot;, 10, 0, 100)
 :ok
-iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1)
+iex&gt; Beaker.Gauge.set(&quot;all_gauge2&quot;, 1, 0, 100)
 :ok
 iex&gt; Beaker.Gauge.all
-%{&quot;all_gauge1&quot; =&gt; 10, &quot;all_gauge2&quot; =&gt; 1}
+%{&quot;all_gauge1&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge1&quot;, value: 10},
+&quot;all_gauge2&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge2&quot;, value: 1}}
 iex&gt; Beaker.Gauge.clear(&quot;all_gauge1&quot;)
 :ok
 iex&gt; Beaker.Gauge.all
-%{&quot;all_gauge2&quot; =&gt; 1}</code></pre>
+%{&quot;all_gauge2&quot; =&gt; %{max: 100, min: 0, name: &quot;all_gauge2&quot;, value: 1}}</code></pre>
 <p>Returns <code class="inline">:ok</code>.</p>
 
   </section>
@@ -296,7 +301,7 @@ iex&gt; Beaker.Gauge.all
     </a>
     <span class="signature">get(key)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L110" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L113" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -310,10 +315,10 @@ iex&gt; Beaker.Gauge.all
 </li>
 </ul>
 <h2>Examples</h2>
-<pre><code class="iex elixir">iex&gt; Beaker.Gauge.set(&quot;get_gauge&quot;, 50)
+<pre><code class="iex elixir">iex&gt; Beaker.Gauge.set(&quot;get_gauge&quot;, 50, 0, 100)
 :ok
 iex&gt; Beaker.Gauge.get(&quot;get_gauge&quot;)
-50</code></pre>
+%{max: 100, min: 0, name: &quot;get_gauge&quot;, value: 50}</code></pre>
 <p>Returns <code class="inline">count</code> where count is an integer if the gauge exists, else <code class="inline">nil</code>.</p>
 
   </section>
@@ -325,27 +330,16 @@ iex&gt; Beaker.Gauge.get(&quot;get_gauge&quot;)
     </a>
     <span class="signature">set(key, value)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L130" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L124" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
   </div>
   
   <section class="docstring">
-    <p>Sets the gauge to the specified value.</p>
-<h2>Parameters</h2>
-<ul>
-<li><code class="inline">key</code>: The name of the gauge to set the value for.
-</li>
-<li><code class="inline">value</code>: The value to set to the gauge.
-</li>
-</ul>
-<h2>Examples</h2>
-<pre><code class="iex elixir">iex&gt; Beaker.Gauge.set(&quot;set_gauge&quot;, 3.14159)
-:ok
-iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
-3.14159</code></pre>
-<p>Returns <code class="inline">:ok</code></p>
+    <p><strong> DEPRECATED </strong></p>
+<p>It is now expected that you set a min and max value for a gauge, rather than just a value.
+Please use set/4 instead.</p>
 
   </section>
 </div>
@@ -356,7 +350,7 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
     </a>
     <span class="signature">set(key, value, min, max)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L155" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L148" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -373,8 +367,6 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
 <li><code class="inline">min</code>: The lowest value for the gauge
 </li>
 <li><code class="inline">max</code>: The highest value for the gauge
-</li>
-<li><code class="inline">auto_update</code>: Update min max based on received values, defaults to <code class="inline">false</code>
 </li>
 </ul>
 <h2>Examples</h2>
@@ -404,7 +396,7 @@ iex&gt; Beaker.Gauge.get(&quot;set_gauge&quot;)
     </a>
     <span class="signature">time(key, func)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L178" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/gauge.ex#L171" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     

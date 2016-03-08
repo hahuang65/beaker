@@ -5,11 +5,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.11.4">
-    <title>Beaker.MetricsApiController – beaker v1.2.0</title>
+    <title>Queueable – beaker v1.2.0</title>
     <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
     <script src="dist/sidebar_items.js"></script>
   </head>
-  <body data-type="modules">
+  <body data-type="protocols">
 
     <div class="main">
 <button class="sidebar-toggle">
@@ -62,10 +62,12 @@
 
       <h1>
         <small class="visible-xs">beaker v1.2.0</small>
-        Beaker.MetricsApiController
+        Queueable
+        
+          <small>protocol</small>
         
         
-          <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/controllers/metrics_api_controller.ex#L2" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L1" title="View Source" class="view-source" rel="help">
             <i class="icon-code"></i>
           </a>
         
@@ -82,6 +84,19 @@
             Summary
           </h1>
           
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+  
+</div>
+
+  </div>
+
 
           
   <div class="summary-functions summary">
@@ -90,25 +105,13 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#aggregated/2">aggregated(conn, params)</a>
+    <a href="#add/2">add(queue, item)</a>
   </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#counters/2">counters(conn, params)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#gauges/2">gauges(conn, param)</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#time_series/2">time_series(conn, params)</a>
+    <a href="#items/1">items(queue)</a>
   </div>
   
 </div>
@@ -124,6 +127,22 @@
       
 
       
+        <section id="types" class="types details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <i class="icon-link"></i>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+            <div id="t:t/0" class="type-detail">
+  <pre><code class="elixir"><a href="#t:t/0">t</a> :: term</code></pre>
+  
+</div>
+
+          </div>
+        </section>
+      
 
       
         <section id="functions" class="details-list">
@@ -133,14 +152,14 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="aggregated/2">
+          <div class="detail" id="add/2">
   <div class="detail-header">
-    <a href="#aggregated/2" class="detail-link" title="Link to this function">
+    <a href="#add/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">aggregated(conn, params)</span>
+    <span class="signature">add(queue, item)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/controllers/metrics_api_controller.ex#L27" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L2" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -150,48 +169,14 @@
     
   </section>
 </div>
-<div class="detail" id="counters/2">
+<div class="detail" id="items/1">
   <div class="detail-header">
-    <a href="#counters/2" class="detail-link" title="Link to this function">
+    <a href="#items/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">counters(conn, params)</span>
+    <span class="signature">items(queue)</span>
       
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/controllers/metrics_api_controller.ex#L5" class="view-source" rel="help" title="View Source">
-       <i class="icon-code"></i>
-     </a>
-    
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="gauges/2">
-  <div class="detail-header">
-    <a href="#gauges/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">gauges(conn, param)</span>
-      
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/controllers/metrics_api_controller.ex#L13" class="view-source" rel="help" title="View Source">
-       <i class="icon-code"></i>
-     </a>
-    
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="time_series/2">
-  <div class="detail-header">
-    <a href="#time_series/2" class="detail-link" title="Link to this function">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">time_series(conn, params)</span>
-      
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/web/controllers/metrics_api_controller.ex#L20" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L3" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
