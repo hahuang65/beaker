@@ -2,6 +2,7 @@ Beaker
 ======
 
 [![Build Status](https://travis-ci.org/hahuang65/beaker.svg?branch=master)](https://travis-ci.org/hahuang65/beaker)
+[![Deps Status](https://beta.hexfaktor.org/badge/all/github/hahuang65/beaker.svg)](https://beta.hexfaktor.org/github/hahuang65/beaker)
 [![Inline docs](http://inch-ci.org/github/hahuang65/beaker.svg?branch=master&style=shields)](http://inch-ci.org/github/hahuang65/beaker)
 
 Beaker is a tool that can be used to keep track of metrics for your Elixir project. It aims to provide an easy way to register statistics as well as an easy way to visualize them.
