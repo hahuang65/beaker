@@ -1,6 +1,7 @@
 defmodule Beaker.TimeSeries.Aggregator do
   @name :beaker_time_series_aggregator
   @default_interval 60
+  @env Mix.env
 
   @moduledoc """
   `Beaker.TimeSeries.Aggregator` is the aggregation framework for time series. It's purposed mostly for internal use only.
@@ -84,7 +85,7 @@ defmodule Beaker.TimeSeries.Aggregator do
 
   @doc false
   def init(:ok) do
-    unless Mix.env == :test do
+    unless @env == :test do
       :timer.send_interval(@default_interval * 1000, :schedule_aggregation)
     end
     {:ok, Beaker.Time.last_full_minute}

@@ -3,11 +3,6 @@ defmodule Beaker.Web.Helper do
 
   @colors ~w(yellow orange red magenta violet blue cyan green)
 
-  def autorefresh_interval, do: autorefresh_interval(Mix.env)
-  def autorefresh_interval(:dev), do: 5000
-  def autorefresh_interval(:prod), do: 30000
-  def autorefresh_interval(:test), do: nil
-
   def random_color do
     :random.seed(:os.timestamp)
 
