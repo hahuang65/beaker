@@ -61,8 +61,7 @@ defmodule Beaker.TimeSeries.AggregatorTest do
 
   test "Aggregation is under 50ms for 600 points of data within a minute" do
     stream = Stream.repeatedly(fn ->
-      :random.seed(:os.timestamp)
-      :random.uniform * :random.uniform * 100
+      :rand.uniform * :rand.uniform * 100
     end)
 
     Stream.take(stream, 600)
@@ -77,8 +76,7 @@ defmodule Beaker.TimeSeries.AggregatorTest do
 
   test "Aggregation is under 500ms for 600 points of data within a minute for 10 time series" do
     stream = Stream.repeatedly(fn ->
-      :random.seed(:os.timestamp)
-      :random.uniform * :random.uniform * 100
+      :rand.uniform * :rand.uniform * 100
     end)
 
     Stream.take(stream, 600)
