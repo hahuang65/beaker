@@ -53,11 +53,11 @@ defmodule Beaker.Mixfile do
     [
       {:bureaucrat, "~> 0.1.2"},
       {:earmark, "~> 0.1", only: :docs},
-      {:ecto, "~> 1.1", optional: true},
+      {:ecto, "~> 1.1", optional: true, override: true},
       {:ex_doc, "~> 0.11", only: :docs},
       {:inch_ex, "~> 0.5", only: :docs},
       {:mix_test_watch, "~> 0.2", only: :dev},
-      {:phoenix, "~> 1.1", optional: true},
+      {:phoenix, "~> 1.1", optional: true, override: true},
       {:phoenix_ecto, "~> 2.0", only: :test},
       {:phoenix_html, "~> 2.3", only: :test},
     ]
