@@ -74,6 +74,7 @@ defmodule Beaker.Mixfile do
   defp package do
     [
       maintainers: ["Howard Huang", "Martin Feckie"],
+      licenses: [],
       links: %{
         "GitHub" => "http://github.com/hahuang65/beaker",
         "Docs" => "http://hexdocs.pm/beaker/"
