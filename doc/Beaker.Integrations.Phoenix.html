@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.14.5">
-    <title>Queueable – beaker v1.2.0</title>
+    <title>Beaker.Integrations.Phoenix – beaker v1.2.0</title>
     <link rel="stylesheet" href="dist/app-a07cea761b.css" />
     
     <script src="dist/sidebar_items-128e81e6f5.js"></script>
   </head>
-  <body data-type="protocols">
+  <body data-type="modules">
     <script>if(localStorage.getItem('night-mode')) document.body.className += ' night-mode';</script>
 
     <div class="main">
@@ -61,17 +61,32 @@
 
       <h1>
         <small class="visible-xs">beaker v1.2.0</small>
-        Queueable
-        
-          <small>protocol</small>
+        Beaker.Integrations.Phoenix
         
         
-          <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L1" title="View Source" class="view-source" rel="help">
+          <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/integrations/phoenix.ex#L1" title="View Source" class="view-source" rel="help">
             <i class="icon-code"></i>
           </a>
         
       </h1>
 
+      
+        <section id="moduledoc">
+          <p>A Plug for adding Beaker stats to your Phoenix pipeline(s)</p>
+<p>plug Beaker.Integrations.Phoenix</p>
+<p>or</p>
+<p>plug Beaker.Integrations.Phoenix, ignore_path: “my_special_path”</p>
+<h2 id="module-options" class="section-heading">
+  <a href="#module-options" class="hover-link"><i class="icon-link"></i></a>
+  Options
+</h2>
+
+<ul>
+<li><code class="inline">:ignore_path</code> - The top level of the URL to ignore, default is “beaker”.
+</li>
+</ul>
+
+        </section>
       
 
       
@@ -83,19 +98,6 @@
             Summary
           </h1>
           
-  <div class="summary-types summary">
-    <h2>
-      <a href="#types">Types</a>
-    </h2>
-    <div class="summary-row">
-  <div class="summary-signature">
-    <a href="#t:t/0">t()</a>
-  </div>
-  
-</div>
-
-  </div>
-
 
           
   <div class="summary-functions summary">
@@ -104,14 +106,20 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#add/2">add(queue, item)</a>
+    <a href="#call/2">call(conn, ignore_path)</a>
   </div>
+  
+    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/plug/1.3.0/Plug.html#c:call/2"><code class="inline">Plug.call/2</code></a></p>
+</div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#items/1">items(queue)</a>
+    <a href="#init/1">init(opts)</a>
   </div>
+  
+    <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/plug/1.3.0/Plug.html#c:init/1"><code class="inline">Plug.init/1</code></a></p>
+</div>
   
 </div>
 
@@ -125,43 +133,6 @@
         </section>
       
 
-      
-        <section id="types" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#types">
-              <i class="icon-link"></i>
-            </a>
-            Types
-          </h1>
-          <div class="types-list">
-            <div class="detail" id="t:t/0">
-  
-  <div class="detail-header">
-    <a href="#t:t/0" class="detail-link" title="Link to this type">
-      <i class="icon-link"></i>
-    </a>
-    <span class="signature">t()</span>
-    
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L1" class="view-source" rel="help" title="View Source">
-       <i class="icon-code"></i>
-     </a>
-    
-    
-    
-      <div class="specs">
-        
-          <pre>t() :: term</pre>
-        
-      </div>
-    
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-
-          </div>
-        </section>
       
 
       
@@ -172,15 +143,15 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="add/2">
+          <div class="detail" id="call/2">
   
   <div class="detail-header">
-    <a href="#add/2" class="detail-link" title="Link to this function">
+    <a href="#call/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">add(queue, item)</span>
+    <span class="signature">call(conn, ignore_path)</span>
     
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L2" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/integrations/phoenix.ex#L22" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -188,18 +159,19 @@
     
   </div>
   <section class="docstring">
-    
+    <p>Callback implementation for <a href="https://hexdocs.pm/plug/1.3.0/Plug.html#c:call/2"><code class="inline">Plug.call/2</code></a>.</p>
+
   </section>
 </div>
-<div class="detail" id="items/1">
+<div class="detail" id="init/1">
   
   <div class="detail-header">
-    <a href="#items/1" class="detail-link" title="Link to this function">
+    <a href="#init/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
-    <span class="signature">items(queue)</span>
+    <span class="signature">init(opts)</span>
     
-      <a href="https://github.com/hahuang65/beaker/blob/master/lib/queue.ex#L3" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/integrations/phoenix.ex#L18" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
@@ -207,7 +179,8 @@
     
   </div>
   <section class="docstring">
-    
+    <p>Callback implementation for <a href="https://hexdocs.pm/plug/1.3.0/Plug.html#c:init/1"><code class="inline">Plug.init/1</code></a>.</p>
+
   </section>
 </div>
 

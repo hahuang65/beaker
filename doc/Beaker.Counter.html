@@ -4,21 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.4">
+    <meta name="generator" content="ExDoc v0.14.5">
     <title>Beaker.Counter – beaker v1.2.0</title>
-    <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
-    <script src="dist/sidebar_items.js"></script>
+    <link rel="stylesheet" href="dist/app-a07cea761b.css" />
+    
+    <script src="dist/sidebar_items-128e81e6f5.js"></script>
   </head>
   <body data-type="modules">
+    <script>if(localStorage.getItem('night-mode')) document.body.className += ' night-mode';</script>
 
     <div class="main">
 <button class="sidebar-toggle">
   <i class="icon-menu"></i>
 </button>
 <section class="sidebar">
-  <button class="sidebar-toggle">
-    <i class="icon-menu"></i>
-  </button>
 
   
   <a href="api-reference.html" class="sidebar-projectLink">
@@ -51,13 +50,13 @@
       <li><a id="protocols-list" href="#full-list">Protocols</a></li>
     
   </ul>
-
+  <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
-  <div class="sidebar-noResults"></div>
 </section>
 
 <section class="content">
-  <div id="content" class="content-inner">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
 
 
       <h1>
@@ -72,7 +71,7 @@
       </h1>
 
       
-        <section id="moduledoc" class="docstring">
+        <section id="moduledoc">
           <p><a href="Beaker.Counter.html#content"><code class="inline">Beaker.Counter</code></a> is a signed bi-directional integer counter.
 It can keep track of integers and increment and decrement them.</p>
 <p>It is commonly used for metrics that keep track of some cumulative value.</p>
@@ -207,21 +206,27 @@ It can keep track of integers and increment and decrement them.</p>
             Functions
           </h1>
           <div class="detail" id="all/0">
+  
   <div class="detail-header">
     <a href="#all/0" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">all()</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L40" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Retrieves all counters in the form of a map.</p>
-<h2>Examples</h2>
+<h2 id="all/0-examples" class="section-heading">
+  <a href="#all/0-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.clear
 :ok
 iex&gt; Beaker.Counter.set(&quot;all_counter1&quot;, 10)
@@ -235,21 +240,27 @@ iex&gt; Beaker.Counter.all
   </section>
 </div>
 <div class="detail" id="clear/0">
+  
   <div class="detail-header">
     <a href="#clear/0" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">clear()</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L65" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Clears all counters stored in Beaker.</p>
-<h2>Examples</h2>
+<h2 id="clear/0-examples" class="section-heading">
+  <a href="#clear/0-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.clear
 :ok
 iex&gt; Beaker.Counter.set(&quot;all_counter1&quot;, 10)
@@ -267,26 +278,36 @@ iex&gt; Beaker.Counter.all
   </section>
 </div>
 <div class="detail" id="clear/1">
+  
   <div class="detail-header">
     <a href="#clear/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">clear(key)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L92" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Clears the specified counter from Beaker.</p>
-<h2>Parameters</h2>
+<h2 id="clear/1-parameters" class="section-heading">
+  <a href="#clear/1-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to clear.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="clear/1-examples" class="section-heading">
+  <a href="#clear/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.clear
 :ok
 iex&gt; Beaker.Counter.set(&quot;all_counter1&quot;, 10)
@@ -304,26 +325,36 @@ iex&gt; Beaker.Counter.all
   </section>
 </div>
 <div class="detail" id="decr/1">
+  
   <div class="detail-header">
     <a href="#decr/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">decr(key)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L195" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Decrements the specified counter by 1.</p>
-<h2>Parameters</h2>
+<h2 id="decr/1-parameters" class="section-heading">
+  <a href="#decr/1-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to decrement.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="decr/1-examples" class="section-heading">
+  <a href="#decr/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
 nil
 iex&gt; Beaker.Counter.decr(&quot;decr_counter&quot;)
@@ -335,28 +366,38 @@ iex&gt; Beaker.Counter.get(&quot;decr_counter&quot;)
   </section>
 </div>
 <div class="detail" id="decr_by/2">
+  
   <div class="detail-header">
     <a href="#decr_by/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">decr_by(key, amount)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L217" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Decrements the specified counter by the specified amount.</p>
-<h2>Parameters</h2>
+<h2 id="decr_by/2-parameters" class="section-heading">
+  <a href="#decr_by/2-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to decrement.
 </li>
 <li><code class="inline">amount</code>: The amount to decrement by.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="decr_by/2-examples" class="section-heading">
+  <a href="#decr_by/2-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
 nil
 iex&gt; Beaker.Counter.decr_by(&quot;decr_by_counter&quot;, 10)
@@ -368,26 +409,36 @@ iex&gt; Beaker.Counter.get(&quot;decr_by_counter&quot;)
   </section>
 </div>
 <div class="detail" id="get/1">
+  
   <div class="detail-header">
     <a href="#get/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">get(key)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L111" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Retrieves the current value of the specified counter.</p>
-<h2>Parameters</h2>
+<h2 id="get/1-parameters" class="section-heading">
+  <a href="#get/1-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to retrieve.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="get/1-examples" class="section-heading">
+  <a href="#get/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.set(&quot;get_counter&quot;, 10)
 :ok
 iex&gt; Beaker.Counter.get(&quot;get_counter&quot;)
@@ -397,26 +448,36 @@ iex&gt; Beaker.Counter.get(&quot;get_counter&quot;)
   </section>
 </div>
 <div class="detail" id="incr/1">
+  
   <div class="detail-header">
     <a href="#incr/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">incr(key)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L152" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Increments the specified counter by 1.</p>
-<h2>Parameters</h2>
+<h2 id="incr/1-parameters" class="section-heading">
+  <a href="#incr/1-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to increment.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="incr/1-examples" class="section-heading">
+  <a href="#incr/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
 nil
 iex&gt; Beaker.Counter.incr(&quot;incr_counter&quot;)
@@ -428,28 +489,38 @@ iex&gt; Beaker.Counter.get(&quot;incr_counter&quot;)
   </section>
 </div>
 <div class="detail" id="incr_by/2">
+  
   <div class="detail-header">
     <a href="#incr_by/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">incr_by(key, amount)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L174" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Increments the specified counter by the specified amount.</p>
-<h2>Parameters</h2>
+<h2 id="incr_by/2-parameters" class="section-heading">
+  <a href="#incr_by/2-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to increment.
 </li>
 <li><code class="inline">amount</code>: The amount to increment by.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="incr_by/2-examples" class="section-heading">
+  <a href="#incr_by/2-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
 nil
 iex&gt; Beaker.Counter.incr_by(&quot;incr_by_counter&quot;, 10)
@@ -461,28 +532,38 @@ iex&gt; Beaker.Counter.get(&quot;incr_by_counter&quot;)
   </section>
 </div>
 <div class="detail" id="set/2">
+  
   <div class="detail-header">
     <a href="#set/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">set(key, value)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/counter.ex#L131" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Sets the value of the specified counter to the specified value.</p>
-<h2>Parameters</h2>
+<h2 id="set/2-parameters" class="section-heading">
+  <a href="#set/2-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the counter to set the value for.
 </li>
 <li><code class="inline">value</code>: The value to set to the counter.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="set/2-examples" class="section-heading">
+  <a href="#set/2-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.Counter.set(&quot;set_counter&quot;, 10)
 :ok
 iex&gt; Beaker.Counter.get(&quot;set_counter&quot;)
@@ -498,23 +579,24 @@ iex&gt; Beaker.Counter.get(&quot;set_counter&quot;)
       
 
       
-        <footer class="footer">
-      <p>
-        <span class="line">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.4),
-        </span>
-        <span class="line">
-          designed by
-          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.14.5),
           </span>
-      </p>
-      <button class="night-mode-toggle" />
-    </footer>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle" />
+      </footer>
+    </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-6d2e071366.js"></script>
+  <script src="dist/app-4aef34ad5f.js"></script>
   </body>
 </html>
 

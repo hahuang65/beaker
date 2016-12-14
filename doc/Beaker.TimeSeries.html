@@ -4,21 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.11.4">
+    <meta name="generator" content="ExDoc v0.14.5">
     <title>Beaker.TimeSeries – beaker v1.2.0</title>
-    <link rel="stylesheet" href="dist/app-1e374caa3d.css" />
-    <script src="dist/sidebar_items.js"></script>
+    <link rel="stylesheet" href="dist/app-a07cea761b.css" />
+    
+    <script src="dist/sidebar_items-128e81e6f5.js"></script>
   </head>
   <body data-type="modules">
+    <script>if(localStorage.getItem('night-mode')) document.body.className += ' night-mode';</script>
 
     <div class="main">
 <button class="sidebar-toggle">
   <i class="icon-menu"></i>
 </button>
 <section class="sidebar">
-  <button class="sidebar-toggle">
-    <i class="icon-menu"></i>
-  </button>
 
   
   <a href="api-reference.html" class="sidebar-projectLink">
@@ -51,13 +50,13 @@
       <li><a id="protocols-list" href="#full-list">Protocols</a></li>
     
   </ul>
-
+  <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
-  <div class="sidebar-noResults"></div>
 </section>
 
 <section class="content">
-  <div id="content" class="content-inner">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
 
 
       <h1>
@@ -72,7 +71,7 @@
       </h1>
 
       
-        <section id="moduledoc" class="docstring">
+        <section id="moduledoc">
           <p><a href="Beaker.TimeSeries.html#content"><code class="inline">Beaker.TimeSeries</code></a> is a simple time series. It’s a metric that keeps track of values over time when sampled.</p>
 <p>It is commonly used to keep track of changing values over time to look at patterns and averages</p>
 <p>Examples are:</p>
@@ -186,21 +185,27 @@
             Functions
           </h1>
           <div class="detail" id="all/0">
+  
   <div class="detail-header">
     <a href="#all/0" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">all()</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L41" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Retrieves all time series in the form of a Map.</p>
-<h2>Examples</h2>
+<h2 id="all/0-examples" class="section-heading">
+  <a href="#all/0-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.clear
 :ok
 iex&gt; Beaker.TimeSeries.sample(&quot;all_series1&quot;, 10)
@@ -216,21 +221,27 @@ Each list is guaranteed to be in reverse chronological ordering, that is, the la
   </section>
 </div>
 <div class="detail" id="clear/0">
+  
   <div class="detail-header">
     <a href="#clear/0" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">clear()</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L63" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Remove all time series currently stored in Beaker.</p>
-<h2>Examples</h2>
+<h2 id="clear/0-examples" class="section-heading">
+  <a href="#clear/0-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;clear_series1&quot;, 10)
 :ok
 iex&gt; Beaker.TimeSeries.sample(&quot;clear_series2&quot;, 20)
@@ -246,26 +257,36 @@ true</code></pre>
   </section>
 </div>
 <div class="detail" id="clear/1">
+  
   <div class="detail-header">
     <a href="#clear/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">clear(key)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L92" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Clears the specified time series from Beaker.</p>
-<h2>Parameters</h2>
+<h2 id="clear/1-parameters" class="section-heading">
+  <a href="#clear/1-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the time series to clear.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="clear/1-examples" class="section-heading">
+  <a href="#clear/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;clear_series1&quot;, 10)
 :ok
 iex&gt; Beaker.TimeSeries.sample(&quot;clear_series2&quot;, 20)
@@ -285,26 +306,36 @@ true</code></pre>
   </section>
 </div>
 <div class="detail" id="get/1">
+  
   <div class="detail-header">
     <a href="#get/1" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">get(key)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L113" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Get the time series for the given key.</p>
-<h2>Parameters</h2>
+<h2 id="get/1-parameters" class="section-heading">
+  <a href="#get/1-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the time_series to retrieve.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="get/1-examples" class="section-heading">
+  <a href="#get/1-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;)
 nil
 iex&gt; Beaker.TimeSeries.sample(&quot;get_series&quot;, 10)
@@ -316,28 +347,38 @@ iex&gt; Beaker.TimeSeries.get(&quot;get_series&quot;) |&gt; Enum.count
   </section>
 </div>
 <div class="detail" id="sample/2">
+  
   <div class="detail-header">
     <a href="#sample/2" class="detail-link" title="Link to this function">
       <i class="icon-link"></i>
     </a>
     <span class="signature">sample(key, value)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L135" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Record a sample for the given key with the given value.</p>
-<h2>Parameters</h2>
+<h2 id="sample/2-parameters" class="section-heading">
+  <a href="#sample/2-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the time_series to sample.
 </li>
 <li><code class="inline">value</code>: The value to save for the sample.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="sample/2-examples" class="section-heading">
+  <a href="#sample/2-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.sample(&quot;set_series&quot;, 5)
 :ok
 iex&gt; Beaker.TimeSeries.get(&quot;set_series&quot;) |&gt; hd |&gt; elem(1)
@@ -361,28 +402,38 @@ Each sample is a pair that consists of a timestamp in epoch and the value record
             Macros
           </h1>
           <div class="detail" id="time/2">
+  
   <div class="detail-header">
     <a href="#time/2" class="detail-link" title="Link to this macro">
       <i class="icon-link"></i>
     </a>
     <span class="signature">time(key, func)</span>
-      
+    
       <a href="https://github.com/hahuang65/beaker/blob/master/lib/beaker/time_series.ex#L157" class="view-source" rel="help" title="View Source">
        <i class="icon-code"></i>
      </a>
     
+    
+    
   </div>
-  
   <section class="docstring">
     <p>Times the provided function and samples the duration to the time series with the specified key.</p>
-<h2>Parameters</h2>
+<h2 id="time/2-parameters" class="section-heading">
+  <a href="#time/2-parameters" class="hover-link"><i class="icon-link"></i></a>
+  Parameters
+</h2>
+
 <ul>
 <li><code class="inline">key</code>: The name of the time series to sample the duration to.
 </li>
 <li><code class="inline">func</code>: The function perform and time.
 </li>
 </ul>
-<h2>Examples</h2>
+<h2 id="time/2-examples" class="section-heading">
+  <a href="#time/2-examples" class="hover-link"><i class="icon-link"></i></a>
+  Examples
+</h2>
+
 <pre><code class="iex elixir">iex&gt; Beaker.TimeSeries.time(&quot;time_time_series&quot;, fn -&gt; :timer.sleep(50); 2 + 2 end)
 4
 iex&gt; Beaker.TimeSeries.get(&quot;time_time_series&quot;) |&gt; hd &gt; 50
@@ -398,23 +449,24 @@ iex&gt; Beaker.TimeSeries.time &quot;time_time_series&quot;, do: :timer.sleep(50
       
 
       
-        <footer class="footer">
-      <p>
-        <span class="line">
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.11.4),
-        </span>
-        <span class="line">
-          designed by
-          <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.14.5),
           </span>
-      </p>
-      <button class="night-mode-toggle" />
-    </footer>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+        <button class="night-mode-toggle" />
+      </footer>
+    </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-6d2e071366.js"></script>
+  <script src="dist/app-4aef34ad5f.js"></script>
   </body>
 </html>
 
