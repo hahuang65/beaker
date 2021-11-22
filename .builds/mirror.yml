@@ -1,0 +1,44 @@
+image: alpine/edge
+packages:
+- git
+- jq
+secrets:
+- ac689c78-6425-43a3-b152-41116ad5aca4
+- 5f32a031-c12a-47dd-aa57-5545b970b0ba
+tasks:
+- mirror: |
+    set +x
+    REPO=$(ls -1 | head -1)
+    cd "$REPO"
+    echo "Setting up repository mirror for ${REPO}"
+
+    GH_TOKEN=$(cat ~/.github_token)
+    GH_USER=$(curl --header "Accept: application/vnd.github.v3+json" --header "Authorization: token ${GH_TOKEN}" --silent https://api.github.com/user | jq -r '.login')
+    GH_REPO=$(echo "${GH_USER}/${REPO}")
+
+    GH_REPO_RESP=$(curl --write-out '%{http_code}' --header "Authorization: token ${GH_TOKEN}" --head --silent --output /dev/null "https://api.github.com/repos/${GH_REPO}")
+
+    if [[ "${GH_REPO_RESP}" == "404" ]]; then
+      SRHT_URL=$(git remote --verbose | grep "(push)" | grep "sr.ht" | awk -F " " '{print $2}')
+      echo "Github repository not found. Creating one now to mirror ${SRHT_URL}"
+
+      GH_CREATE_RESP=$(curl --write-out '%{http_code}' --silent --header "Authorization: token ${GH_TOKEN}" --header "Accept: application/vnd.github.v3+json" --output /dev/null --request POST --data "{\"name\":\"${REPO}\", \"has_projects\":false, \"has_issues\":false, \"has_wiki\":false, \"description\":\"A mirror for ${SRHT_URL}\"}" https://api.github.com/user/repos)
+
+      if [[ "${GH_CREATE_RESP}" != "201" ]]; then
+        echo "Failed to create Github repository ${REPO}, response code ${GH_CREATE_RESP}"
+        exit 1
+      fi
+      sleep 5 # Give Github a chance to create the repo and setup permissions so we can push.
+    elif [[ "${GH_REPO_RESP}" == "200" ]]; then
+      echo "Github repository exists at https://github.com/${GH_REPO}"
+    else
+      echo "Unhandled response code ${GH_REPO_RESP} when requesting https://api.github.com/repos/${GH_REPO}"
+      exit 1
+    fi
+
+    echo "Pushing repository, as mirror, to git@github.com:${GH_REPO}"
+    git remote add github --mirror=push "git@github.com:${GH_REPO}"
+    GH_KEY=$(ssh-keyscan -H github.com 2> /dev/null)
+    echo $GH_KEY >> ~/.ssh/known_hosts
+    git push github --mirror
+    echo "Done."
